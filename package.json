@@ -1,0 +1,21 @@
+{
+  "name": "apps-dashboard",
+  "description": "A dashboard for the apps team",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guardian/apps-dashboard.git"
+  },
+  "dependencies": {
+    "imap-simple": "^1.6.0",
+    "itunesconnect": "^0.2.0",
+    "lodash": "^4.5.1",
+    "moment": "2.0.0",
+    "nconf": "^0.8.2",
+    "nomniture": "0.3.7",
+    "request": "^2.70.0"
+  },
+  "devDependencies": {
+    "npm": "~3.3.9"
+  },
+  "engine": "node 0.12"
+}
