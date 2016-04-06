@@ -43,7 +43,7 @@ function generateTable(callback) {
 			result.reviews = preResult.reviews.concat(result.reviews);
 			console.log(JSON.stringify(result));
 			var rows = result.reviews.map(function(review){
-				return "<tr><td><i>" + review.title + "</i> " + review.text + "</td></tr>"
+				return "<tr><td><i>" + review.title + "</i> " + review.text.replace(/\n/g, "<BR>\n") + "</td></tr>"
 			}).join("");
 			var table = "<tr><th>Critical Reviews (" + result.reviews.length + ")</th></tr>" + rows
 			console.log(JSON.stringify(table));
