@@ -31,11 +31,11 @@ generateTable(function(err, table) {
  
 function generateTable(callback) {
 	var appAnnie = new AppAnnieClient(apikey, androidProductID, iosProductID);
-	appAnnie.getAppStoreReviewsForVersion("4.3", 2, function(err, preResult){
+	appAnnie.getAppStoreReviewsForVersionWithRating("4.3", 2, function(err, preResult){
 		if (err) {
 			callback(err);
 		}
-		appAnnie.getAppStoreReviewsForVersion("4.3", 1, function(err, result){
+		appAnnie.getAppStoreReviewsForVersionWithRating("4.3", 1, function(err, result){
 			if (err) {
 				callback(err);
 			}

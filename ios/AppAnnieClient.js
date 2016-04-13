@@ -42,7 +42,7 @@ AppAnnieClient.prototype.getAppStoreReviewsForPeriod = function init(startDate, 
 	});
 }
 
-AppAnnieClient.prototype.getAppStoreReviewsForVersion = function init(version, rating, callback) {
+AppAnnieClient.prototype.getAppStoreReviewsForVersionWithRating = function init(version, rating, callback) {
 	var options = {
 		url: 'https://api.appannie.com/v1.2/apps/ios/app/' + module.iosProductID + '/reviews?rating=' + rating + '&version=' + version,
 		headers: {
