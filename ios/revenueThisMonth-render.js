@@ -33,7 +33,7 @@ function generateText(callback) {
 	var itunes = new itc.Connect(username, secret);
 	 
 	// Simple ranked report 
-	itunes.request(Report('ranked', {start: Util.dates.firstOfMonth, end:Util.dates.firstOfMonth, filters:{content:[820984825, 820984826]},measures: [itc.measure.units, itc.measure.proceeds]}), function(error, result) {
+	itunes.request(Report('ranked', {start: Util.dates.firstOfMonth, end:Util.dates.yesterday, filters:{content:[820984825, 820984826]},measures: [itc.measure.units, itc.measure.proceeds]}), function(error, result) {
 	    console.log(result);
 	    var total = _.reduce(result, function(sum,n) {
 			    return sum + n.Royalty
