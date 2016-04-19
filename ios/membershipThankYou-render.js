@@ -59,7 +59,7 @@ function generateChart(callback) {
 		chart.xAxis.categories = highChartCategoriesFrom(response);
 		chart.series = highChartSeriesFrom(response);
 		chart.legend.enabled = false;
-		chart.title.text = "Thank You screen";
+		chart.title.text = "Membership Thank You screen";
 		chart.title.x = 0;
 		chart.subtitle.text = "";
 		chart.yAxis.title.text = "Page views";
@@ -87,7 +87,7 @@ function highChartSeriesFrom(data) {
 		item.breakdown.forEach(function(breakdown) {
 			if(typeof intermediate[breakdown.name] === "undefined") {
 				intermediate[breakdown.name] = [];
-		}
+			}
 			intermediate[breakdown.name].push(parseInt(breakdown.counts[0]));
 		});
 	});
