@@ -1,4 +1,4 @@
-TARGETS=devices.js osVersion.js versionSpread.js versionSpreadMonth.js revenueThisMonth.js revenue6Months.js crashRateWeek.js reviewsForCurrentVersion.js appsFeedback.js suspiciousTermination.js
+TARGETS=devices.js osVersion.js versionSpread.js versionSpreadMonth.js revenueThisMonth.js revenue6Months.js crashRateWeek.js reviewsForCurrentVersion.js appsFeedback.js suspiciousTermination.js membershipThankYou.js
 
 .PHONY: clean print-targets
 

@@ -10,7 +10,8 @@ function Util() {
 		aWeekAgo: moment(now).subtract(1, 'week').format('YYYY-MM-DD'), //for a rolling month
 		aDayAgo: moment(now).subtract(1, 'days').format('YYYY-MM-DD'), //Yesterday
 		yesterday: moment(now).subtract(1, 'days').format('YYYY-MM-DD'), //Yesterday
-		twoDaysAgo: moment(now).subtract(2, 'days').format('YYYY-MM-DD') 
+		twoDaysAgo: moment(now).subtract(2, 'days').format('YYYY-MM-DD'),
+		twoWeeksAgoAndADay: moment(now).subtract(2, 'week').subtract(1, 'day').format('YYYY-MM-DD')
 	}
 	this.dates = dates;
 
@@ -388,6 +389,10 @@ Util.prototype.abbreviatedVersionNumber = function(str) {
 
 Util.prototype.humanReadbleDate = function (str) {
 	return moment(str).format('DD MMM, YYYY');
+}
+
+Util.prototype.shortDate = function (str) {
+	return moment(str).format('ddd DD/MM');
 }
 
 module.exports = new Util();
