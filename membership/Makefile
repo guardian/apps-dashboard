@@ -1,4 +1,4 @@
-TARGETS=membershipThankYou.js
+TARGETS=membershipThankYou.js membership30days.js membershipAllTime.js
 
 .PHONY: clean print-targets
 
