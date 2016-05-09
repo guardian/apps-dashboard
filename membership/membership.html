@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Apps Membership Dashboard</title>
+
+    <!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+<style>
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.pages > .page:target ~ .page:last-child, .pages > .page {
+  display: none;
+}
+  
+  /* :last-child works, but for some reason .page:last-child will not */
+.pages > :last-child, .pages > .page:target {
+  display: block;
+}
+
+:target:before {
+  content:"";
+  display:block;
+  height:60px; /* fixed header height*/
+  margin:-60px 0 0; /* negative fixed header height */
+}
+</style>
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Membership</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+  <div class="pages">
+    <div class="page" id="home">
+      <h2>Sales</h2>
+<div style="border-bottom:2px #d3d3d3 solid;overflow:hidden;width: 90%;margin-left:0;margin-right:auto;">
+	<div id="membershipThankYou" style="width: 410px; height: 350px; float: left;"></div><script src="membershipThankYou.js"></script>
+</div>
+    </div><!--/.home-->
+  </div><!--/.pages -->
+
+  </body>
+</html>
