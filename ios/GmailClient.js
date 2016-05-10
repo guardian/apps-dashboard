@@ -33,7 +33,9 @@ GmailClient.prototype.getEmailsForLabel = function (label, callback) {
 				if(err) callback(err);
 
 				var emails = results.map(function (result) {
-					var sanitizedBody = result.parts[0].body.replace(/\r\n/g, "\n");
+					var sanitizedBody1 = result.parts[0].body.replace(/\r\n/g, "\n");
+					var sanitizedBody2 = sanitizedBody1.replace(/=20\n/g, "\n");
+					var sanitizedBody = sanitizedBody2.replace(/=\n/g, "");
 					var date = result.attributes.date;
 					return {date: date, body: sanitizedBody }
 				});
