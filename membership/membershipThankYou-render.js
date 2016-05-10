@@ -63,7 +63,7 @@ function generateChart(callback) {
 		chart.legend.verticalAlign = 'top';
 		chart.legend.floating = true;
 		chart.legend.backgroundColor = '#FFFFFF';
-		chart.title.text = "Membership sales";
+		chart.title.text = "Last 2 weeks";
 		chart.title.x = 0;
 		chart.subtitle.text = "";
 		chart.yAxis.title.text = "Thank you screen page views";

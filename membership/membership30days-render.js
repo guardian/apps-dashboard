@@ -58,7 +58,7 @@ function generateChart(callback) {
 		chart.series = response.report.data[0].breakdown.map(function(elem) {
 			return {name: elem.name, data:[parseInt(elem.counts[0])]}
 		});
-		chart.title.text = "30 days";
+		chart.title.text = "Last month";
 		chart.title.x = 0;
 		chart.legend = {};
 		chart.yAxis.title.text = "";
