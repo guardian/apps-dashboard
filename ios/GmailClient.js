@@ -37,6 +37,8 @@ GmailClient.prototype.getEmailsForLabel = function (label, callback) {
 					var date = result.attributes.date;
 					return {date: date, body: sanitizedBody }
 				});
+				
+				emails.reverse();
 
 				callback(null, emails);
 			});
