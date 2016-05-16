@@ -16,7 +16,12 @@ generateText(function(err, totalSales) {
 		throw err;
 	}
 
-	var js = '$("#membershipParagraph").text("Membership in apps has contributed £' + (totalSales * 40) + '/year to The Guardian.");';
+
+	var numberWithCommas = function(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+
+	var js = '$("#membershipParagraph").text("Membership in apps has contributed £' + numberWithCommas(totalSales * 40) + '/year to The Guardian.");';
 	var filename = "membershipParagraph.js";
 	console.log(js);
 	fs.writeFile(filename, js, function(err) {
