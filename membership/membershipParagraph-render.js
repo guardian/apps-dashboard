@@ -16,7 +16,7 @@ generateText(function(err, totalSales) {
 		throw err;
 	}
 
-	var js = '$("#membershipParagraph").text("Membership in apps has contributed £' + (totalSales * 5) + '/month to The Guardian.");';
+	var js = '$("#membershipParagraph").text("Membership in apps has contributed £' + (totalSales * 40) + '/year to The Guardian.");';
 	var filename = "membershipParagraph.js";
 	console.log(js);
 	fs.writeFile(filename, js, function(err) {
