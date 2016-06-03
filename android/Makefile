@@ -1,4 +1,4 @@
-TARGETS=crashRateWeek.js devices.js
+TARGETS=osVersion.js devices.js appsFeedback.js crashRateWeek.js
 
 .PHONY: clean print-targets
 
