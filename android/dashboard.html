@@ -23,39 +23,8 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
 
-    <!-- Custom styles for this template -->
-    <style>
-        body {
-            padding-top: 50px;
-            padding-bottom: 20px;
-        }
-
-        #buildStatus {
-            padding-top: 16px;
-            color: #777;
-        }
-
-        .navbar {
-            margin-bottom: 20px;
-        }
-
-        .pages > .page:target ~ .page:last-child, .pages > .page {
-            display: none;
-        }
-
-        /* :last-child works, but for some reason .page:last-child will not */
-        .pages > :last-child, .pages > .page:target {
-            display: block;
-        }
-
-        :target:before {
-            content: "";
-            display: block;
-            height: 60px; /* fixed header height*/
-            margin: -60px 0 0; /* negative fixed header height */
-        }
-    </style>
 </head>
 
 <body>
@@ -74,8 +43,6 @@
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="#userbase">User base</a></li>
                     <li><a href="#revenue">Revenue</a></li>
-                    <li>
-                    </li>
                 </ul>
                 <!--initialise jenkins_api-->
                 <script src="jenkins.js"></script>
@@ -94,6 +61,7 @@
                 <div id="versionSpread" style="width: 410px; height: 350px; float: left;"></div>
                 <div id="versionSpreadMonth" style="width: 410px; height: 350px;float:left"></div>
                 <script src="versionSpread.js">
+
                 </script>
                 <script src="versionSpreadMonth.js"></script>
             </div>
