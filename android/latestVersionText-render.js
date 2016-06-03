@@ -1,8 +1,6 @@
 var GooglePlayScraper = require('google-play-scraper');
 var fs = require('fs');
 
-console.log("hello");
-
 generateText(function(err, version) {
 	if(err) {
 		throw err;
