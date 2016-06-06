@@ -40,7 +40,7 @@ function generateText(callback) {
 			reportSuiteID: "guardiangu-globalapps-prod",
 			dateFrom: "2016-03-22", 
 			dateTo: Util.dates.yesterday,
-			elements: [{ id: "page", search:{"keywords":["Membership-ThankYou"]}}, { id: "mobileappid", selected:["Guardian/4.4.662"]}],
+			elements: [{ id: "page", search:{"keywords":["Membership-ThankYou"]}}, { id: "mobileappid", selected:["Guardian/4.4.664"]}],
 			segments: [{id:"s1218_55facf7ae4b08d193fc26205"}],
 			metrics: [{id:"pageviews"}]
 		}
