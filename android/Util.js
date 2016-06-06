@@ -412,4 +412,8 @@ Util.prototype.shortDate = function (str) {
 	return moment(str).format('ddd DD/MM');
 }
 
+Util.prototype.print = function (obj) {
+	console.log(JSON.stringify(obj));
+}
+
 module.exports = new Util();
