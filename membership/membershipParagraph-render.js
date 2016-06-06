@@ -38,7 +38,7 @@ function generateText(callback) {
 	var reportData = {
 		reportDescription: {
 			reportSuiteID: "guardiangu-globalapps-prod",
-			dateFrom: Util.dates.aMonthAndADayAgo,
+			dateFrom: "2016-03-22",
 			dateTo: Util.dates.yesterday,
 			elements: [{ id: "page", search:{"keywords":["Membership-ThankYou"]}}, { id: "prop19", selected:["iOS App", "Android"]}],
 			segments: [{id:"s1218_55facf7ae4b08d193fc26205"}],
