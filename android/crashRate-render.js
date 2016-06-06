@@ -33,6 +33,7 @@ generateChart(function(err, chart) {
  
 function generateChart(callback) {
         var chart = Util.getTemplate("line-basic");
+	var appVersion = "4.4.664"
 	var cc = new CrittercismClient(clientid);
 
 	cc.init(username, password, function(err) {
@@ -41,7 +42,7 @@ function generateChart(callback) {
 		}
 
 		console.log('Crittercism API client initialized');
-		cc.errorGraph(["5457bc14d478bc2b14000002"],"crashPercent", 10080, {appVersion: "4.4.664"}, function(err, result){
+		cc.errorGraph(["5457bc14d478bc2b14000002"],"crashPercent", 10080, {appVersion: appVersion}, function(err, result){
 			if (err) {
 				callback(err);
 			}
@@ -51,6 +52,7 @@ function generateChart(callback) {
 			chart.chart.renderTo = "crashRate";
 			chart.xAxis.categories = highchartCategoriesFromCrittercismData(result);
 			chart.series = highChartSeriesFromCrittercismData(result);
+			chart.series[0].name = appVersion + " crash rate"
 
 			//chart.yAxis.plotLines = [{
 			//	value:0.3,

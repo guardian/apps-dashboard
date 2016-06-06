@@ -95,7 +95,7 @@ function highChartSeriesFrom(data) {
 	Object.keys(intermediate).forEach(function(category){
 		console.log(category);
 		console.log(intermediate[category]);
-		arr.push({name: category, data: intermediate[category]});
+		arr.push({name: category.substring(9) + " memberships", data: intermediate[category]});
 	})
 
 	return arr;
