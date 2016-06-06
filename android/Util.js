@@ -404,12 +404,20 @@ Util.prototype.abbreviatedAndroidVersionNumber = function(str) {
 	return withoutVersion;
 }
 
+Util.prototype.daysSince = function (str) {
+	return moment().diff(moment(str), 'days');
+}
+
 Util.prototype.humanReadbleDate = function (str) {
 	return moment(str).format('DD MMM, YYYY');
 }
 
 Util.prototype.shortDate = function (str) {
 	return moment(str).format('ddd DD/MM');
+}
+
+Util.prototype.dayOfMonth = function (str) {
+	return moment(str).format('MMM Do');
 }
 
 Util.prototype.print = function (obj) {
