@@ -17,7 +17,8 @@ generateChart(function(err, chart) {
 		throw err;
 	}
 
-	var js = "new Highcharts.Chart(" + JSON.stringify(chart) + ");";
+	var js = '$("#' + chart.chart.renderTo + 'Text").text("' + chart.series[0].data[6] + '%");'
+	js += "new Highcharts.Chart(" + JSON.stringify(chart) + ");";
 	var filename = chart.chart.renderTo + ".js"
 	console.log(js);
 	fs.writeFile(filename, js, function(err) {
@@ -40,31 +41,32 @@ function generateChart(callback) {
 		}
 
 		console.log('Crittercism API client initialized');
-		cc.errorGraph(["5457bc14d478bc2b14000002"],"crashPercent", 10080, {appVersion: "4.4.659"}, function(err, result){
+		cc.errorGraph(["5457bc14d478bc2b14000002"],"crashPercent", 10080, {appVersion: "4.4.664"}, function(err, result){
 			if (err) {
 				callback(err);
 			}
 
 			console.log(JSON.stringify(result));
 
-			chart.chart.renderTo = "crashRateWeek";
+			chart.chart.renderTo = "crashRate";
 			chart.xAxis.categories = highchartCategoriesFromCrittercismData(result);
-			console.log(JSON.stringify(chart.xAxis.categories));
 			chart.series = highChartSeriesFromCrittercismData(result);
-			console.log(JSON.stringify(chart.series));
 
-			chart.title.text = "Crash Rate";
-			chart.subtitle.text = "";
-			chart.yAxis.title = "%";
-			chart.yAxis.plotLines = [{
-				value:0.3,
-				color: '#ff0000',
-				width:2,
-				zIndex:4,
-				label:{text:'average'}
-			}]
+			//chart.yAxis.plotLines = [{
+			//	value:0.3,
+			//	color: '#ff0000',
+			//	width:2,
+			//	zIndex:4,
+			//	label:{text:'average'}
+			//}]
+
 			chart.legend.enabled = false;
-			chart.tooltip.pointFormat = "{series.name}: <b>{point.y:,.2f} %</b><br/>";
+			chart.title.text = "";
+			chart.subtitle.text = "";
+			chart.yAxis.title.text = "";
+			chart.tooltip.pointFormat = "{series.name}: <b>{point.y:,.2f}%</b><br/>";
+			chart.series[0].color = "rgb(67,67,72)";
+			chart.plotOptions = {line:{marker:{enabled: false}}};
 
 			callback(null, chart);
 		});
@@ -74,15 +76,18 @@ function generateChart(callback) {
 // // ["December", "November"]
 function highchartCategoriesFromCrittercismData(crit) {
 	function getDates(startDate, originalstopDate) {
-	var stopDate = moment(originalstopDate);
+	    var stopDate = moment(originalstopDate);
 	    var dateArray = [];
-	    var currentDate = moment(startDate);
+	    var currentDate = moment(startDate).add(1, 'days');
 	    while (currentDate <= stopDate) {
-		dateArray.push( moment(currentDate).format('YYYY-MM-DD') )
+		dateArray.push( Util.shortDate(currentDate) )
 		currentDate = moment(currentDate).add(1, 'days');
 	    }
 	    return dateArray;
 	}
+	console.log(crit.data.start);
+	console.log(crit.data.end);
+	console.log(JSON.stringify(getDates(crit.data.start, crit.data.end)));
 	return getDates(crit.data.start, crit.data.end);
 }
 
