@@ -1,4 +1,4 @@
-TARGETS=osVersion.js devices.js crashRate.js membershipPurchasesText.js latestVersionText.js membershipPurchasesText.js membershipPurchasesChart.js
+TARGETS=osVersion.js devices.js crashRate.js latestVersionText.js membershipPurchasesText.js membershipPurchasesChart.js versionSpread.js versionSpreadMonth.js
 
 .PHONY: clean print-targets
 

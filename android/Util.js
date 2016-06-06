@@ -396,6 +396,14 @@ Util.prototype.abbreviatedVersionNumber = function(str) {
 	return withoutVersion;
 }
 
+//IN: Guardian/4.3.614
+//OUT: 4.3
+Util.prototype.abbreviatedAndroidVersionNumber = function(str) {
+	var withoutGuardian = str.substring(9);
+	var withoutVersion = withoutGuardian.substring(0, withoutGuardian.length - 4);
+	return withoutVersion;
+}
+
 Util.prototype.humanReadbleDate = function (str) {
 	return moment(str).format('DD MMM, YYYY');
 }
