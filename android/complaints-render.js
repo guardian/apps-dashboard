@@ -19,7 +19,7 @@ generateChart(function(err, chart) {
 		throw err;
 	}
 
-	var js = '$("#' + chart.chart.renderTo + 'Text").text("' + chart.series[0].data[6] + '");'
+	var js = '$("#' + chart.chart.renderTo + 'Text").text("' + chart.series[0].data[chart.series[0].data.length - 1] + '");'
 	js += "new Highcharts.Chart(" + JSON.stringify(chart) + ");";
 	var filename = chart.chart.renderTo + ".js"
 	console.log(js);
