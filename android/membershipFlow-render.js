@@ -61,12 +61,10 @@ function generateChart(callback) {
 		chart.chart.renderTo = "membershipFlow";
 		chart.xAxis.categories = highChartCategoriesFrom(response);
 		chart.yAxis = [{
-            lineWidth: 1,
             title: {
                 text: ''
             }
         }, {
-            lineWidth: 1,
             opposite: true,
             title: {
                 text: ''
