@@ -1,0 +1,103 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+#buildStatus {
+    color: #777;
+}
+
+.pages > .page:target ~ .page:last-child, .pages > .page {
+    display: none;
+}
+
+/* :last-child works, but for some reason .page:last-child will not */
+.pages > :last-child, .pages > .page:target {
+    display: block;
+}
+
+:target:before {
+    content: "";
+    display: block;
+    height: 60px; /* fixed header height*/
+    margin: -60px 0 0;
+}
+.buildNumber {
+    color: rgb(135, 180, 40);
+}
+
+
+/*  Alerts */
+.green{
+    font-family: verdana, arial, sans serif;
+    padding-bottom: 2px;
+    color: rgb(135, 180, 40);
+    height: 20px;
+    font-weight: bold;
+    font-size: 18px !important /*Non-IE6*/;
+    font-size: 120% /*IE6*/;
+}
+
+.red {font-family: verdana, arial, sans serif;
+    padding-bottom: 2px;
+    color: rgb(206, 65, 55);
+    height: 20px;
+    font-weight: bold;
+    font-size: 18px !important /*Non-IE6*/;
+    font-size: 120% /*IE6*/;}
+
+.amber{
+    font-family: verdana, arial, sans serif;
+    padding-bottom: 2px;
+    color: rgb(255, 165, 0);
+    height: 20px;
+    font-weight: bold;
+    font-size: 18px !important /*Non-IE6*/;
+    font-size: 120% /*IE6*/;
+}
+
+.grey{
+    font-family: verdana, arial, sans serif;
+    padding-bottom: 2px;
+    color: rgb(125, 125, 125);
+    height: 20px;
+    font-weight: bold;
+    font-size: 18px !important /*Non-IE6*/;
+    font-size: 120% /*IE6*/;
+}
+
+
+#content-cell-colleft {
+    float: left ;
+    width: 50% ;
+}
+#content-cell-colright {
+    float: right ;
+    width: 50% ;
+}
+.main a img {
+    margin-top: -15px;
+    padding: 0px 20px;
+    border: none;
+}
+#appsFeedback {
+    margin-left: 10px;
+    height:400px;
+    width:250px;
+    border:1px solid #ccc;
+    font:16px/26px Georgia, Garamond, Serif;
+    overflow:auto;
+    background-color: rgba(200, 210, 180, 0.36);
+    color: black;
+}
+
+#siteDate {
+    float: right;
+    font-family: verdana, arial, sans serif;
+    padding: 10px 20px;
+    color: rgb(135, 180, 40);
+    height: 20px;
+    font-weight: normal;
+    font-size: 200% !important /*Non-IE6*/;
+    font-size: 130% /*IE6*/;
+}

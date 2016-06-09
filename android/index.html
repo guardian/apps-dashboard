@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <!-- Bootstrap core JavaScript
+     ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title> Android App Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+    <link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/reset.css"/>
+    <link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/grid.css"/>
+    <link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/content.css"/>
+    <link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/style.css"/>
+</head>
+
+<!-- Global IE fix to avoid layout crash when single word size wider than column width -->
+<!-- Following line MUST remain as a comment to have the proper effect -->
+<!--[if IE]>
+<style type="text/css"> body {
+    word-wrap: break-word;
+}</style><![endif]-->
+
+<body>
+<!-- CONTAINER FOR ENTIRE PAGE -->
+<div class="container">
+
+    <!-- A. HEADER -->
+    <div class="corner-top"></div>
+    <div class="header">
+        <div class="header-top">
+
+            <!-- SITENAME -->
+            <a class="sitelogo" href="#" title="Dashboard"></a>
+            <div class="sitename">
+                <h1><a href="index.html" title="Home">Android Dashboard</a></h1>
+                <h2>Monitoring information for the News App</h2>
+            </div>
+            <div id="siteDate">
+                <script>
+                    document.getElementById("siteDate").innerHTML = Date();
+                </script>
+            </div>
+
+            <!-- BUTTON NAVIGATION -->
+            <div class="navbutton">
+                <ul>
+                    <li><a href="#" title="Google Play Store"></a></li>
+                    <li><a href="#" title="Deutsch"></a></li>
+                    <li><a href="#" title="Svenska"></a></li>
+
+                </ul>
+            </div>
+
+            <!-- GLOBAL NAVIGATION -->
+            <div class="navglobal">
+                <ul>
+                    <li><a href="#" title="">Jenkins</a></li>
+                    <li><a href="#" title="">Google Dev Console</a></li>
+                    <li><a href="#" title="">Crittersism</a></li>
+                    <li><a href="#" title="">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="corner-bottom"></div>
+
+    <!-- B. NAVIGATION BAR -->
+    <div class="corner-top"></div>
+    <div class="navbar">
+        <!-- Navigation item -->
+        <ul>
+            <li><a href="#">LIVE (Production)</a></li>
+        </ul>
+        <!-- Navigation item -->
+        <ul>
+            <li><a href="#">BETA Group<!--[if IE 7]><!--></a><!--<![endif]-->
+                <!--[if lte IE 6]>
+                <table>
+                    <tr>
+                        <td><![endif]-->
+                <ul>
+                    <li><a href="#">BETA (Google +)</a></li>
+
+                </ul>
+                <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+            </li>
+        </ul>
+        <!-- Navigation item -->
+        <ul>
+            <li><a href="#">ALPHA Group<!--[if IE 7]><!--></a><!--<![endif]-->
+                <!--[if lte IE 6]>
+                <table>
+                    <tr>
+                        <td><![endif]-->
+                <ul>
+                    <li><a href="#">Alpha (Google +)</a></li>
+
+                </ul>
+                <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+            </li>
+        </ul>
+    </div>
+
+    <!-- C. MAIN SECTION -->
+    <div class="main">
+
+        <!-- C.1 CONTENT -->
+        <div class="content">
+
+            <!-- CONTENT CELL Overview-->
+            <div class="content-cell-corner-top"></div>
+            <div class="content-cell">
+                <h1>Current Build in Production - Ver (<span class="buildNumber" id="latestVersionText"></span>)
+                </h1>
+                <p>The latest version was <b><span id="latestVersionText"></span></b> released <b><span
+                        id="releaseDays"></span></b> days ago on <b><span id="releaseDate"></span></b>.</p>
+                <script src="latestVersionText.js"></script>
+
+                <!--column left -->
+                <div id="content-cell-colleft">
+                    <h2>Current Build Status: </h2>
+                    <p><a
+                            href='http://iosuiauto.gutools.co.uk:8080/job/RunNewDashboard'><img
+                            src='http://iosuiauto.gutools.co.uk:8080/buildStatus/icon?job=RunNewDashboard'></a>
+                    </p>
+
+
+                </div>
+                <!--column right-->
+                <div id="content-cell-right">
+                    <h2>Current Crash Rate:</h2>
+                    <span class="red" id="crashRateText"></span>
+                    <script src="crashRate.js"></script>
+                    <h2>Some stat here:</h2>
+                    <span class="red" id="someStats"></span>
+                    <script src="someStats.js"></script>
+                </div>
+
+            </div>
+            <div class="content-cell-corner-bottom">
+
+            </div>
+
+            <!-- CONTENT CELL devices-->
+            <div class="content-cell-corner-top"></div>
+            <div class="content-cell">
+                <h1>Crash trends</h1>
+                <div id="crashRateWeek"></div>
+                <script src="crashRateWeek.js"></script>
+            </div>
+            <div class="content-cell-corner-bottom"></div>
+
+            <!-- CONTENT CELL devices-->
+            <div class="content-cell-corner-top"></div>
+            <div class="content-cell">
+                <h1>What devices do our users use?</h1>
+                <div id="devices"></div>
+                <script src="devices.js"></script>
+            </div>
+            <div class="content-cell-corner-bottom"></div>
+
+
+            <!-- CONTENT CELL - Android versions -->
+            <div class="content-cell-corner-top"></div>
+            <div class="content-cell">
+                <h1>Which Android versions do our users use?</h1>
+                <div id="osVersion"></div>
+                <script src="osVersion.js"></script>
+            </div>
+            <div class="content-cell-corner-bottom"></div>
+
+        </div>
+
+        <!-- C.2 SUBCONTENT -->
+        <div class="subcontent">
+
+            <!-- SUBCONTENT CELL -->
+            <div class="subcontent-cell-corner-top"></div>
+            <div class="subcontent-cell">
+                <h1>User base Info</h1>
+                <h3>App Users: <span class="red" id="appUsersText">202,290</span>
+                    <script src="appUsersText.js"></script>
+                </h3>
+                <h3>Paid Subscribers: <span class="green" id="subscriberPurchasesText">17,900</span>
+                    <script src="subscribersText.js"></script>
+                </h3>
+                <h3>Members: <span class="green" id="membershipPurchasesText"></span>
+                    <script src="membershipPurchasesText.js"></script>
+                </h3>
+            </div>
+            <div class="subcontent-cell-corner-bottom"></div>
+
+            <!-- SUBCONTENT CELL -->
+            <div class="subcontent-cell-corner-top"></div>
+            <div class="subcontent-cell">
+                <h1>App Revenue</h1>
+                <h3>Subscription: <span class="green" id="subscribionText">£12,783</span>
+                    <script src="subscriberPurchasesText.js"></script>
+                </h3>
+                <h3>Membership: <span class="green" id="membershipText">£1,100</span>
+                    <script src="membershipPurchasesText.js"></script>
+                </h3>
+            </div>
+            <div class="subcontent-cell-corner-bottom"></div>
+
+            <!-- SUBCONTENT CELL -->
+            <div class="subcontent-cell-corner-top"></div>
+            <div class="subcontent-cell">
+                <h1>User Complaints</h1>
+                <h3>Issues reported: <span class="green" id="complaints">7</span>
+                    <script src="complaints.js"></script>
+                </h3>
+                <h3>User Emails:</h3>
+                <!--<table class="table" id="appsFeedback"></table>-->
+                <div id="appsFeedback">
+                    <!--<span id="appsFeedback"></span>-->
+                    <script src="appsFeedback.js"></script>
+                </div>
+
+            </div>
+            <div class="subcontent-cell-corner-bottom"></div>
+        </div>
+    </div>
+
+    <!-- D. FOOTER -->
+    <div class="footer">
+        <p>Copyright &copy; 2016 The Guardian&nbsp;&nbsp;|&nbsp;&nbsp;All Rights Reserved</p>
+    </div>
+    <div class="corner-bottom"></div>
+</div>
+</body>
+</html>
+
+
+
