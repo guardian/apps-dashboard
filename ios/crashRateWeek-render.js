@@ -39,7 +39,7 @@ function generateChart(callback) {
 		}
 
 		console.log('Crittercism API client initialized');
-		cc.errorGraph(["4f841104b0931561860003fc"],"crashPercent", 10080, {appVersion: "4.5 (13161)"}, function(err, result){
+		cc.errorGraph(["4f841104b0931561860003fc"],"crashPercent", 10080, {appVersion: "4.6 (13335)"}, function(err, result){
 			if (err) {
 				callback(err);
 			}
