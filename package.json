@@ -6,6 +6,7 @@
     "url": "https://github.com/guardian/apps-dashboard.git"
   },
   "dependencies": {
+    "deasync": "^0.1.7",
     "google-play-scraper": "^1.0.5",
     "imap-simple": "^1.6.0",
     "itunesconnect": "^0.2.0",
