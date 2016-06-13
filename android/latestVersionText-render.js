@@ -1,6 +1,6 @@
-var GooglePlayScraper = require('google-play-scraper');
 var fs = require('fs');
 var Util = require('./Util.js')
+var GuardianApp = require('../lib/GuardianApp.js');
 
 generateText(function(err, version, releaseDate) {
 	if(err) {
@@ -22,14 +22,8 @@ generateText(function(err, version, releaseDate) {
 });
 
 function generateText(callback) {
-	GooglePlayScraper.app({appId: 'com.guardian'})
-	.then(function(app){
-		console.log('Retrieved application: ' + app.version);
-		callback(null, app.version, app.updated);
-	})
-	.catch(function(err){
-		console.log('There was an error fetching the application!');
-		callback(e);
+	GuardianApp.getLatestAndroidVersion(function(err, app){
+		callback(err, app.version, app.releaseDate);
 	});
 };
 
