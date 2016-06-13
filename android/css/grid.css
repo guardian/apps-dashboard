@@ -323,6 +323,7 @@ body {
     background-color: rgb(225, 225, 225);
 }
 
+
 .navbar ul li a {
     font-size: 1.5em;
     float: none !important /*Non-IE6*/;
@@ -335,6 +336,7 @@ body {
     font-weight: bold;
     color: rgb(100, 100, 100);
     border-right: solid 0px rgb(161, 191, 94);
+
 }
 
 .navbar ul li ul {
@@ -343,9 +345,10 @@ body {
 }
 
 /* Submenu (Non-IE6 hovering) */
-.navbar ul li:hover {
+.navbar ul li:hover, :active {
     position: relative;
 }
+
 
 /*Sylvain IE hack*/
 .navbar ul li:hover a {

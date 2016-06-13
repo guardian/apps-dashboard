@@ -26,7 +26,6 @@ body {
     color: rgb(135, 180, 40);
 }
 
-
 /*  Alerts */
 .green{
     font-family: verdana, arial, sans serif;
@@ -66,6 +65,33 @@ body {
     font-size: 120% /*IE6*/;
 }
 
+#appStatus table {
+    width: 90%;
+    border: 1px;
+    column-width: auto;
+    align-items: center;
+}
+
+#appStatustable th {
+    border: 1px solid black;
+    overflow: hidden;
+    width: 100px;
+}
+
+#appStatustable td {
+    overflow:hidden;
+    vertical-align:middle;
+}
+
+.status_good{
+    background: url(../img/status0.gif) no-repeat;
+    background-position:center;
+}
+
+.status_bad{
+    background: url(../img/status1.gif) no-repeat;
+    background-position:center;
+}
 
 #content-cell-colleft {
     float: left ;
@@ -80,6 +106,7 @@ body {
     padding: 0px 20px;
     border: none;
 }
+
 #appsFeedback {
     margin-left: 10px;
     height:400px;
@@ -100,4 +127,8 @@ body {
     font-weight: normal;
     font-size: 200% !important /*Non-IE6*/;
     font-size: 130% /*IE6*/;
+}
+
+.navbar ul li a .on {
+    background-color: rgb(161, 191, 94);
 }

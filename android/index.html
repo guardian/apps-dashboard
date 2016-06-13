@@ -56,17 +56,7 @@
                 </script>
             </div>
 
-            <!-- BUTTON NAVIGATION -->
-            <div class="navbutton">
-                <ul>
-                    <li><a href="#" title="Google Play Store"></a></li>
-                    <li><a href="#" title="Deutsch"></a></li>
-                    <li><a href="#" title="Svenska"></a></li>
-
-                </ul>
-            </div>
-
-            <!-- GLOBAL NAVIGATION -->
+            <!-- TOP NAVIGATION -->
             <div class="navglobal">
                 <ul>
                     <li><a href="#" title="">Jenkins</a></li>
@@ -84,34 +74,16 @@
     <div class="navbar">
         <!-- Navigation item -->
         <ul>
-            <li><a href="#">LIVE (Production)</a></li>
+            <li class="on"><a href="#">LIVE (Production)</a></li>
         </ul>
         <!-- Navigation item -->
         <ul>
-            <li><a href="#">BETA Group<!--[if IE 7]><!--></a><!--<![endif]-->
-                <!--[if lte IE 6]>
-                <table>
-                    <tr>
-                        <td><![endif]-->
-                <ul>
-                    <li><a href="#">BETA (Google +)</a></li>
-
-                </ul>
-                <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+            <li><a href="./beta/beta.html">BETA Group<!--[if IE 7]><!--></a><!--<![endif]-->
             </li>
         </ul>
         <!-- Navigation item -->
         <ul>
-            <li><a href="#">ALPHA Group<!--[if IE 7]><!--></a><!--<![endif]-->
-                <!--[if lte IE 6]>
-                <table>
-                    <tr>
-                        <td><![endif]-->
-                <ul>
-                    <li><a href="#">Alpha (Google +)</a></li>
-
-                </ul>
-                <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+            <li><a href="./alpha/alpha.html">ALPHA Group<!--[if IE 7]><!--></a><!--<![endif]-->
             </li>
         </ul>
     </div>
@@ -155,12 +127,43 @@
 
             </div>
 
-            <!-- CONTENT CELL devices-->
+            <!-- CONTENT CELL crash trends-->
             <div class="content-cell-corner-top"></div>
             <div class="content-cell">
                 <h1>Crash trends</h1>
                 <div id="crashRateWeek"></div>
                 <script src="crashRateWeek.js"></script>
+            </div>
+            <div class="content-cell-corner-bottom"></div>
+
+            <!-- CONTENT CELL devices-->
+            <div class="content-cell-corner-top"></div>
+            <div class="content-cell">
+                <h1>Production Monitoring</h1>
+                <div id="appStatus">
+                    <table>
+                        <col width="30">
+                        <col width="180">
+                        <tr>
+                            <th>Status</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td class="status_good"></td>
+                            <td>In app article opened</td>
+                        </tr>
+                        <tr>
+                            <td class="status_good"></td>
+                            <td>In app LIVE Blog opened</td>
+                        </tr>
+                        <tr>
+                            <td class="status_good"></td>
+                            <td>In app video opened</td>
+                        </tr>
+                    </table>
+
+                </div>
+                <script src="tableData.js"></script>
             </div>
             <div class="content-cell-corner-bottom"></div>
 
