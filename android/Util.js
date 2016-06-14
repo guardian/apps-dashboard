@@ -411,6 +411,17 @@ Util.prototype.abbreviatedAndroidVersionNumber = function(str) {
 	return withoutVersion;
 }
 
+Util.prototype.getArrayOfDatesBetweenDates = function(startDate, originalstopDate) {
+	var stopDate = moment(originalstopDate);
+	var currentDate = moment(startDate);
+	var dateArray = [];
+	while (currentDate <= stopDate) {
+		dateArray.push( this.shortDate(currentDate) )
+		currentDate = moment(currentDate).add(1, 'days');
+	}
+	return dateArray;
+}
+
 Util.prototype.daysSince = function (str) {
 	return moment().diff(moment(str), 'days');
 }

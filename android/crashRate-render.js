@@ -78,20 +78,7 @@ function generateChart(callback) {
 
 // // ["December", "November"]
 function highchartCategoriesFromCrittercismData(crit) {
-	function getDates(startDate, originalstopDate) {
-	    var stopDate = moment(originalstopDate);
-	    var dateArray = [];
-	    var currentDate = moment(startDate).add(1, 'days');
-	    while (currentDate <= stopDate) {
-		dateArray.push( Util.shortDate(currentDate) )
-		currentDate = moment(currentDate).add(1, 'days');
-	    }
-	    return dateArray;
-	}
-	console.log(crit.data.start);
-	console.log(crit.data.end);
-	console.log(JSON.stringify(getDates(crit.data.start, crit.data.end)));
-	return getDates(crit.data.start, crit.data.end);
+	return Util.getArrayOfDatesBetweenDates(crit.data.start, crit.data.end).slice(1);
 }
 
 //[ {name: 'Subscriptions', data: [1, 23.7] }]
