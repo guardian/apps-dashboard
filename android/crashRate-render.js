@@ -3,6 +3,7 @@ var Util = require('./Util.js');
 var moment = require ('moment');
 var nconf = require('nconf');
 var fs = require('fs');
+var GuardianApp = require('../lib/GuardianApp.js');
 
 nconf.file({ file: '../config.json' });
 var username = nconf.get('crittercism_username');
@@ -33,7 +34,7 @@ generateChart(function(err, chart) {
  
 function generateChart(callback) {
         var chart = Util.getTemplate("line-basic");
-	var appVersion = "4.4.664"
+	var appVersion = GuardianApp.getLatestAndroidVersion().version;
 	var cc = new CrittercismClient(clientid);
 
 	cc.init(username, password, function(err) {
