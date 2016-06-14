@@ -75,19 +75,10 @@ function generateChart(callback) {
 }
 
 function highChartCategoriesFrom(data) {
-	var arr = [];
-	data.report.data.forEach(function(item) {
-		//2013-02-08
-		var dateString = item.year + "-" + item.month + "-" + item.day;
-		arr.push(Util.shortDate(dateString));
-	});
-	return arr;//['1 Feb', '2 Feb', '3 Feb']
+	return data.report.data.map(elem => Util.shortDate(elem.year + "-" + elem.month + "-" + elem.day));
 }
 
 function adoptionSeriesFromOmniture(response, appid) {
-	var data = response.report.data.map(function(elem) {
-		return elem.breakdown[0].counts[0] / elem.breakdownTotal * 100;
-	});
-
+	var data = response.report.data.map(elem => elem.breakdown[0].counts[0] / elem.breakdownTotal * 100);
 	return [{name:appid.substring(9)+" adoption", data:data}]
 }
