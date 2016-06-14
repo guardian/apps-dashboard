@@ -19,11 +19,17 @@ generateChart(function(err, chart) {
 
 	var totalThankYous = chart.series[0].data.reduce((a, b) => a + b);
 	var totalPayments = chart.series[1].data.reduce((a, b) => a + b);
+	var paymentScreenCheckMark = totalPayments > 0 ? "status_good" : "status_bad";
+	var thankYouScreenCheckMark = totalThankYous > 0 ? "status_good" : "status_bad";
+
 	var js = '$("#paymentText").text("' + totalPayments  + '");'
 	js += '$("#purchaseText").text("' + totalThankYous  + '");'
+	js += '$("#paymentScreenCheckMark").addClass("' + paymentScreenCheckMark  + '");';
+	js += '$("#thankYouScreenCheckMark").addClass("' + thankYouScreenCheckMark  + '");';
 	js += "new Highcharts.Chart(" + JSON.stringify(chart) + ");";
-	var filename = chart.chart.renderTo + ".js"
 	console.log(js);
+
+	var filename = chart.chart.renderTo + ".js"
 	fs.writeFile(filename, js, function(err) {
 		if(err) {
 			throw err;
