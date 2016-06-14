@@ -28,20 +28,20 @@ body {
 }
 
 /*  Alerts */
-.green {
+.red {
     font-family: verdana, arial, sans serif;
     padding-bottom: 2px;
-    color: rgb(135, 180, 40);
+    color: rgb(206, 65, 55);
     height: 20px;
     font-weight: bold;
     font-size: 18px !important /*Non-IE6*/;
     font-size: 120% /*IE6*/;
 }
 
-.red {
+.green {
     font-family: verdana, arial, sans serif;
     padding-bottom: 2px;
-    color: rgb(206, 65, 55);
+    color: rgb(135, 180, 40);
     height: 20px;
     font-weight: bold;
     font-size: 18px !important /*Non-IE6*/;
@@ -55,7 +55,43 @@ body {
     height: 20px;
     font-weight: bold;
     font-size: 18px !important /*Non-IE6*/;
-    font-size: 120% /*IE6*/;
+    font-size: 90% /*IE6*/;
+}
+
+#crashRateKey {
+
+    padding: 0px 5px;
+    float: right;
+}
+
+.red_small {
+    font-family: verdana, arial, sans serif;
+    padding-bottom: 2px;
+    color: rgb(206, 65, 55);
+    height: 20px;
+    font-weight: bold;
+    font-size: 12px !important /*Non-IE6*/;
+    font-size: 90% /*IE6*/;
+}
+
+.green_small {
+    font-family: verdana, arial, sans serif;
+    padding-bottom: 2px;
+    color: rgb(135, 180, 40);
+    height: 20px;
+    font-weight: bold;
+    font-size: 12px !important /*Non-IE6*/;
+    font-size: 90% /*IE6*/;
+}
+
+.amber_small {
+    font-family: verdana, arial, sans serif;
+    padding-bottom: 2px;
+    color: rgb(255, 165, 0);
+    height: 20px;
+    font-weight: bold;
+    font-size: 12px !important /*Non-IE6*/;
+    font-size: 90% /*IE6*/;
 }
 
 .grey {
