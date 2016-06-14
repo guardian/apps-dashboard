@@ -55,22 +55,6 @@ function generateChart(callback) {
 			chart.series = highChartSeriesFromCrittercismData(result);
 			chart.series[0].name = appVersion + " crash rate"
 
-			//chart.yAxis.plotLines = [{
-			//	value:0.3,
-			//	color: '#ff0000',
-			//	width:2,
-			//	zIndex:4,
-			//	label:{text:'average'}
-			//}]
-
-			chart.legend.enabled = false;
-			chart.title.text = "";
-			chart.subtitle.text = "";
-			chart.yAxis.title.text = "";
-			chart.tooltip.pointFormat = "{series.name}: <b>{point.y:,.2f}%</b><br/>";
-			chart.series[0].color = "rgb(67,67,72)";
-			chart.plotOptions = {line:{marker:{enabled: false}}};
-
 			callback(null, chart);
 		});
 	});

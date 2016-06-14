@@ -31,7 +31,7 @@ generateChart(function(err, chart) {
 });
 
 function generateChart(callback) {
-	var chart = Util.getTemplate("line-basic");
+	var chart = Util.getTemplate("custom-line-compact-percentage");
 	var appid = GuardianApp.getLatestAndroidAppId();
 
 	var options = { waitTime: 10, log: true, version: 1.4};
@@ -60,14 +60,6 @@ function generateChart(callback) {
 		chart.chart.renderTo = "adoption";
 		chart.xAxis.categories = Util.arrayOfDatesFromOmnitureData(response);
 		chart.series = adoptionSeriesFromOmniture(response, appid);
-		Util.print(chart.series)
-		chart.legend.enabled = false;
-		chart.title.text = "";
-		chart.subtitle.text = "";
-		chart.yAxis.title.text = "";
-		chart.tooltip.pointFormat = "{series.name}: <b>{point.y:,.2f}%</b><br/>";
-		chart.series[0].color = "rgb(67,67,72)";
-		chart.plotOptions = {line:{marker:{enabled: false}}};
 
 		callback(null, chart);
 	});

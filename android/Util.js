@@ -381,6 +381,89 @@ function Util() {
             enabled: false
         },
     }
+
+	module["custom-line-compact-percentage"] = {
+        chart: {
+            renderTo: ''
+        },
+        title: {
+            text: ''
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: ['A','B','C','D','E']
+        },
+        yAxis: {
+            title: {
+                text: ''
+            }
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.y:,.2f}%</b><br/>'
+        },
+        colors: ['rgb(67,67,72)'],
+        plotOptions: {
+            line: {
+                marker: {
+                    enabled: false
+                }
+            }
+        },
+
+        legend: {
+            enabled: false
+        },
+        series: [{
+            name: 'Example',
+            data: [1, 2, 3, 4 ,5]
+        }],
+        credits: {
+            enabled: false
+        }
+    };
+	module["custom-line-compact"] = {
+        chart: {
+            renderTo: ''
+        },
+        title: {
+            text: ''
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: ['A','B','C','D','E']
+        },
+        yAxis: {
+            title: {
+                text: ''
+            }
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.y:,.2f}%</b><br/>'
+        },
+        colors: ['rgb(67,67,72)'],
+        plotOptions: {
+            line: {
+                marker: {
+                    enabled: false
+                }
+            }
+        },
+
+        legend: {
+            enabled: false
+        },
+        series: [{
+            name: 'Example',
+            data: [1, 2, 3, 4 ,5]
+        }],
+        credits: {
+            enabled: false
+        }
+    };
 }
 
 Util.prototype.getTemplate = function (template) {
