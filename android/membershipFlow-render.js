@@ -4,6 +4,7 @@ var moment = require ('moment');
 var nconf = require('nconf');
 var _ = require('lodash');
 var fs = require('fs');
+var GuardianApp = require('../lib/GuardianApp.js');
 
 nconf.file({ file: '../config.json' });
 var username = nconf.get('username');
@@ -36,6 +37,7 @@ generateChart(function(err, chart) {
 
 function generateChart(callback) {
 	var chart = Util.getTemplate("line-basic");
+	var appid = "Guardian/" +  GuardianApp.getLatestAndroidVersion().version;
 
 	var options = { waitTime: 10, log: true, version: 1.4};
 	var reportData = {
@@ -45,7 +47,7 @@ function generateChart(callback) {
 			dateTo: Util.dates.yesterday,
 			dateGranularity: "day",
 			elements: [{ id: "page", selected:["Membership-ThankYou", "PaymentScreen-Entry"]}],
-			segments: [{id:"s1218_55facf7ae4b08d193fc26205"}, {element:"mobileappid", selected:["Guardian/4.4.664"]}],
+			segments: [{id:"s1218_55facf7ae4b08d193fc26205"}, {element:"mobileappid", selected:[appid]}],
 			metrics: [{id:"pageviews"}]
 		}
 	};
@@ -59,7 +61,7 @@ function generateChart(callback) {
 		console.log("*****************");
 
 		chart.chart.renderTo = "membershipFlow";
-		chart.xAxis.categories = highChartCategoriesFrom(response);
+		chart.xAxis.categories = Util.arrayOfDatesFromOmnitureData(response);
 		chart.yAxis = [{
             title: {
                 text: ''
@@ -80,10 +82,6 @@ function generateChart(callback) {
 
 		callback(null, chart);
 	});
-}
-
-function highChartCategoriesFrom(response) {
-	return response.report.data.map(item => Util.shortDate(item.year + "-" + item.month + "-" + item.day))
 }
 
 function highChartSeriesFrom(response) {
