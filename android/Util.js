@@ -403,7 +403,7 @@ function Util() {
         tooltip: {
             pointFormat: '{series.name}: <b>{point.y:,.2f}%</b><br/>'
         },
-        colors: ['rgb(67,67,72)'],
+        colors: ['rgb(67,67,72)', '#7CB5EC'],
         plotOptions: {
             line: {
                 marker: {
@@ -442,9 +442,9 @@ function Util() {
             }
         },
         tooltip: {
-            pointFormat: '{series.name}: <b>{point.y:,.2f}%</b><br/>'
+            pointFormat: '{series.name}: <b>{point.y:,.0f}</b><br/>'
         },
-        colors: ['rgb(67,67,72)'],
+        colors: ['rgb(67,67,72)', '#7CB5EC'],
         plotOptions: {
             line: {
                 marker: {

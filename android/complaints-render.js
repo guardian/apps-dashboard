@@ -33,7 +33,7 @@ generateChart(function(err, chart) {
 });
  
 function generateChart(callback) {
-        var chart = Util.getTemplate("line-basic");
+        var chart = Util.getTemplate("custom-line-compact");
 	var appAnnie = new AppAnnieClient(apikey, androidProductID, iosProductID);
 
 	appAnnie.getGooglePlayReviews(Util.dates.aWeekAgo, Util.dates.aDayAgo, 1, function(err, preResult){
@@ -56,14 +56,6 @@ function generateChart(callback) {
 			chart.xAxis.categories = Object.keys(histogram).map(Util.shortDate);
 			var data = Object.keys(histogram).map(date => histogram[date])
 			chart.series = [{name:"Complaints", data:data}]
-
-			chart.legend.enabled = false;
-			chart.title.text = "";
-			chart.subtitle.text = "";
-			chart.yAxis.title.text = "";
-			chart.tooltip.pointFormat = "{series.name}: <b>{point.y:,.0f}</b><br/>";
-			chart.series[0].color = "rgb(67,67,72)";
-			chart.plotOptions = {line:{marker:{enabled: false}}};
 
 			callback(null, chart);
 		});

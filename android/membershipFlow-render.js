@@ -34,7 +34,7 @@ generateChart(function(err, chart) {
 });
 
 function generateChart(callback) {
-	var chart = Util.getTemplate("line-basic");
+	var chart = Util.getTemplate("custom-line-compact");
 	var appid = GuardianApp.getLatestAndroidAppId();
 
 	var options = { waitTime: 10, log: true, version: 1.4};
@@ -60,6 +60,7 @@ function generateChart(callback) {
 
 		chart.chart.renderTo = "membershipFlow";
 		chart.xAxis.categories = Util.arrayOfDatesFromOmnitureData(response);
+		chart.series = highChartSeriesFrom(response);
 		chart.yAxis = [{
             title: {
                 text: ''
@@ -70,14 +71,6 @@ function generateChart(callback) {
                 text: ''
             }}];
         
-		chart.series = highChartSeriesFrom(response);
-		chart.legend.enabled = false;
-		chart.title.text = "";
-		chart.subtitle.text = "";
-		chart.tooltip.pointFormat = "{series.name}: <b>{point.y:,.0f}</b><br/>";
-		chart.series[0].color = "rgb(67,67,72)";
-		chart.plotOptions = {line:{marker:{enabled: false}}};
-
 		callback(null, chart);
 	});
 }
