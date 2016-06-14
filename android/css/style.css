@@ -22,12 +22,13 @@ body {
     height: 60px; /* fixed header height*/
     margin: -60px 0 0;
 }
+
 .buildNumber {
     color: rgb(135, 180, 40);
 }
 
 /*  Alerts */
-.green{
+.green {
     font-family: verdana, arial, sans serif;
     padding-bottom: 2px;
     color: rgb(135, 180, 40);
@@ -37,15 +38,17 @@ body {
     font-size: 120% /*IE6*/;
 }
 
-.red {font-family: verdana, arial, sans serif;
+.red {
+    font-family: verdana, arial, sans serif;
     padding-bottom: 2px;
     color: rgb(206, 65, 55);
     height: 20px;
     font-weight: bold;
     font-size: 18px !important /*Non-IE6*/;
-    font-size: 120% /*IE6*/;}
+    font-size: 120% /*IE6*/;
+}
 
-.amber{
+.amber {
     font-family: verdana, arial, sans serif;
     padding-bottom: 2px;
     color: rgb(255, 165, 0);
@@ -55,7 +58,7 @@ body {
     font-size: 120% /*IE6*/;
 }
 
-.grey{
+.grey {
     font-family: verdana, arial, sans serif;
     padding-bottom: 2px;
     color: rgb(125, 125, 125);
@@ -79,28 +82,30 @@ body {
 }
 
 #appStatustable td {
-    overflow:hidden;
-    vertical-align:middle;
+    overflow: hidden;
+    vertical-align: middle;
 }
 
-.status_good{
+.status_good {
     background: url(../img/status0.gif) no-repeat;
-    background-position:center;
+    background-position: center;
 }
 
-.status_bad{
+.status_bad {
     background: url(../img/status1.gif) no-repeat;
-    background-position:center;
+    background-position: center;
 }
 
 #content-cell-colleft {
-    float: left ;
-    width: 50% ;
+    float: left;
+    width: 50%;
 }
+
 #content-cell-colright {
-    float: right ;
-    width: 50% ;
+    float: right;
+    width: 50%;
 }
+
 .main a img {
     margin-top: -15px;
     padding: 0px 20px;
@@ -109,11 +114,11 @@ body {
 
 #appsFeedback {
     margin-left: 10px;
-    height:400px;
-    width:250px;
-    border:1px solid #ccc;
-    font:16px/26px Georgia, Garamond, Serif;
-    overflow:auto;
+    height: 400px;
+    width: 250px;
+    border: 1px solid #ccc;
+    font: 16px/26px Georgia, Garamond, Serif;
+    overflow: auto;
     background-color: rgba(200, 210, 180, 0.36);
     color: black;
 }
@@ -131,4 +136,31 @@ body {
 
 .navbar ul li a .on {
     background-color: rgb(161, 191, 94);
+}
+
+.accord-content {
+    display: none;
+}
+
+.accord-header {
+    margin: 0;
+    margin-Left: 10px;
+    padding: 10px 20px 12px 30px;
+    border-bottom: solid 1px rgb(215, 215, 215);
+    background: url(../img/icon_celltitle_level1.gif) no-repeat;
+    /*background-position: 225px 5px;*/
+    background-position: left;
+    color: rgb(75, 75, 75);
+    font-weight: bold;
+    font-size: 220% !important /*Non-IE6*/;
+    font-size: 200% /*IE6*/;
+}
+
+.accord-content {
+    margin: 1.0em 0 1.0em 0;
+    color: rgb(0, 0, 0);
+    line-height: 1.3em;
+    padding: 0 20px 0 20px;
+    font-size: 14px !important /*Non-IE6*/;
+    font-size: 115% /*IE6*/;
 }
