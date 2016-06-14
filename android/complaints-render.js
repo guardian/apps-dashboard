@@ -49,16 +49,7 @@ function generateChart(callback) {
 			var reviews = preResult.reviews.concat(result.reviews);
 			console.log(JSON.stringify(reviews));
 
-			var histogram = {};
-			reviews.sort(function(a,b){
-				return new Date(a.date) - new Date(b.date);
-			})
-			reviews.forEach(function(review) {
-				if(typeof histogram[review.date] === "undefined")
-					histogram[review.date] = 1;
-				else
-					histogram[review.date]++;
-			});
+			var histogram = calculateHistogramFor(reviews);
 			console.log(JSON.stringify(histogram));
 
 			chart.chart.renderTo = "complaints";
@@ -78,3 +69,17 @@ function generateChart(callback) {
 		});
 	});
 };
+
+function calculateHistogramFor(reviews) {
+	var histogram = {};
+	reviews.sort(function(a,b){
+		return new Date(a.date) - new Date(b.date);
+	})
+	reviews.forEach(function(review) {
+		if(typeof histogram[review.date] === "undefined")
+			histogram[review.date] = 1;
+		else
+			histogram[review.date]++;
+	});
+	return histogram;
+}
