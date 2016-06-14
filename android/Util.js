@@ -387,6 +387,9 @@ Util.prototype.getTemplate = function (template) {
 	return module[template];
 }
 
+Util.prototype.arrayOfDatesFromOmnitureData = function (omniture) {
+	return omniture.report.data.map(elem => this.shortDate(elem.year + "-" + elem.month + "-" + elem.day));
+}
 
 //IN: Guardian 4.2 (11981)
 //OUT: 4.2

@@ -59,7 +59,7 @@ function generateChart(callback) {
 		console.log(JSON.stringify(response));
 
 		chart.chart.renderTo = "adoption";
-		chart.xAxis.categories = highChartCategoriesFrom(response);
+		chart.xAxis.categories = Util.arrayOfDatesFromOmnitureData(response);
 		chart.series = adoptionSeriesFromOmniture(response, appid);
 		Util.print(chart.series)
 		chart.legend.enabled = false;
@@ -72,10 +72,6 @@ function generateChart(callback) {
 
 		callback(null, chart);
 	});
-}
-
-function highChartCategoriesFrom(data) {
-	return data.report.data.map(elem => Util.shortDate(elem.year + "-" + elem.month + "-" + elem.day));
 }
 
 function adoptionSeriesFromOmniture(response, appid) {

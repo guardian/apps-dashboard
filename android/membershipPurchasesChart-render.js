@@ -59,7 +59,7 @@ function generateChart(callback) {
 		//process.exit(1);
 
 		chart.chart.renderTo = "membershipPurchasesChart";
-		chart.xAxis.categories = highChartCategoriesFrom(response);
+		chart.xAxis.categories = Util.arrayOfDatesFromOmnitureData(response);
 		chart.series = highChartSeriesFrom(response);
 		chart.series[0].name = appid.substring(9) + " memberships";
 		chart.legend.enabled = false;
@@ -72,16 +72,6 @@ function generateChart(callback) {
 
 		callback(null, chart);
 	});
-}
-
-function highChartCategoriesFrom(data) {
-	var arr = [];
-	data.report.data.forEach(function(item) {
-		//2013-02-08
-		var dateString = item.year + "-" + item.month + "-" + item.day;
-		arr.push(Util.shortDate(dateString));
-	});
-	return arr;//['1 Feb', '2 Feb', '3 Feb']
 }
 
 function highChartSeriesFrom(omniture) {
