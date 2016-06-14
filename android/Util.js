@@ -399,6 +399,10 @@ Util.prototype.abbreviatedVersionNumber = function(str) {
 	return withoutVersion;
 }
 
+Util.prototype.numberWithCommas = function(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 //IN: Guardian/4.3.614
 //OUT: 4.3
 Util.prototype.abbreviatedAndroidVersionNumber = function(str) {

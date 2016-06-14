@@ -17,7 +17,9 @@ generateChart(function(err, chart) {
 		throw err;
 	}
 
-	var js = "new Highcharts.Chart(" + JSON.stringify(chart) + ");";
+	var totalMembershipPurchases = chart.series[0].data.reduce((a, b) => a + b);
+	var js = '$("#' + chart.chart.renderTo + 'Text").text("' + Util.numberWithCommas(totalMembershipPurchases) + '");';
+	js += "new Highcharts.Chart(" + JSON.stringify(chart) + ");";
 	var filename = chart.chart.renderTo + ".js"
 	console.log(js);
 	fs.writeFile(filename, js, function(err) {
@@ -54,11 +56,12 @@ function generateChart(callback) {
 	report.request("Report.Queue", reportData, function(err, response){
 		if(err) throw new Error(err.message);
 
+
 		console.log(JSON.stringify(response));
 		console.log("*****************");
 		//process.exit(1);
 
-		chart.chart.renderTo = "membershipPurchasesChart";
+		chart.chart.renderTo = "membershipPurchases";
 		chart.xAxis.categories = Util.arrayOfDatesFromOmnitureData(response);
 		chart.series = highChartSeriesFrom(response);
 		chart.series[0].name = appid.substring(9) + " memberships";
