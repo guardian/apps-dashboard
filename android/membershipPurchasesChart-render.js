@@ -4,6 +4,7 @@ var moment = require ('moment');
 var nconf = require('nconf');
 var _ = require('lodash');
 var fs = require('fs');
+var GuardianApp = require('../lib/GuardianApp.js');
 
 nconf.file({ file: '../config.json' });
 var username = nconf.get('username');
@@ -32,6 +33,8 @@ generateChart(function(err, chart) {
 
 function generateChart(callback) {
 	var chart = Util.getTemplate("line-basic");
+	var appid = "Guardian/" +  GuardianApp.getLatestAndroidVersion().version;
+	console.log("Querying for appid " + appid);
 
 	var options = { waitTime: 10, log: true, version: 1.4};
 	var reportData = {
@@ -40,8 +43,8 @@ function generateChart(callback) {
 			dateFrom: Util.dates.aWeekAgo,
 			dateTo: Util.dates.yesterday,
 			dateGranularity: "day",
-			elements: [{ id: "page", search:{"keywords":["Membership-ThankYou"]}}, { id: "mobileappid", selected:["Guardian/4.4.664"]}],
-			segments: [{id:"s1218_55facf7ae4b08d193fc26205"}],
+			elements: [{ id: "page", selected:["Membership-ThankYou"]}],
+			segments: [{id:"s1218_55facf7ae4b08d193fc26205"}, {element:"mobileappid", selected:[appid]}],
 			metrics: [{id:"pageviews"}]
 		}
 	};
@@ -58,6 +61,7 @@ function generateChart(callback) {
 		chart.chart.renderTo = "membershipPurchasesChart";
 		chart.xAxis.categories = highChartCategoriesFrom(response);
 		chart.series = highChartSeriesFrom(response);
+		chart.series[0].name = appid.substring(9) + " memberships";
 		chart.legend.enabled = false;
 		chart.title.text = "";
 		chart.subtitle.text = "";
@@ -80,23 +84,7 @@ function highChartCategoriesFrom(data) {
 	return arr;//['1 Feb', '2 Feb', '3 Feb']
 }
 
-function highChartSeriesFrom(data) {
-	var arr = [];
-	var numberOfCategories = data.report.data.length;
-	var intermediate = {"Guardian/4.4.664": []};
-	data.report.data.forEach(function(item) {
-		item.breakdown.forEach(function(breakdown) {
-			var apps = breakdown.breakdown.reduce(function(prev, curr){prev[curr.name] = parseInt(curr.counts[0]);return prev}, {})
-			console.log(JSON.stringify(apps));
-			intermediate["Guardian/4.4.664"].push(apps["Guardian/4.4.664"] | 0);
-		});
-	});
-
-	Object.keys(intermediate).forEach(function(category){
-		console.log(category);
-		console.log(intermediate[category]);
-		arr.push({name: category.substring(9) + " memberships", data: intermediate[category]});
-	})
-
-	return arr;
+function highChartSeriesFrom(omniture) {
+	var data = omniture.report.data.map(elem => parseInt(elem.breakdown[0].counts[0]));
+	return [{name: "placeholder", data: data}]; 
 }
