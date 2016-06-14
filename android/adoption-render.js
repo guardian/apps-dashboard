@@ -4,6 +4,7 @@ var moment = require ('moment');
 var nconf = require('nconf');
 var _ = require('lodash');
 var fs = require('fs');
+var GuardianApp = require('../lib/GuardianApp.js');
 
 nconf.file({ file: '../config.json' });
 var username = nconf.get('username');
@@ -16,7 +17,7 @@ generateChart(function(err, chart) {
 		throw err;
 	}
 
-	var js = '$("#' + chart.chart.renderTo + 'Text").text("' + chart.series[0].data[6].toFixed(2) + '%");'
+	var js = '$("#' + chart.chart.renderTo + 'Text").text("' + chart.series[0].data[chart.series[0].data.length - 1].toFixed(2) + '%");'
 	js += "new Highcharts.Chart(" + JSON.stringify(chart) + ");";
 	var filename = chart.chart.renderTo + ".js"
 	console.log(js);
@@ -30,8 +31,8 @@ generateChart(function(err, chart) {
 });
 
 function generateChart(callback) {
-	var chart = Util.getTemplate("line-basic");
-	var appid = "Guardian/4.4.664"
+	var chart = Util.getTemplate("custom-line-compact-percentage");
+	var appid = GuardianApp.getLatestAndroidAppId();
 
 	var options = { waitTime: 10, log: true, version: 1.4};
 	var reportData = {
@@ -40,7 +41,7 @@ function generateChart(callback) {
 			dateFrom: Util.dates.aWeekAgo,
 			dateTo: Util.dates.aDayAgo,
 			dateGranularity: "day",
-			elements: [{ id: "mobileappid", top: "3" }],
+			elements: [{ id: "mobileappid", selected: [appid] }],
 			segments: [{id:"s1218_55facf7ae4b08d193fc26205"},{id:"55508808e4b0b5455b979744"}],
 			metrics: [{id:"uniquevisitors"}]
 		}
@@ -57,39 +58,14 @@ function generateChart(callback) {
 		console.log(JSON.stringify(response));
 
 		chart.chart.renderTo = "adoption";
-		chart.xAxis.categories = highChartCategoriesFrom(response);
+		chart.xAxis.categories = Util.arrayOfDatesFromOmnitureData(response);
 		chart.series = adoptionSeriesFromOmniture(response, appid);
-		Util.print(chart.series)
-		chart.legend.enabled = false;
-		chart.title.text = "";
-		chart.subtitle.text = "";
-		chart.yAxis.title.text = "";
-		chart.tooltip.pointFormat = "{series.name}: <b>{point.y:,.2f}%</b><br/>";
-		chart.series[0].color = "rgb(67,67,72)";
-		chart.plotOptions = {line:{marker:{enabled: false}}};
 
 		callback(null, chart);
 	});
 }
 
-function highChartCategoriesFrom(data) {
-	var arr = [];
-	data.report.data.forEach(function(item) {
-		//2013-02-08
-		var dateString = item.year + "-" + item.month + "-" + item.day;
-		arr.push(Util.shortDate(dateString));
-	});
-	return arr;//['1 Feb', '2 Feb', '3 Feb']
-}
-
 function adoptionSeriesFromOmniture(response, appid) {
-	var data = response.report.data.map(function(elem) {
-		result = elem.breakdown.find(function(version) { return version.name === appid})
-		if(typeof result === "undefined")
-			return 0;
-		else
-			return result.counts[0] / elem.breakdownTotal * 100;
-	});
-
+	var data = response.report.data.map(elem => elem.breakdown[0].counts[0] / elem.breakdownTotal * 100);
 	return [{name:appid.substring(9)+" adoption", data:data}]
 }

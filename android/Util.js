@@ -381,12 +381,98 @@ function Util() {
             enabled: false
         },
     }
+
+	module["custom-line-compact-percentage"] = {
+        chart: {
+            renderTo: ''
+        },
+        title: {
+            text: ''
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: ['A','B','C','D','E']
+        },
+        yAxis: {
+            title: {
+                text: ''
+            }
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.y:,.2f}%</b><br/>'
+        },
+        colors: ['rgb(67,67,72)', '#7CB5EC'],
+        plotOptions: {
+            line: {
+                marker: {
+                    enabled: false
+                }
+            }
+        },
+
+        legend: {
+            enabled: false
+        },
+        series: [{
+            name: 'Example',
+            data: [1, 2, 3, 4 ,5]
+        }],
+        credits: {
+            enabled: false
+        }
+    };
+	module["custom-line-compact"] = {
+        chart: {
+            renderTo: ''
+        },
+        title: {
+            text: ''
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: ['A','B','C','D','E']
+        },
+        yAxis: {
+            title: {
+                text: ''
+            }
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.y:,.0f}</b><br/>'
+        },
+        colors: ['rgb(67,67,72)', '#7CB5EC'],
+        plotOptions: {
+            line: {
+                marker: {
+                    enabled: false
+                }
+            }
+        },
+
+        legend: {
+            enabled: false
+        },
+        series: [{
+            name: 'Example',
+            data: [1, 2, 3, 4 ,5]
+        }],
+        credits: {
+            enabled: false
+        }
+    };
 }
 
 Util.prototype.getTemplate = function (template) {
 	return module[template];
 }
 
+Util.prototype.arrayOfDatesFromOmnitureData = function (omniture) {
+	return omniture.report.data.map(elem => this.shortDate(elem.year + "-" + elem.month + "-" + elem.day));
+}
 
 //IN: Guardian 4.2 (11981)
 //OUT: 4.2
@@ -396,12 +482,27 @@ Util.prototype.abbreviatedVersionNumber = function(str) {
 	return withoutVersion;
 }
 
+Util.prototype.numberWithCommas = function(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 //IN: Guardian/4.3.614
 //OUT: 4.3
 Util.prototype.abbreviatedAndroidVersionNumber = function(str) {
 	var withoutGuardian = str.substring(9);
 	var withoutVersion = withoutGuardian.substring(0, withoutGuardian.length - 4);
 	return withoutVersion;
+}
+
+Util.prototype.getArrayOfDatesBetweenDates = function(startDate, originalstopDate) {
+	var stopDate = moment(originalstopDate);
+	var currentDate = moment(startDate);
+	var dateArray = [];
+	while (currentDate <= stopDate) {
+		dateArray.push( this.shortDate(currentDate) )
+		currentDate = moment(currentDate).add(1, 'days');
+	}
+	return dateArray;
 }
 
 Util.prototype.daysSince = function (str) {

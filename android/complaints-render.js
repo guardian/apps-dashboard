@@ -33,7 +33,7 @@ generateChart(function(err, chart) {
 });
  
 function generateChart(callback) {
-        var chart = Util.getTemplate("line-basic");
+        var chart = Util.getTemplate("custom-line-compact");
 	var appAnnie = new AppAnnieClient(apikey, androidProductID, iosProductID);
 
 	appAnnie.getGooglePlayReviews(Util.dates.aWeekAgo, Util.dates.aDayAgo, 1, function(err, preResult){
@@ -49,16 +49,7 @@ function generateChart(callback) {
 			var reviews = preResult.reviews.concat(result.reviews);
 			console.log(JSON.stringify(reviews));
 
-			var histogram = {};
-			reviews.sort(function(a,b){
-				return new Date(a.date) - new Date(b.date);
-			})
-			reviews.forEach(function(review) {
-				if(typeof histogram[review.date] === "undefined")
-					histogram[review.date] = 1;
-				else
-					histogram[review.date]++;
-			});
+			var histogram = calculateHistogramFor(reviews);
 			console.log(JSON.stringify(histogram));
 
 			chart.chart.renderTo = "complaints";
@@ -66,15 +57,21 @@ function generateChart(callback) {
 			var data = Object.keys(histogram).map(date => histogram[date])
 			chart.series = [{name:"Complaints", data:data}]
 
-			chart.legend.enabled = false;
-			chart.title.text = "";
-			chart.subtitle.text = "";
-			chart.yAxis.title.text = "";
-			chart.tooltip.pointFormat = "{series.name}: <b>{point.y:,.0f}</b><br/>";
-			chart.series[0].color = "rgb(67,67,72)";
-			chart.plotOptions = {line:{marker:{enabled: false}}};
-
 			callback(null, chart);
 		});
 	});
 };
+
+function calculateHistogramFor(reviews) {
+	var histogram = {};
+	reviews.sort(function(a,b){
+		return new Date(a.date) - new Date(b.date);
+	})
+	reviews.forEach(function(review) {
+		if(typeof histogram[review.date] === "undefined")
+			histogram[review.date] = 1;
+		else
+			histogram[review.date]++;
+	});
+	return histogram;
+}

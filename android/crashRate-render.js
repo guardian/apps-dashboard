@@ -3,6 +3,7 @@ var Util = require('./Util.js');
 var moment = require ('moment');
 var nconf = require('nconf');
 var fs = require('fs');
+var GuardianApp = require('../lib/GuardianApp.js');
 
 nconf.file({ file: '../config.json' });
 var username = nconf.get('crittercism_username');
@@ -32,8 +33,8 @@ generateChart(function(err, chart) {
 
  
 function generateChart(callback) {
-        var chart = Util.getTemplate("line-basic");
-	var appVersion = "4.4.664"
+        var chart = Util.getTemplate("custom-line-compact-percentage");
+	var appVersion = GuardianApp.getLatestAndroidAppVersion();
 	var cc = new CrittercismClient(clientid);
 
 	cc.init(username, password, function(err) {
@@ -54,22 +55,6 @@ function generateChart(callback) {
 			chart.series = highChartSeriesFromCrittercismData(result);
 			chart.series[0].name = appVersion + " crash rate"
 
-			//chart.yAxis.plotLines = [{
-			//	value:0.3,
-			//	color: '#ff0000',
-			//	width:2,
-			//	zIndex:4,
-			//	label:{text:'average'}
-			//}]
-
-			chart.legend.enabled = false;
-			chart.title.text = "";
-			chart.subtitle.text = "";
-			chart.yAxis.title.text = "";
-			chart.tooltip.pointFormat = "{series.name}: <b>{point.y:,.2f}%</b><br/>";
-			chart.series[0].color = "rgb(67,67,72)";
-			chart.plotOptions = {line:{marker:{enabled: false}}};
-
 			callback(null, chart);
 		});
 	});
@@ -77,20 +62,7 @@ function generateChart(callback) {
 
 // // ["December", "November"]
 function highchartCategoriesFromCrittercismData(crit) {
-	function getDates(startDate, originalstopDate) {
-	    var stopDate = moment(originalstopDate);
-	    var dateArray = [];
-	    var currentDate = moment(startDate).add(1, 'days');
-	    while (currentDate <= stopDate) {
-		dateArray.push( Util.shortDate(currentDate) )
-		currentDate = moment(currentDate).add(1, 'days');
-	    }
-	    return dateArray;
-	}
-	console.log(crit.data.start);
-	console.log(crit.data.end);
-	console.log(JSON.stringify(getDates(crit.data.start, crit.data.end)));
-	return getDates(crit.data.start, crit.data.end);
+	return Util.getArrayOfDatesBetweenDates(crit.data.start, crit.data.end).slice(1);
 }
 
 //[ {name: 'Subscriptions', data: [1, 23.7] }]
