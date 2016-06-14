@@ -33,11 +33,9 @@ generateChart(function(err, chart) {
 	}); 
 });
 
-
-
 function generateChart(callback) {
 	var chart = Util.getTemplate("line-basic");
-	var appid = "Guardian/" +  GuardianApp.getLatestAndroidVersion().version;
+	var appid = GuardianApp.getLatestAndroidAppId();
 
 	var options = { waitTime: 10, log: true, version: 1.4};
 	var reportData = {

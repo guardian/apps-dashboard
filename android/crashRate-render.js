@@ -33,8 +33,8 @@ generateChart(function(err, chart) {
 
  
 function generateChart(callback) {
-        var chart = Util.getTemplate("line-basic");
-	var appVersion = GuardianApp.getLatestAndroidVersion().version;
+        var chart = Util.getTemplate("custom-line-compact-percentage");
+	var appVersion = GuardianApp.getLatestAndroidAppVersion();
 	var cc = new CrittercismClient(clientid);
 
 	cc.init(username, password, function(err) {

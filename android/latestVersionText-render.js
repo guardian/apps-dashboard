@@ -22,7 +22,7 @@ generateText(function(err, version, releaseDate) {
 });
 
 function generateText(callback) {
-	var app = GuardianApp.getLatestAndroidVersion();
+	var app = GuardianApp.getLatestAndroidApp();
 	callback(null, app.version, app.releaseDate);
 };
 
