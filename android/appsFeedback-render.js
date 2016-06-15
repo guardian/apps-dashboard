@@ -1,4 +1,4 @@
-var GmailClient = require("./GmailClient.js")
+var GmailClient = require("../lib/GmailClient.js")
 var nconf = require('nconf');
 var fs = require('fs');
 
