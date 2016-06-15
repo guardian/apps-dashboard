@@ -636,8 +636,8 @@
     margin: 0;
     padding: 5px 20px 12px 20px;
     border-bottom: solid 1px rgb(215, 215, 215);
-    background: url(../img/icon_celltitle_level1.gif) no-repeat;
-    background-position: 225px 5px;
+    /*background: url(../img/icon_celltitle_level1.gif) no-repeat;*/
+    /*background-position: 225px 5px;*/
     color: rgb(75, 75, 75);
     font-weight: bold;
     font-size: 220% !important /*Non-IE6*/;
@@ -651,8 +651,8 @@
     margin: 0 20px 0 20px;
     padding: 15px 35px 5px 0;
     border-top: solid 1px rgb(215, 215, 215);
-    background: url(../img/icon_celltitle_level2.gif) no-repeat;
-    background-position: right 15px;
+    /*background: url(../img/icon_celltitle_level2.gif) no-repeat;*/
+    /*background-position: right 15px;*/
     color: rgb(75, 75, 75);
     font-weight: bold;
     font-size: 180% !important /*Non-IE6*/;

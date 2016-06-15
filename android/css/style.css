@@ -200,3 +200,92 @@ body {
     font-size: 14px !important /*Non-IE6*/;
     font-size: 115% /*IE6*/;
 }
+
+.tooltip {
+    margin-left: -200px;
+    float: left;
+}
+
+a.tooltip {
+    outline: none;
+}
+
+a.tooltip strong {
+    line-height: 10px;
+}
+
+a.tooltip:hover {
+    text-decoration: none;
+}
+
+a.tooltip span {
+    z-index: 10;
+    display: none;
+    padding: 5px 5px;
+    margin-top: -10px;
+    margin-left: 28px;
+    width: 250px;
+    line-height: 16px;
+}
+
+a.tooltip:hover span {
+    display: inline;
+    position: absolute;
+    color: #111;
+    border: 1px solid #DCA;
+    background: #fffAF0;
+}
+
+.callout {
+    z-index: 20;
+    position: absolute;
+    top: 30px;
+    border: 0;
+    left: -12px;
+}
+
+/*CrashRateKey*/
+
+#crashRateKey h2 {
+    margin-bottom: -25px;
+    font-size: 14px;
+    padding-bottom: 2px;
+    color: rgb(125, 125, 125);
+}
+
+#crashRateKey .green_small {
+    font-family: verdana, arial, sans serif;
+    padding-bottom: 2px;
+    color: rgb(135, 180, 40);
+    height: 20px;
+    font-weight: bold;
+    font-size: 12px !important /*Non-IE6*/;
+    font-size: 90% /*IE6*/;
+}
+
+#crashRateKey .amber_small {
+    font-family: verdana, arial, sans serif;
+    padding-bottom: 2px;
+    color: rgb(255, 165, 0);
+    height: 20px;
+    font-weight: bold;
+    font-size: 12px !important /*Non-IE6*/;
+    font-size: 90% /*IE6*/;
+}
+
+#crashRateKey .grey {
+    font-family: verdana, arial, sans serif;
+    padding-bottom: 2px;
+    color: rgb(125, 125, 125);
+    height: 20px;
+    font-weight: bold;
+    font-size: 18px !important /*Non-IE6*/;
+    font-size: 120% /*IE6*/;
+}
+
+
+/*CSS3 extras*/
+a.tooltip span {
+    border-radius: 4px;
+    box-shadow: 5px 5px 8px #CCC;
+}
