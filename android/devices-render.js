@@ -70,24 +70,7 @@ function generateChart(callback) {
 }
 
 function subtitleWithDeviceCategoryBreakdown(data) {
-    var total = _.reduce(data, function (sum, device) {
-        return sum + device.y;
-    }, 0);
-    var totalIphone = _.reduce(data, function (sum, device) {
-        if (device.name.indexOf("iPhone") > -1)
-            return sum + device.y;
-        else
-            return sum;
-    }, 0);
-    var totalIpad = _.reduce(data, function (sum, device) {
-        if (device.name.indexOf("iPad") > -1)
-            return sum + device.y;
-        else
-            return sum;
-    }, 0);
-    var iPhone = (totalIphone / total) * 100;
-    var iPad = (totalIpad / total) * 100;
-    return "iPhone " + iPhone.toFixed(1) + "% iPad " + iPad.toFixed(1) + "%<br>click the bars to break down by iOS version";
+    return "click the bars to break down by Android version";
 
 }
 
@@ -95,8 +78,8 @@ function highChartSeriesDataFrom(data) {
     var translationTable = {
         "SM-G920F": "Galaxy S6",
         "SM-G900F": "Galaxy S5",
-        "GT-19505": "Galaxy S4 LTE",
-        "GT-19195": "Galaxy S4 Mini",
+        "GT-I9505": "Galaxy S4 LTE",
+        "GT-I9195": "Galaxy S4 Mini",
         "SM-G925F": "Galaxy S6 Edge",
         "D5803": "Sony Xperia Z3 Compact",
         "SM-A300FU": "Galaxy A3",
