@@ -13,31 +13,21 @@
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
     <script src="https://code.highcharts.com/modules/drilldown.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(".accordion .accord-header").click(function () {
-                if ($(this).next("div").is(":visible")) {
-                    $(this).next("div").slideUp("slow");
-                } else {
-                    $(".accordion .accord-content").slideUp("slow");
-                    $(this).next("div").slideToggle("slow");
-                }
-            });
-        });
-    </script>
+    <!--<script src="../tootip.js"></script>-->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title> Android App Dashboard</title>
-    <link rel="icon" type="image/x-icon" href="./img/favicon.ico"/>
-    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
-    <link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/reset.css"/>
-    <link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/grid.css"/>
-    <link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/content.css"/>
-    <link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/style.css"/>
+    <title> Android App Dashboard - BETA</title>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="../favicon.png"/>
+    <link rel="stylesheet" type="text/css" media="screen,projection,print" href="../css/reset.css"/>
+    <link rel="stylesheet" type="text/css" media="screen,projection,print" href="../css/grid.css"/>
+    <link rel="stylesheet" type="text/css" media="screen,projection,print" href="../css/content.css"/>
+    <link rel="stylesheet" type="text/css" media="screen,projection,print" href="../css/style.css"/>
+
 </head>
 
 <!-- Global IE fix to avoid layout crash when single word size wider than column width -->
@@ -71,13 +61,10 @@
             <!-- TOP NAVIGATION -->
             <div class="navglobal">
                 <ul>
-                    <li><a href="http://iosuiauto.gutools.co.uk:8080/">Jenkins</a></li>
-                    <li>
-                        <a href="https://play.google.com/apps/publish/?dev_acc=01244558876345880171#RatingsPlace:p=com.guardian">Google
-                            Dev Console</a></li>
-                    <li><a href="https://app.apteligent.com/developers/crash-summary/5457bc14d478bc2b14000002">Crittercism</a>
-                    </li>
-                    <li><a href="https://github.com/guardian/android-news-app">GitHub</a></li>
+                    <li><a href="#" title="">Jenkins</a></li>
+                    <li><a href="#" title="">Google Dev Console</a></li>
+                    <li><a href="#" title="">Crittersism</a></li>
+                    <li><a href="#" title="">GitHub</a></li>
                 </ul>
             </div>
         </div>
@@ -89,11 +76,11 @@
     <div class="navbar">
         <!-- Navigation item -->
         <ul>
-            <li style="background: rgb(161, 191, 94)"><a href="#">LIVE (Production)</a></li>
+            <li><a href="../index.html">LIVE (Production)</a></li>
         </ul>
         <!-- Navigation item -->
         <ul>
-            <li><a href="./beta/beta.html">BETA Group<!--[if IE 7]><!--></a><!--<![endif]-->
+            <li style="background: rgb(161, 191, 94)"><a href="#">BETA Group<!--[if IE 7]><!--></a><!--<![endif]-->
             </li>
         </ul>
         <!-- Navigation item -->
@@ -112,20 +99,19 @@
             <!-- CONTENT CELL Overview-->
             <div class="content-cell-corner-top"></div>
             <div class="content-cell">
-                <h1>Current Build in Production - <span class="buildNumber" id="latestVersionText"></span>
+                <h1>Current Build in BETA - Ver (<span class="buildNumber" id="latestVersionText"></span>)
                 </h1>
                 <p>The latest version was <b><span id="latestVersionText"></span></b> released <b><span
                         id="releaseDays"></span></b> days ago on <b><span id="releaseDate"></span></b>.</p>
-                <script src="latestVersionText.js"></script>
+                <script src="../latestVersionText.js"></script>
 
                 <!--column left -->
                 <div id="content-cell-colleft">
-                    <h2>Adoption <BR>
-                        <span class="green" id="adoptionText"></span></h2>
-                    <script src="adoption.js"></script>
-                    <h2>Star Rating <BR>
-                        <span class="green" id="starRatingText"></span></h2>
-                    <script src="starRating.js"></script>
+                    <h2>Current Build Status: </h2>
+                    <p><a
+                            href='http://iosuiauto.gutools.co.uk:8080/job/RunNewDashboard'><img
+                            src='http://iosuiauto.gutools.co.uk:8080/buildStatus/icon?job=RunNewDashboard'></a>
+                    </p>
 
                 </div>
 
@@ -134,7 +120,7 @@
                     <div id="crashRateKey">
                         <!--tooltip-->
                         <a href="#" class="tooltip">
-                            <img src="img/icon_question.png"/>
+                            <img src="../img/icon_question.png"/>
                             <span>
                                 <h2>Key:</h2>
                                 <br/>
@@ -158,11 +144,8 @@
             <div class="content-cell-corner-top"></div>
             <div class="content-cell">
                 <h1>Crash trends</h1>
-                <p><span id="widespreadCrash"></span></p>
-                <p><span id="frequentCrash"></span></p>
-                <div id="crashRate" style="height:160px"></div>
-                <script src="crashRate.js"></script>
-                <script src="crashSummary.js"></script>
+                <div id="crashRate"></div>
+                <script src="../crashRate.js"></script>
             </div>
             <div class="content-cell-corner-bottom"></div>
 
@@ -188,7 +171,7 @@
                         </tr>
                     </table>
 
-                    <script src="membershipFlow.js"></script>
+                    <script src="../membershipFlow.js"></script>
 
                 </div>
                 <script src="tableData.js"></script>
@@ -199,10 +182,10 @@
             <div class="content-cell-corner-top"></div>
             <div class="content-cell">
                 <div class="accordion">
-                    <div class="accord-header">Which Android devices do our users use?</div>
+                    <div class="accord-header">Which Android versions do our users use?</div>
                     <div class="accord-content">
                         <div id="devices"></div>
-                        <script src="devices.js"></script>
+                        <script src="../devices.js"></script>
                     </div>
                 </div>
             </div>
@@ -216,7 +199,7 @@
                     <div class="accord-header">Which Android versions do our users use?</div>
                     <div class="accord-content">
                         <div id="osVersion"></div>
-                        <script src="osVersion.js"></script>
+                        <script src="../osVersion.js"></script>
 
                     </div>
                 </div>
@@ -230,15 +213,16 @@
             <!-- SUBCONTENT CELL -->
             <div class="subcontent-cell-corner-top"></div>
             <div class="subcontent-cell">
-                <h1>User base Info</h1>
-                <h3>App Users: <span class="red" id="appUsersText">xxx,xxx</span>
-                    <script src="appUsersText.js"></script>
+                <h1>BETA User Info</h1>
+                <h3>BETA users: <br/><span class="green" id="betaUsersText">xx,xxx</span>
+                    <script src="../subscribersText.js"></script>
                 </h3>
-                <h3>Paid Subscribers: <span class="green" id="subscriberPurchasesText">xx,xxx</span>
-                    <script src="subscribersText.js"></script>
+                <h3>Active BETA users: <br/><span class="red" id="activeBetaUsersText">x,xxx</span>
+                    <script src="../subscribersText.js"></script>
                 </h3>
-                <h3>Members: <span class="green" id="membershipPurchasesText"></span>
-                    <script src="membershipPurchasesText.js"></script>
+                <h3>Active BETA subscribers: <br/><span class="green" id="activeBetaSubscribersText">x,
+                    xxx</span>
+                    <script src="../subscribersText.js"></script>
                 </h3>
             </div>
             <div class="subcontent-cell-corner-bottom"></div>
@@ -246,16 +230,19 @@
             <!-- SUBCONTENT CELL -->
             <div class="subcontent-cell-corner-top"></div>
             <div class="subcontent-cell">
-                <h1>App Revenue</h1>
-                <h3>Subscription: <span class="green" id="subscribionText">£xx,xxx</span>
-                    <script src="subscriberPurchasesText.js"></script>
+                <h1>BETA User Issues</h1>
+                <h3>Issues reported: <span class="green" id="complaints">7</span>
+                    <script src="../complaints.js"></script>
                 </h3>
-                <h3>Membership: <span class="green" id="membershipText">£x,xxx</span>
-                    <script src="membershipPurchasesText.js"></script>
-                </h3>
+                <h3>User Emails:</h3>
+                <!--<table class="table" id="appsFeedback"></table>-->
+                <div id="appsFeedback">
+                    <!--<span id="appsFeedback"></span>-->
+                    <script src="../appsFeedback.js"></script>
+                </div>
+
             </div>
             <div class="subcontent-cell-corner-bottom"></div>
-
         </div>
     </div>
 
