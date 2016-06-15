@@ -1,5 +1,5 @@
 var fs = require('fs');
-var Util = require('./Util.js')
+var Util = require('../lib/Util.js')
 var GuardianApp = require('../lib/GuardianApp.js');
 
 generateText(function(err, version, releaseDate) {
