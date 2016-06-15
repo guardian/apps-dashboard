@@ -517,8 +517,14 @@ Util.prototype.shortDate = function (str) {
 	return moment(str).format('ddd DD/MM');
 }
 
+// Jun 9th
 Util.prototype.dayOfMonth = function (str) {
 	return moment(str).format('MMM Do');
+}
+
+// Sat Jun 9th
+Util.prototype.dayOfMonthAndWeek = function (str) {
+	return moment(str).format('ddd MMM Do');
 }
 
 Util.prototype.print = function (obj) {
