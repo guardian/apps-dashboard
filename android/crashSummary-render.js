@@ -18,8 +18,8 @@ generateText(function(err, widespreadCrash, frequentCrash) {
 		throw err;
 	}
 
-	var js = `$("#widespreadCrash").html("The most widespread crash is <i>${widespreadCrash.name}</i> happening to <b>${widespreadCrash.uniqueSessionCount}</b> people.");`
-	js += `$("#frequentCrash").html("The most frequent crash is <i>${frequentCrash.name}</i>, <b>${frequentCrash.sessionCount}</b> crashes so far.");`
+	var js = `$("#widespreadCrash").html("Most widespread - <i>${widespreadCrash.name}</i> happening to <b>${widespreadCrash.uniqueSessionCount}</b> people.");`
+	js += `$("#frequentCrash").html("Most frequent - <i>${frequentCrash.name}</i>, with <b>${frequentCrash.sessionCount}</b> crashes so far.");`
 	var filename = "crashSummary.js"
 	console.log(js);
 	fs.writeFile(filename, js, function(err) {
@@ -33,7 +33,6 @@ generateText(function(err, widespreadCrash, frequentCrash) {
 
  
 function generateText(callback) {
-        var chart = Util.getTemplate("custom-line-compact-percentage");
 	var appVersion = GuardianApp.getLatestAndroidAppVersion();
 	var cc = new CrittercismClient(clientid);
 
