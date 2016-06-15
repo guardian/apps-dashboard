@@ -61,6 +61,16 @@ CrittercismClient.prototype.apps = function apps(callback) {
 	this.clientGet(path, callback);
 }
 
+CrittercismClient.prototype.topCrashByUser = function(appVersion, callback) {
+	//var path = '/v1.0/app/5457bc14d478bc2b14000002/crash/summaries?status=unresolved&appVersion=4.4.675&startDate=2016-05-31T16:41:10.673Z&endDate=2016-06-14T16:41:10.673Z&sortBy=usersAffected&sortOrder=descending'
+	//var path = '/v1.0/app/5457bc14d478bc2b14000002/crash/summaries?status=unresolved&appVersion=4.4.675&&appVersion=4.4.675sortBy=usersAffected'
+	var path = '/v1.0/app/5457bc14d478bc2b14000002/crash/summaries?status=unresolved&appVersion=4.4.675'
+	//var path = '/v1.0/app/5457bc14d478bc2b14000002/crash/counts?appVersion=4.4.675';
+	//var path = '/v1.0/base';
+
+	this.clientGet(path, callback);
+}
+
 CrittercismClient.prototype.performancePie = function performancePie(appIds, graph, duration, filter, groupBy, callback) {
 
 	var path = '/v1.0/performanceManagement/pie';
@@ -190,7 +200,7 @@ CrittercismClient.prototype.clientRequest = function clientRequest(method, url, 
 	    buffer += chunk;
 		}).on('end', function() {
 			if (failed) {
-				callback(res);
+				callback(new Error(res.statusCode));
 				return;
 			}
 			var o;
