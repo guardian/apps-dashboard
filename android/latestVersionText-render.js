@@ -7,9 +7,11 @@ generateText(function(err, version, releaseDate) {
 		throw err;
 	}
 
-	var js = '$("#latestVersionText").text("' + version + '");';
-	js += '$("#releaseDate").text("' + Util.dayOfMonth(releaseDate) + '");';
-	js += '$("#releaseDays").text("' + Util.daysSince(releaseDate) + '");';
+	var js = `
+	$("#latestVersionText").text("${version}");
+	$("#releaseDate").text("${Util.dayOfMonthAndWeek(releaseDate)}");
+	$("#releaseDays").text("${Util.daysSince(releaseDate)}");
+	`;
 	var filename = "latestVersionText.js";
 	console.log(js);
 	fs.writeFile(filename, js, function(err) {

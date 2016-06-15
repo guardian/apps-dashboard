@@ -71,10 +71,10 @@
             <!-- TOP NAVIGATION -->
             <div class="navglobal">
                 <ul>
-                    <li><a href="#" title="">Jenkins</a></li>
-                    <li><a href="#" title="">Google Dev Console</a></li>
-                    <li><a href="#" title="">Crittersism</a></li>
-                    <li><a href="#" title="">GitHub</a></li>
+                    <li><a href="http://iosuiauto.gutools.co.uk:8080/">Jenkins</a></li>
+                    <li><a href="https://play.google.com/apps/publish/?dev_acc=01244558876345880171#RatingsPlace:p=com.guardian">Google Dev Console</a></li>
+		    <li><a href="https://app.apteligent.com/developers/crash-summary/5457bc14d478bc2b14000002">Crittercism</a></li>
+		    <li><a href="https://github.com/guardian/android-news-app">GitHub</a></li>
                 </ul>
             </div>
         </div>
@@ -95,7 +95,7 @@
         </ul>
         <!-- Navigation item -->
         <ul>
-            <li><a href="./alpha/alpha.html">ALPHA Group<!--[if IE 7]><!--></a><!--<![endif]-->
+            <li><a href="#">ALPHA Group<!--[if IE 7]><!--></a><!--<![endif]-->
             </li>
         </ul>
     </div>
@@ -109,7 +109,7 @@
             <!-- CONTENT CELL Overview-->
             <div class="content-cell-corner-top"></div>
             <div class="content-cell">
-                <h1>Current Build in Production - Ver (<span class="buildNumber" id="latestVersionText"></span>)
+                <h1>Current Build in Production - <span class="buildNumber" id="latestVersionText"></span>
                 </h1>
                 <p>The latest version was <b><span id="latestVersionText"></span></b> released <b><span
                         id="releaseDays"></span></b> days ago on <b><span id="releaseDate"></span></b>.</p>
@@ -128,7 +128,6 @@
                 <!--column right-->
                 <div id="content-cell-right">
 
-
                     <h2>Current Crash Rate: <span id="crashRateText"></span></h2>
 
                 </div>
@@ -145,6 +144,13 @@
                             </span>
                     </a>
                     <div style="display:none;"></div>
+
+		    <h2>Adoption <BR>
+			    <span class="green" id="adoptionText"></span></h2>
+                    <script src="adoption.js"></script>
+		    <h2>Star Rating <BR>
+			    <span class="green" id="starRatingText"></span></h2>
+                    <script src="starRating.js"></script>
                 </div>
 
             </div>
@@ -156,8 +162,11 @@
             <div class="content-cell-corner-top"></div>
             <div class="content-cell">
                 <h1>Crash trends</h1>
-                <div id="crashRate"></div>
+		<p><span id="widespreadCrash"></span></p>
+		<p><span id="frequentCrash"></span></p>
+                <div id="crashRate" style="height:160px"></div>
                 <script src="crashRate.js"></script>
+                <script src="crashSummary.js"></script>
             </div>
             <div class="content-cell-corner-bottom"></div>
 
