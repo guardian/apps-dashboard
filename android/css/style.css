@@ -58,12 +58,6 @@ body {
     font-size: 90% /*IE6*/;
 }
 
-#crashRateKey {
-
-    padding: 0px 5px;
-    float: right;
-}
-
 .red_small {
     font-family: verdana, arial, sans serif;
     padding-bottom: 2px;
@@ -201,51 +195,27 @@ body {
     font-size: 115% /*IE6*/;
 }
 
-/*Tooltip*/
-.tooltip {
-    margin-left: -200px;
-    float: left;
-}
-
-a.tooltip {
-    outline: none;
-}
-
-a.tooltip strong {
-    line-height: 10px;
-}
-
-a.tooltip:hover {
-    text-decoration: none;
-}
-
-a.tooltip span {
+#tooltip {
     z-index: 10;
     display: none;
     padding: 5px 5px;
-    margin-top: -10px;
-    margin-left: 40px;
+    margin-top: -15px;
+    margin-left: 140px;
     width: 220px;
     line-height: 16px;
-}
-
-a.tooltip:hover span {
-    display: inline;
+    border-radius: 4px;
+    box-shadow: 5px 5px 8px #CCC;
     position: absolute;
     color: #111;
     border: 1px solid #DCA;
     background: #fffAF0;
 }
 
-/*CrashRateKey*/
-#crashRateKey h2 {
-    margin-bottom: -25px;
-    font-size: 184px;
-    padding-bottom: 2px;
-    /*color: rgb(125, 125, 125);*/
+#question_mark:hover ~ #tooltip {
+    display: inline;
 }
 
-#crashRateKey .green_small {
+#tooltip .green_small {
     font-family: verdana, arial, sans serif;
     /*padding-bottom: 2px;*/
     color: rgb(135, 180, 40);
@@ -255,7 +225,7 @@ a.tooltip:hover span {
     font-size: 90% /*IE6*/;
 }
 
-#crashRateKey .amber_small {
+#tooltip .amber_small {
     font-family: verdana, arial, sans serif;
     /*padding-bottom: 2px;*/
     color: rgb(255, 165, 0);
@@ -265,7 +235,7 @@ a.tooltip:hover span {
     font-size: 90% /*IE6*/;
 }
 
-#crashRateKey .red_small {
+#tooltip .red_small {
     font-family: verdana, arial, sans serif;
     padding-bottom: 2px;
     color: rgb(206, 65, 55);
@@ -273,20 +243,4 @@ a.tooltip:hover span {
     font-weight: bold;
     font-size: 14px !important /*Non-IE6*/;
     font-size: 90% /*IE6*/;
-}
-
-#crashRateKey .grey {
-    font-family: verdana, arial, sans serif;
-    /*padding-bottom: 2px;*/
-    color: rgb(125, 125, 125);
-    /*height: 20px;*/
-    font-weight: bold;
-    font-size: 18px !important /*Non-IE6*/;
-    font-size: 90% /*IE6*/;
-}
-
-/*CSS3 extras*/
-a.tooltip span {
-    border-radius: 4px;
-    box-shadow: 5px 5px 8px #CCC;
 }
