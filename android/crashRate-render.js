@@ -18,25 +18,25 @@ generateChart(function(err, chart) {
 		throw err;
 	}
 
-	var js = '$("#' + chart.chart.renderTo + 'Text").text("' + chart.series[0].data[6] + '%");'
 	var currentCrashRate = chart.series[0].data[6];
 
 	if (currentCrashRate <= 0.29) {
-		// add css style .green
-		js += '$("#crashRateText").addClass("green");';
-
+		var color = "green";
 	} else if (currentCrashRate <= 0.69){
-		// add css style .amber
-		js += '$("#crashRateText").addClass("amber");';
+		var color = "amber";
 	} else {
-		// add css style .red
-		js += '$("#crashRateText").addClass("red");';
+		var color = "red";
 	}
 
 
-	js += "new Highcharts.Chart(" + JSON.stringify(chart) + ");";
-	var filename = chart.chart.renderTo + ".js"
+	var js = `
+	$("#${chart.chart.renderTo}Text").text("${currentCrashRate}%");
+	$("#${chart.chart.renderTo}Text").addClass("${color}");
+	new Highcharts.Chart(${Util.stringify(chart)});
+	`;
 	console.log(js);
+
+	var filename = chart.chart.renderTo + ".js"
 	fs.writeFile(filename, js, function(err) {
 		if(err) {
 			throw err;
