@@ -25,7 +25,7 @@ generateChart(function(err, chart) {
 		// add css style .green
 		js += '$("#crashRateText").addClass("green");';
 
-	} else if (currentCrashRate <= 0.3 && currentCrashRate >= 0.69){
+	} else if (currentCrashRate <= 0.69){
 		// add css style .amber
 		js += '$("#crashRateText").addClass("amber");';
 	} else {
