@@ -79,7 +79,7 @@
         </ul>
         <!-- Navigation item -->
         <ul>
-            <li style="background: rgb(161, 191, 94)"><a href="#">BETA Group<!--[if IE 7]><!--></a><!--<![endif]-->
+            <li style="background: #00568a"><a href="#">BETA Group<!--[if IE 7]><!--></a><!--<![endif]-->
             </li>
         </ul>
         <!-- Navigation item -->
@@ -98,39 +98,33 @@
             <!-- CONTENT CELL Overview-->
             <div class="content-cell-corner-top"></div>
             <div class="content-cell">
-                <h1>Current Build in BETA - <span class="buildNumber" id="latestVersionText"></span></h1>
+                <h1>Current Build in Production - <span class="buildNumber" id="latestVersionText"></span>
+                </h1>
                 <p>The latest version was <b><span id="latestVersionText"></span></b> released <b><span
                         id="releaseDays"></span></b> days ago on <b><span id="releaseDate"></span></b>.</p>
                 <script src="../latestVersionText.js"></script>
 
                 <!--column left -->
                 <div id="content-cell-colleft">
-                    <h2>Current Build Status: </h2>
-                    <p><a
-                            href='http://iosuiauto.gutools.co.uk:8080/job/RunNewDashboard'><img
-                            src='http://iosuiauto.gutools.co.uk:8080/buildStatus/icon?job=RunNewDashboard'></a>
-                    </p>
+                    <h2>Adoption Rate<BR>
+                        <span class="green" id="adoptionText"></span></h2>
+                    <script src="../adoption.js"></script>
+                    <h2>Star Rating <BR>
+                        <span class="green" id="starRatingText"></span></h2>
+                    <script src="../starRating.js"></script>
 
                 </div>
 
                 <!--column right-->
                 <div id="content-cell-right">
-                    <div id="crashRateKey">
-                        <!--tooltip-->
-                        <a href="#" class="tooltip">
-                            <img src="../img/icon_question.png"/>
-                            <span>
-                                <h2>Key:</h2>
-                                <br/>
-                                 <p class="green_small">(good: 0 - 0.3%) </p>
-                                 <p class="amber_small">(avg: 0.4% - 0.6%) </p>
-                                 <p class="red_small">(bad: 0.7% or above) </p>
-                            </span>
-                        </a>
-                        <div style="display:none;"></div>
-                    </div>
 
-                    <h2>Current Crash Rate: <span id="crashRateText"></span></h2>
+                    <h2>Crash Rate <span id="question_mark">�</span> <BR>
+                        <div id="tooltip">
+                            <p class="green_small">good: 0% - 0.3%</p>
+                            <p class="amber_small">avg: 0.4% - 0.6%</p>
+                            <p class="red_small">bad: 0.7% or above</p>
+                        </div>
+                        <span id="crashRateText"></span></h2>
                 </div>
 
             </div>
@@ -212,13 +206,13 @@
             <div class="subcontent-cell-corner-top"></div>
             <div class="subcontent-cell">
                 <h1>BETA User Info</h1>
-                <h3>BETA users: <br/><span class="green" id="betaUsersText">xx,xxx</span>
+                <h3>BETA users <br/><span class="green" id="betaUsersText">xx,xxx</span>
                     <script src="../subscribersText.js"></script>
                 </h3>
                 <h3>Active BETA users: <br/><span class="red" id="activeBetaUsersText">x,xxx</span>
                     <script src="../subscribersText.js"></script>
                 </h3>
-                <h3>Active BETA subscribers: <br/><span class="green" id="activeBetaSubscribersText">x,
+                <h3>Active BETA subscribers <br/><span class="green" id="activeBetaSubscribersText">x,
                     xxx</span>
                     <script src="../subscribersText.js"></script>
                 </h3>
@@ -229,10 +223,10 @@
             <div class="subcontent-cell-corner-top"></div>
             <div class="subcontent-cell">
                 <h1>BETA User Issues</h1>
-                <h3>Issues reported: <span class="green" id="complaints">7</span>
+                <h3>Issues reported <span class="green" id="complaints"></span>
                     <script src="../complaints.js"></script>
                 </h3>
-                <h3>User Emails:</h3>
+                <h3>User Emails</h3>
                 <!--<table class="table" id="appsFeedback"></table>-->
                 <div id="appsFeedback">
                     <!--<span id="appsFeedback"></span>-->
