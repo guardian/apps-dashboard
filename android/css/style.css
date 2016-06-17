@@ -222,6 +222,7 @@ body {
 }
 #question_mark {
     color: #00568a;
+    color: rgb(255, 165, 0);
 }
 
 #tooltip .green_small {
