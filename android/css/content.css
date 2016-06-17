@@ -662,7 +662,8 @@
 .subcontent h3 {
     /* margin: 1.0em 0 -0.3em 0; */
     padding: 5px 20px;
-    color: rgb(125, 125, 125);
+    /*color: rgb(125, 125, 125);*/
+    color: rgb(75, 75, 75);
     font-weight: bold;
     font-size: 180% !important /*Non-IE6*/;
     font-size: 160% /*IE6*/;
