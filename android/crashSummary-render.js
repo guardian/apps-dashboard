@@ -58,7 +58,7 @@ function generateText(callback) {
 
 			var nullPointerExceptions = `There have been <b>${histogram["java.lang.NullPointerException"]}</b> null pointer exceptions.`;
 			var category = Object.keys(histogram)[0];
-			var mostCommonCategory = `Our most common type of error is <b>${category}</b> with a total of <b>${histogram[category]}</b> exceptions.`;
+			var mostCommonCategory = `Our most common type of error is <b>${category}</b> with a total of <b>${histogram[category]}</b> crashes.`;
 			var widespreadCrash = mostWidespreadCrash(crashes);
 			var frequentCrash = mostFrequentCrash(crashes);
 			cc.getCrashDetails(widespreadCrash.hash, function(err, details) {
