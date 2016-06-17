@@ -19,8 +19,8 @@ generateText(function(err, widespreadCrash, widespreadVersionSummary, frequentCr
 		throw err;
 	}
 
-	var js = `$("#widespreadCrash").html("Most widespread - <i>${widespreadCrash.name}</i> happening to <b>${widespreadCrash.uniqueSessionCount}</b> people. ${widespreadVersionSummary}");
-$("#frequentCrash").html("Most frequent - <i>${frequentCrash.name}</i>, with <b>${frequentCrash.sessionCount}</b> crashes so far. ${frequentVersionSummary}");`
+	var js = `$("#widespreadCrash").html("<b>Most widespread</b>: <i>${widespreadCrash.name}</i> happening to <b>${widespreadCrash.uniqueSessionCount}</b> people. ${widespreadVersionSummary}");
+$("#frequentCrash").html("<b>Most frequent</b>: <i>${frequentCrash.name}</i>, with <b>${frequentCrash.sessionCount}</b> crashes so far. ${frequentVersionSummary}");`
 
 	var filename = "crashSummary.js"
 	console.log(js);
