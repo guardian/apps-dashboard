@@ -24,7 +24,9 @@ body {
 }
 
 .buildNumber {
-    color: rgb(135, 180, 40);
+    /*color: rgb(135, 180, 40);*/
+    color:  #00568a;
+
 }
 
 /*  Alerts */
@@ -41,7 +43,8 @@ body {
 .green {
     font-family: verdana, arial, sans serif;
     padding-bottom: 2px;
-    color: rgb(135, 180, 40);
+    /*color: rgb(135, 180, 40);*/
+    color:  #00568a;
     height: 20px;
     font-weight: bold;
     font-size: 18px !important /*Non-IE6*/;
@@ -71,7 +74,9 @@ body {
 .green_small {
     font-family: verdana, arial, sans serif;
     padding-bottom: 2px;
-    color: rgb(135, 180, 40);
+    /*color: rgb(135, 180, 40);*/
+    color: #00568a;
+
     height: 20px;
     font-weight: bold;
     font-size: 12px !important /*Non-IE6*/;
@@ -157,7 +162,7 @@ body {
     float: right;
     font-family: verdana, arial, sans serif;
     padding: 10px 20px;
-    color: rgb(135, 180, 40);
+    color: #00568a;
     height: 20px;
     font-weight: normal;
     font-size: 200% !important /*Non-IE6*/;
@@ -165,7 +170,8 @@ body {
 }
 
 .navbar ul li a .on {
-    background-color: rgb(161, 191, 94);
+    background-color: #00568a;
+    color: #FFFFFF;
 }
 
 .accord-content {
@@ -177,7 +183,7 @@ body {
     margin-Left: 10px;
     padding: 10px 20px 12px 30px;
     border-bottom: solid 1px rgb(215, 215, 215);
-    background: url(../img/icon_celltitle_level1.gif) no-repeat;
+    background: url(../img/icon_panel_down.png) no-repeat;
     /*background-position: 225px 5px;*/
     background-position: left;
     color: rgb(75, 75, 75);
@@ -214,11 +220,15 @@ body {
 #question_mark:hover ~ #tooltip {
     display: inline;
 }
+#question_mark {
+    color: #00568a;
+}
 
 #tooltip .green_small {
     font-family: verdana, arial, sans serif;
     /*padding-bottom: 2px;*/
-    color: rgb(135, 180, 40);
+    /*color: rgb(135, 180, 40);*/
+    color: #00568a;
     /*height: 20px;*/
     font-weight: bold;
     font-size: 14px !important /*Non-IE6*/;

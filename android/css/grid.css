@@ -154,7 +154,8 @@ body {
 
 .sitename a {
     text-decoration: none;
-    color: rgb(125, 125, 125);
+    /*color: rgb(125, 125, 125);*/
+    color:  #00568a;
 }
 
 .sitename a:hover {
@@ -224,7 +225,8 @@ body {
 
 .navglobal a:hover {
     text-decoration: none;
-    color: rgb(161, 191, 94);
+    /*color: rgb(161, 191, 94);*/
+    color: #00568a;
 }
 
 /*******************/
@@ -321,6 +323,8 @@ body {
     z-index: auto !important /*Non-IE6*/;
     z-index: 1000 /*IE6*/;
     background-color: rgb(225, 225, 225);
+    background-color: #9cb0bd;
+
 }
 
 
@@ -335,9 +339,17 @@ body {
     text-decoration: none;
     font-weight: bold;
     color: rgb(100, 100, 100);
-    border-right: solid 0px rgb(161, 191, 94);
+    color: #FFFFFF;
+    /*border-right: solid 0px rgb(161, 191, 94);*/
+    border-right: solid 0px  #00568a;
+
 
 }
+.navbar ul li a:hover {
+    font-weight: bold;
+    color: #FFFFFF);
+}
+
 
 .navbar ul li ul {
     display: none;
@@ -352,7 +364,8 @@ body {
 
 /*Sylvain IE hack*/
 .navbar ul li:hover a {
-    background-color: rgb(161, 191, 94);
+    /*background-color: rgb(161, 191, 94);*/
+    background-color: #00568a;
     text-decoration: none;
 }
 
@@ -366,8 +379,8 @@ body {
     margin-top: 0.1em;
     left: 0;
     padding: 0px 16px 0px 16px;
-   /* border-top: solid 1px rgb(215, 215, 215); */
-    border-top: solid 1px rgb(161, 191, 94);
+    /*border-top: solid 1px rgb(161, 191, 94);*/
+    border-top: solid 1px #00568a;
 }
 
 .navbar ul li:hover ul li a {
@@ -378,17 +391,26 @@ body {
     line-height: 1.3em;
     margin-left: -17px;
     padding: 4px 16px 4px 16px;
-    border-right: solid 1px rgb(161, 191, 94);
-    border-left: solid 1px rgb(161, 191, 94);
-    border-bottom: solid 1px rgb(161, 191, 94);
-    background-color: rgb(161, 191, 94);
+
+    /*border-right: solid 1px rgb(161, 191, 94);*/
+    /*border-left: solid 1px rgb(161, 191, 94);*/
+    /*border-bottom: solid 1px rgb(161, 191, 94);*/
+    /*background-color: rgb(161, 191, 94);*/
+
+    border-right: solid 1px #00568a;
+    border-left: solid 1px #00568a;
+    border-bottom: solid 1px #00568a;
+    background-color: #00568a;
+
+
     font-weight: normal;
     color: rgb(100, 100, 100);
 }
 
 /*Color subcells normal mode*/
 .navbar ul li:hover ul li a:hover {
-    background-color: rgb(161, 191, 94);
+    /*background-color: rgb(161, 191, 94);*/
+    background-color: #00568a;
     text-decoration: none;
 }
 
@@ -406,7 +428,8 @@ body {
 .navbar ul li a:hover {
     position: relative /*Sylvain IE hack*/;
     z-index: 1000 /*Sylvain IE hack*/;
-    background-color: rgb(161, 191, 94);
+    /*background-color: rgb(161, 191, 94);*/
+    background-color: #00568a;
     text-decoration: none;
 }
 
@@ -520,7 +543,7 @@ body {
     clear: both;
     line-height: 1.3em;
     text-align: center;
-    color: rgb(125, 125, 125);
+    color: #00568a;;
     font-weight: bold;
     font-size: 110%;
 }
