@@ -33,5 +33,13 @@ generateText(function(err, rating) {
 function generateText(callback) {
 	var appAnnie = new AppAnnieClient(apikey, androidProductID, iosProductID);
 
-	appAnnie.getGooglePlayStarRating(callback);
+	appAnnie.getGooglePlayReviews(Util.dates.twoWeeksAgoAndADay, Util.dates.yesterday, 0, function(err, result){
+		if(err) callback(err);
+
+		var averageStarRating = result.reduce(function(a,m,i,p) {
+			return a + m.rating/p.length;
+		},0);
+
+		callback(null, averageStarRating);
+	});
 };

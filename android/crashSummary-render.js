@@ -13,14 +13,16 @@ var clientid = nconf.get('crittercism_clientid');
 console.log('username is ' + username);
 console.log('clientid is ' + clientid);
 
-generateText(function(err, widespreadCrash, widespreadVersionSummary, frequentCrash, frequentVersionSummary) {
+generateText(function(err, widespreadCrash, widespreadVersionSummary, frequentCrash, frequentVersionSummary, nullPointerExceptions, mostCommonCategory) {
 	if(err) {
 		console.log(JSON.stringify(err.message))
 		throw err;
 	}
 
 	var js = `$("#widespreadCrash").html("<b>Most widespread</b>: <i>${widespreadCrash.name}</i> happening to <b>${widespreadCrash.uniqueSessionCount}</b> people. ${widespreadVersionSummary}");
-$("#frequentCrash").html("<b>Most frequent</b>: <i>${frequentCrash.name}</i>, with <b>${frequentCrash.sessionCount}</b> crashes so far. ${frequentVersionSummary}");`
+$("#frequentCrash").html("<b>Most frequent</b>: <i>${frequentCrash.name}</i>, with <b>${frequentCrash.sessionCount}</b> crashes so far. ${frequentVersionSummary}");
+$("#nullPointers").html("${nullPointerExceptions}");
+$("#category").html("${mostCommonCategory}");`
 
 	var filename = "crashSummary.js"
 	console.log(js);
@@ -36,6 +38,7 @@ $("#frequentCrash").html("<b>Most frequent</b>: <i>${frequentCrash.name}</i>, wi
  
 function generateText(callback) {
 	var appVersion = GuardianApp.getLatestAndroidAppVersion();
+	//var appVersion = "4.4.664";
 	var cc = new CrittercismClient(clientid);
 
 	cc.init(username, password, function(err) {
@@ -50,7 +53,12 @@ function generateText(callback) {
 			}
 
 			console.log(JSON.stringify(crashes));
+			var histogram = calculateHistogramFor(crashes);
+			Util.print(histogram);
 
+			var nullPointerExceptions = `There have been <b>${histogram["java.lang.NullPointerException"]}</b> null pointer exceptions.`;
+			var category = Object.keys(histogram)[0];
+			var mostCommonCategory = `Our most common type of error is <b>${category}</b> with a total of <b>${histogram[category]}</b> crashes.`;
 			var widespreadCrash = mostWidespreadCrash(crashes);
 			var frequentCrash = mostFrequentCrash(crashes);
 			cc.getCrashDetails(widespreadCrash.hash, function(err, details) {
@@ -63,7 +71,7 @@ function generateText(callback) {
 					Util.print(diagnostic.system_version);
 					var frequentVersionSummary = generateVersionSummary(diagnostic.system_version, diagnostic.app_version);
 					Util.print(frequentVersionSummary);
-					callback(null, widespreadCrash, widespreadVersionSummary, frequentCrash, frequentVersionSummary);
+					callback(null, widespreadCrash, widespreadVersionSummary, frequentCrash, frequentVersionSummary, nullPointerExceptions, mostCommonCategory);
 				});
 			});
 
@@ -112,4 +120,18 @@ function mostWidespreadCrash(crashes) {
 
 function mostFrequentCrash(crashes) {
 	return crashes.sort((b,a) => a.sessionCount - b.sessionCount)[0];
+}
+
+function calculateHistogramFor(crashes) {
+	var histogram = {}
+	crashes.forEach(crash => {
+		if(typeof histogram[crash.name] === "undefined")
+			histogram[crash.name] = crash.sessionCount;
+		else
+			histogram[crash.name] += crash.sessionCount;
+	})
+	var sortedKeys = Object.keys(histogram).sort( (a,b) => histogram[b] - histogram[a] );
+	sortedHistogram = {};
+	sortedKeys.forEach(key => sortedHistogram[key] = histogram[key]);
+	return sortedHistogram;
 }
