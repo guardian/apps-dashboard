@@ -1,5 +1,5 @@
 var CrittercismClient = require('./CrittercismClient.js');
-var Util = require('./Util.js');
+var Util = require('../lib/Util.js');
 var moment = require ('moment');
 var nconf = require('nconf');
 var fs = require('fs');

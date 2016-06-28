@@ -1,5 +1,5 @@
 var itc = require("itunesconnect");
-var Util = require('./Util.js');
+var Util = require('../lib/Util.js');
 var _ = require("lodash");
 var moment = require ('moment');
 var nconf = require('nconf');
