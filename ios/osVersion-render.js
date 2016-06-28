@@ -185,7 +185,10 @@ function getDonutChart(response) {
             dataLabels: {
 
             }
-        }]
+        }],
+        credits: {
+            enabled: false
+        },
     };
 	return chart;
 }
