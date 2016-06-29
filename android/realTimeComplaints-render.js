@@ -9,49 +9,28 @@ nconf.file({ file: '../config.json' });
 var apikey = nconf.get("appannie_apikey");
 var androidProductID = nconf.get("appannie_androidProductID");
 var iosProductID = nconf.get("appannie_iosProductID");
-console.log('apikey is ' + apikey);
-console.log('androidProductID is ' + androidProductID);
-console.log('iosProductID is ' + iosProductID);
 
-generateChart(function(err, chart) {
+generateChart(function(err, reviews) {
 	if(err) {
 		console.log(JSON.stringify(err.message))
 		throw err;
 	}
 
-	var js = '$("#' + chart.chart.renderTo + 'Text").text("' + chart.series[0].data[chart.series[0].data.length - 1] + '");'
-	js += "new Highcharts.Chart(" + JSON.stringify(chart) + ");";
-	var filename = chart.chart.renderTo + ".js"
-	console.log(js);
-	fs.writeFile(filename, js, function(err) {
-		if(err) {
-			throw err;
-		}
-
-		console.log(filename + " was saved!");
-	}); 
+	console.log(reviews.length + " complaints today")
 });
  
 function generateChart(callback) {
         var chart = Util.getTemplate("custom-line-compact");
 	var appAnnie = new AppAnnieClient(apikey, androidProductID, iosProductID);
 
-	appAnnie.getGooglePlayReviews(Util.dates.aWeekAgo, Util.dates.aDayAgo, [1,2], 0, function(err, reviews){
+	appAnnie.getGooglePlayReviews(Util.dates.today, Util.dates.today, [1,2], 0, function(err, reviews){
 		if (err) {
 			callback(err);
 		}
-
 		console.log(JSON.stringify(reviews));
 
-		var histogram = calculateHistogramFor(reviews);
-		console.log(JSON.stringify(histogram));
 
-		chart.chart.renderTo = "complaints";
-		chart.xAxis.categories = Object.keys(histogram).map(Util.shortDate);
-		var data = Object.keys(histogram).map(date => histogram[date])
-		chart.series = [{name:"Complaints", data:data}]
-
-		callback(null, chart);
+		callback(null, reviews);
 	});
 };
 
