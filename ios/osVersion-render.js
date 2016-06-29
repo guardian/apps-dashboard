@@ -1,5 +1,5 @@
 var Report = require('nomniture').Report;
-var Util = require('./Util.js');
+var Util = require('../lib/Util.js');
 var moment = require ('moment');
 var nconf = require('nconf');
 var _ = require('lodash');
@@ -185,7 +185,10 @@ function getDonutChart(response) {
             dataLabels: {
 
             }
-        }]
+        }],
+        credits: {
+            enabled: false
+        },
     };
 	return chart;
 }
