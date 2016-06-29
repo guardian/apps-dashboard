@@ -1,10 +1,523 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script src="../lib/StarR.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Android App Dashboard</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen,projection,print" href="./css/styleBS.css"/>
+
 </head>
+
 <body>
+
+<header>
+    <span class="sitelogo"></span>
+    <h1>Android Dashboard - <span id="siteDate">
+        <script>
+            document.getElementById("siteDate").innerHTML = Date();
+        </script>
+    </span></h1>
+
+    <h2>Monitoring information for the Guardian Android News App</h2>
+</header>
+<div class="container">
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+                <a class="navbar-brand" href="#">Overview</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#live">LIVE (Production)</a></li>
+                    <li><a href="#beta">BETA Group</a></li>
+                    <li><a href="#alpha">ALPHA Group</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+    </nav>
+
+    <!--site pages-->
+    <div class="pages">
+
+        <!--LIVE (Production Page)-->
+        <div class="page" id="live">
+
+            <!--current build info-->
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Current Build in Production - <span id="latestVersionText"></span></h3>
+                        <p>The latest version was <b><span id="latestVersionText"></span></b> released <b><span
+                                id="releaseDays"></span></b> days ago on <b><span id="releaseDate"></span></b>.</p>
+
+                    <script src="latestVersionText.js"></script>
+
+
+                    <h3>Application Services</h3>
+
+                    <table class="table">
+                        <tr>
+                            <th>MAPI</th>
+                            <th>Membership</th>
+                            <th>Identity</th>
+                            <th>Discussion</th>
+                            <th>DFP (Ads Server)</th>
+                        </tr>
+                        <tr class="success">
+                            <td class="success"><span class="glyphicon glyphicon-ok-sign"></span></td>
+                            <td class="danger"><span class="glyphicon glyphicon-remove-sign"></span></td>
+                            <td class="success"><span class="glyphicon glyphicon-ok-sign"></span></td>
+                            <td class="success"><span class="glyphicon glyphicon-ok-sign"></span></td>
+                            <td class="success"><span class="glyphicon glyphicon-ok-sign"></span></td>
+                        </tr>
+
+                    </table>
+                </div>
+
+            </div>
+
+            <!--userbabase info-->
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>User base Info</h3>
+                    <h4>App Users: <span class="green" id="appUsersText-ignore">960,867/m</span>
+                        <script src="appUsersText.js"></script>
+                    </h4>
+                    <h4>Paid Subscribers: <span class="green" id="subscriberPurchasesText">8,717</span>
+                        <script src="subscribersText.js"></script>
+                    </h4>
+                    <h4>Members: <span class="green" id="membershipPurchasesText-ignore">1004</span>
+                        <script src="membershipPurchasesText.js"></script>
+                    </h4>
+                </div>
+
+                <!--adoption rate-->
+                <div class="col-md-4">
+                    <h3>Adoption Rate</h3>
+                    <h4 id="adoptionText"></h4>
+                    <span class="green">
+                        <script src="adoption.js"></script>
+                    </span>
+                    <h3>Rolling Star Rating</h3>
+                    <h4 id="starRatingText"></h4>
+                    <span id="stars-existing" class="starR" data-rating='4'></span>
+                    <script src="starRating.js"></script>
+                </div>
+
+
+                <!--app revenue-->
+                <div class="col-md-4">
+                    <h3>App Revenue</h3>
+                    <h4>Subs: <span class="green" id="subscribionText">£19,000/m</span>
+                        <script src="subscriberPurchasesText.js"></script>
+                    </h4>
+                    <h4>Membership: <span class="green" id="membershipText-ignore">£3,330/m</span>
+                        <script src="membershipPurchasesText.js"></script>
+                    </h4>
+                </div>
+
+            </div>
+
+            <!--crash trends-->
+            <div class="row">
+
+                <div class="col-md-3">
+                    <script>
+                        $(document).ready(function () {
+                            $('[data-toggle="tooltip"]').tooltip();
+                        });
+                    </script>
+                    <h3>Crash Rate <a href="#"
+                                      data-toggle="tooltip"
+                                      data-html="true"
+                                      data-placement="bottom"
+                                      title="good: 0% - 0.3%<br />avg: 0.4% - 0.6%<br />bad: 0.7% or above">
+                        <span class="glyphicon glyphicon-question-sign"></span></a></h3>
+
+                    <h3><span id="crashRateText"></span></h3>
+                </div>
+
+                <div class="col-md-9">
+                    <h3>Crash trends</h3>
+                    <p><span id="widespreadCrash"></span></p>
+                    <p><span id="frequentCrash"></span></p>
+                    <p><span id="nullPointers"></span></p>
+                    <p><span id="category"></span></p>
+                    <div id="crashRate" style="height:160px"></div>
+                    <script src="crashRate.js"></script>
+                    <script src="crashSummary.js"></script>
+                </div>
+
+            </div>
+
+            <!--production monitoring-->
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Production Monitoring</h3>
+                    <h4>Membership</h4>
+                    <div id="membership">
+                        <table class="table">
+                            <tr>
+                                <th>Status</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr class="success">
+                                <td><span class="glyphicon glyphicon-ok-sign"></span></td>
+                                <td>Display membership payment screen</td>
+                            </tr>
+                            <tr class="danger">
+                                <td><span class="glyphicon glyphicon-remove-sign"></span></td>
+                                <td>Successfully pay for membership</td>
+                            </tr>
+                        </table>
+                        <script src="membershipFlow.js"></script>
+                        <script src="tableData.js"></script>
+
+                        <h4>Print Subscription</h4>
+                        <div id="printSubs">
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Description</th>
+                                </tr>
+                                <tr class="success">
+                                    <td><span class="glyphicon glyphicon-ok-sign"></span></td>
+                                    <td>Successfully recovered print subscription</td>
+                                </tr>
+                            </table>
+                            <script src="xxx.js"></script>
+                            <script src="xxx.js"></script>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!--devices and versions-->
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Android Devices and Versions</h3>
+                    <div class="panel-group" id="accordion">
+                        <!--android devices-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#devices">
+                                        <span class="glyphicon glyphicon-download"></span> Which Android devices do our
+                                        users
+                                        use?</a>
+                                </h4>
+                            </div>
+                            <div id="devices" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <script src="devices.js"></script>
+                                </div>
+                            </div>
+                        </div>
+                        <!--android os-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#osVersion">
+                                        <span class="glyphicon glyphicon-download"></span> Which Android versions do our
+                                        users use?</a>
+                                </h4>
+                            </div>
+                            <div id="osVersion" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <script src="osVersion.js"></script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--page end-->
+
+        <!--BETA Page-->
+        <div class="page" id="beta">
+
+            <!--current build info-->
+            <div class="row">
+                <div class="col-md-8">
+                    <h3>Current Build in BETA - <span id="latestVersionText"></span></h3>
+                    <p>The latest version was <b><span id="latestVersionText"></span></b> released <b><span
+                            id="releaseDays1"></span></b> days ago on <b><span id="releaseDate1"></span></b>.</p>
+                    <script src="latestVersionText.js"></script>
+                </div>
+
+                <!--userbabase info-->
+                <div class="col-md-4">
+                    <h3>User base Info</h3>
+                    <h4>Active BETA Users <span class="green" id="appUsersText-ignore1">960,867/m</span>
+                        <script src="appUsersText.js"></script>
+                    </h4>
+                    <h4>Active BETA Subscribers <span class="green" id="subscriberPurchasesText1">8,717</span>
+                        <script src="subscribersText.js"></script>
+                    </h4>
+                </div>
+            </div>
+
+            <!--crash trends-->
+            <div class="row">
+
+                <div class="col-md-4">
+                    <script>
+                        $(document).ready(function () {
+                            $('[data-toggle="tooltip"]').tooltip();
+                        });
+                    </script>
+                    <h3>BETA Crash Rate <a href="#"
+                                           data-toggle="tooltip"
+                                           data-html="true"
+                                           data-placement="bottom"
+                                           title="good: 0% - 0.3%<br />avg: 0.4% - 0.6%<br />bad: 0.7% or above">
+                        <span class="glyphicon glyphicon-question-sign"></span></a></h3>
+
+                    <h3><span id="crashRateText1"></span></h3>
+                </div>
+
+                <div class="col-md-8">
+                    <h3>BETA Crash trends</h3>
+                    <p><span id="widespreadCrash"></span></p>
+                    <p><span id="frequentCrash"></span></p>
+                    <p><span id="nullPointers"></span></p>
+                    <p><span id="category"></span></p>
+                    <div id="crashRate" style="height:160px"></div>
+                    <script src="crashRate.js"></script>
+                    <script src="crashSummary.js"></script>
+                </div>
+
+            </div>
+
+            <!--production monitoring-->
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>BETA Production Monitoring</h3>
+                    <div id="appStatus1">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Status</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr>
+                                <td class="glyphicon glyphicon-ok-sign"></td>
+                                <td>Display membership payment screen</td>
+                            </tr>
+                            <tr>
+                                <td class="	glyphicon glyphicon-remove-sign"></td>
+                                <td>Successfully pay for membership</td>
+                            </tr>
+                        </table>
+                        <script src="membershipFlow.js"></script>
+                    </div>
+                    <script src="tableData.js"></script>
+                </div>
+
+
+            </div>
+
+            <!--devices and versions-->
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>BETA Devices and Versions</h3>
+                    <div class="panel-group" id="accordion1">
+                        <!--android devices-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion1" href="#devices">
+                                        <span class="glyphicon glyphicon-download"></span> Which Android devices do our
+                                        users
+                                        use?</a>
+                                </h4>
+                            </div>
+                            <div id="devices1" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <script src="devices.js"></script>
+                                </div>
+                            </div>
+                        </div>
+                        <!--android os-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion1" href="#osVersion">
+                                        <span class="glyphicon glyphicon-download"></span> Which Android versions do our
+                                        users use?</a>
+                                </h4>
+                            </div>
+                            <div id="osVersion1" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <script src="osVersion.js"></script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--page end-->
+
+        <!--ALPHA Page-->
+        <div class="page" id="alpha">
+
+            <!--current build info-->
+            <div class="row">
+                <div class="col-md-8">
+                    <h3>Current Build in ALPHA - <span id="latestVersionText"></span></h3>
+                    <p>The latest version was <b><span id="latestVersionText"></span></b> released <b><span
+                            id="releaseDays"></span></b> days ago on <b><span id="releaseDate"></span></b>.</p>
+                    <script src="latestVersionText.js"></script>
+                </div>
+
+                <!--userbabase info-->
+                <div class="col-md-4">
+                    <h3>User base Info</h3>
+                    <h4>ALPHA Users <span class="green" id="appUsersText-ignore">960,867/m</span>
+                        <script src="appUsersText.js"></script>
+                    </h4>
+                </div>
+            </div>
+
+            <!--crash trends-->
+            <div class="row">
+
+                <div class="col-md-4">
+                    <script>
+                        $(document).ready(function () {
+                            $('[data-toggle="tooltip"]').tooltip();
+                        });
+                    </script>
+                    <h3>ALPHA Crash Rate <a href="#"
+                                            data-toggle="tooltip"
+                                            data-html="true"
+                                            data-placement="bottom"
+                                            title="good: 0% - 0.3%<br />avg: 0.4% - 0.6%<br />bad: 0.7% or above">
+                        <span class="glyphicon glyphicon-question-sign"></span></a></h3>
+
+                    <h3><span id="crashRateText"></span></h3>
+                </div>
+
+                <div class="col-md-8">
+                    <h3>Crash trends</h3>
+                    <p><span id="widespreadCrash"></span></p>
+                    <p><span id="frequentCrash"></span></p>
+                    <p><span id="nullPointers"></span></p>
+                    <p><span id="category"></span></p>
+                    <div id="crashRate" style="height:160px"></div>
+                    <script src="crashRate.js"></script>
+                    <script src="crashSummary.js"></script>
+                </div>
+
+            </div>
+
+            <!--production monitoring-->
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>ALPHA Production Monitoring</h3>
+                    <div id="appStatus">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Status</th>
+                                <th>Description</th>
+                            </tr>
+                            <tr>
+                                <td class="glyphicon glyphicon-ok-sign"></td>
+                                <td>Display membership payment screen</td>
+                            </tr>
+                            <tr>
+                                <td class="	glyphicon glyphicon-remove-sign"></td>
+                                <td>Successfully pay for membership</td>
+                            </tr>
+                        </table>
+                        <script src="membershipFlow.js"></script>
+                    </div>
+                    <script src="tableData.js"></script>
+                </div>
+
+            </div>
+
+            <!--devices and versions-->
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>ALPHA Devices and Versions</h3>
+                    <div class="panel-group" id="accordion2">
+                        <!--android devices-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion2" href="#devices">
+                                        <span class="glyphicon glyphicon-download"></span> Which Android devices do our
+                                        users
+                                        use?</a>
+                                </h4>
+                            </div>
+                            <div id="devices" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <script src="devices.js"></script>
+                                </div>
+                            </div>
+                        </div>
+                        <!--android os-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion2" href="#osVersion">
+                                        <span class="glyphicon glyphicon-download"></span> Which Android versions do our
+                                        users use?</a>
+                                </h4>
+                            </div>
+                            <div id="osVersion" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <script src="osVersion.js"></script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--page end-->
+
+
+    </div>
+    <!--/.pages end -->
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    <p>Copyright &copy; 2016 The Guardian&nbsp;&nbsp;|&nbsp;&nbsp;All Rights Reserved</p>
+</div>
 
 </body>
 </html>

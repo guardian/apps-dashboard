@@ -1,0 +1,162 @@
+/*Changes to BootStrap CSS*/
+
+body {
+    font-size: 18px;
+}
+
+/*header styles*/
+header {
+    margin-left: 20px;
+}
+
+.sitelogo {
+    float: left;
+    width: 70px;
+    height: 70px;
+    background: url(../img/androidG_icon.png) no-repeat;
+    border: none
+}
+
+#siteDate {
+    font-family: verdana, arial, sans serif;
+    padding: 10px;
+    color: #727272;
+    font-size: 20px;
+    padding-right: 250px;
+}
+
+h1 {
+    font-family: "trebuchet ms", arial, sans serif;
+    font-weight: normal;
+    color: #00568a;
+    font-size: 40px;
+}
+
+h2 {
+    margin-top: -10px;
+    font-family: verdana, arial, sans serif;
+    color: #73AD21;
+    font-size: 17px;
+}
+
+h3 {
+    color: #00568a;
+}
+
+.green {
+    color: #73AD21;
+}
+
+.container {
+    margin-left: 10px;
+    padding-top: 20px;
+}
+
+/*nav styles*/
+.navbar {
+    margin-bottom: 20px;
+    border-radius: 15px;
+    border: 2px solid #73AD21;
+}
+
+.navbar-default {
+    background: #e9ebee;
+    min-width: 1155px;
+}
+
+.navbar-default .navbar-nav > .active > a {
+    color: #FFFFFF;
+    background: #00568a;
+    font-size: 24px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    font-size: 24px;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    text-decoration: none;
+    /*color: rgb(161, 191, 94);*/
+    color: #FFFFFF;
+    /*background: #00568a;*/
+    background: #73AD21;
+    font-size: 24px;
+}
+
+/*page styles*/
+.pages > .page:target ~ .page:last-child, .pages > .page {
+    display: none;
+}
+
+/*table styles*/
+table {
+    border: 2px solid #73AD21;
+
+}
+
+th {
+    color: #FFFFFF;
+    background: #00568a;;
+}
+
+td {
+    border: 1px solid #73AD21;
+}
+
+/*icons*/
+.glyphicon-ok-sign {
+    font-size: 25px;
+    color: green;
+}
+
+.glyphicon-remove-sign {
+    font-size: 25px;
+    color: red;
+    alignment: center;
+
+}
+
+.glyphicon-download {
+    font-size: 25px;
+    color: #73AD21;
+    vertical-align: top;
+}
+
+.glyphicon-question-sign {
+    font-size: 25px;
+    color: #73AD21;
+    vertical-align: top;
+}
+
+.starR {
+    color: #73AD21;
+    font-size: 24px;
+}
+
+/*page styles*/
+/* :last-child works, but for some reason .page:last-child will not */
+.pages > :last-child, .pages > .page:target {
+    display: block;
+}
+
+.row {
+    margin-left: 1px;
+    border-radius: 15px;
+    border: 2px solid #73AD21;
+    background: #e9ebee;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+}
+
+:target:before {
+    content: "";
+    display: block;
+    height: 60px; /* fixed header height*/
+    margin: -60px 0 0; /* negative fixed header height */
+}
+
+/*footer*/
+.footer {
+    padding: 20px;
+    color: #00568a;
+}
