@@ -10,7 +10,7 @@ all: $(TARGETS) $(REALTIME_TARGETS)
 	node $<
 
 real-time:
-	rm $(REALTIME_TARGETS)
+	-rm $(REALTIME_TARGETS)
 	make $(REALTIME_TARGETS)
 
 clean:
