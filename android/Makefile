@@ -2,7 +2,7 @@ TARGETS=osVersion.js devices.js crashRate.js latestVersionText.js membershipPurc
 REALTIME_TARGETS=todaysCrashRate.js todaysNumberOfComplaints.js
 
 
-.PHONY: real-time clean print-targets
+.PHONY: clean print-targets print-real-time-targets
 
 all: $(TARGETS) $(REALTIME_TARGETS)
 
@@ -19,3 +19,5 @@ clean:
 print-targets:
 	$(info ${TARGETS})
 	
+print-real-time-targets:
+	$(info ${REALTIME_TARGETS})
