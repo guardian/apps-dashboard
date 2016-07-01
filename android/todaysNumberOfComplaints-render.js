@@ -10,16 +10,38 @@ var apikey = nconf.get("appannie_apikey");
 var androidProductID = nconf.get("appannie_androidProductID");
 var iosProductID = nconf.get("appannie_iosProductID");
 
-generateChart(function(err, reviews) {
+generateText(function(err, numberOfComplaints) {
 	if(err) {
 		console.log(JSON.stringify(err.message))
 		throw err;
 	}
 
-	console.log(reviews.length + " complaints today")
+	if (numberOfComplaints <= 0.29) {
+		var color = "green";
+	} else if (numberOfComplaints <= 0.69) {
+		var color = "amber";
+	} else {
+		var color = "red";
+	}
+
+	console.log(numberOfComplaints + " complaints today")
+	var js = `
+	$("#todaysNumberOfComplaints").text("${numberOfComplaints}");
+	$("#todaysNumberOfComplaints").addClass("${color}");
+	`;
+	console.log(js);
+
+	var filename = "todaysNumberOfComplaints.js"
+	fs.writeFile(filename, js, function(err) {
+		if(err) {
+			throw err;
+		}
+
+		console.log(filename + " was saved!");
+	}); 
 });
  
-function generateChart(callback) {
+function generateText(callback) {
         var chart = Util.getTemplate("custom-line-compact");
 	var appAnnie = new AppAnnieClient(apikey, androidProductID, iosProductID);
 
@@ -30,20 +52,6 @@ function generateChart(callback) {
 		console.log(JSON.stringify(reviews));
 
 
-		callback(null, reviews);
+		callback(null, reviews.length);
 	});
 };
-
-function calculateHistogramFor(reviews) {
-	var histogram = {};
-	reviews.sort(function(a,b){
-		return new Date(a.date) - new Date(b.date);
-	})
-	reviews.forEach(function(review) {
-		if(typeof histogram[review.date] === "undefined")
-			histogram[review.date] = 1;
-		else
-			histogram[review.date]++;
-	});
-	return histogram;
-}
