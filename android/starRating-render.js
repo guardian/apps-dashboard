@@ -33,7 +33,7 @@ generateText(function(err, rating) {
 function generateText(callback) {
 	var appAnnie = new AppAnnieClient(apikey, androidProductID, iosProductID);
 
-	appAnnie.getGooglePlayReviews(Util.dates.twoWeeksAgoAndADay, Util.dates.yesterday, 0, function(err, result){
+	appAnnie.getGooglePlayReviews(Util.dates.twoWeeksAgoAndADay, Util.dates.yesterday, [1,2,3,4,5], 0, function(err, result){
 		if(err) callback(err);
 
 		var averageStarRating = result.reduce(function(a,m,i,p) {
