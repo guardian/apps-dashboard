@@ -114,9 +114,7 @@
             <div class="content-cell">
                 <h1>Current Build in Production - <span class="buildNumber" id="latestVersionText"></span>
                 </h1>
-                <p>The latest version was <b><span id="latestVersionText"></span></b> released <b><span
-                        id="releaseDays"></span></b> days ago on <b><span id="releaseDate"></span></b>.</p>
-                <script src="latestVersionText.js"></script>
+                <p>The latest version was <b><span id="latestVersionText"></span></b> release <b><span id="releaseDate"></span></b>.</p>
 
                 <!--column left -->
                 <div id="content-cell-colleft">
@@ -124,8 +122,9 @@
                         <span class="green" id="adoptionText"></span></h2>
                     <script src="adoption.js"></script>
                     <h2>Time in production<BR>
-                        <span class="green">20 days</span></h2>
+			    <span class="green"><span id="releaseDays"></span> days</span></h2>
                 </div>
+                <script src="latestVersionText.js"></script>
 
                 <!--column right-->
                 <div id="content-cell-right">
