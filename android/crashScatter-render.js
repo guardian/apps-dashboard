@@ -52,8 +52,8 @@ function generateChart(callback) {
 			}
 
 			console.log(JSON.stringify(crashes));
-			var scatter = crashes.map(c => [c.uniqueSessionCount, c.sessionCount])
-			console.log(JSON.stringify(scatter));
+			var maxUsers = Math.max.apply(Math, crashes.map(c => c.uniqueSessionCount)) + 5;
+			var maxOccurrences = Math.max.apply(Math, crashes.map(c => c.sessionCount)) + 5;
 
 			chart.chart.renderTo = "crashScatter";
 			chart.title.text = "Occurrences VS Users affected";
@@ -61,7 +61,7 @@ function generateChart(callback) {
 			chart.xAxis.title.text = "Users affected";
 			chart.yAxis.title.text = "Occurrences";
 			chart.series[0].name = "Danger zone";
-			chart.series[0].data = [[10, 10], [10,30], [30,30], [30, 10]];
+			chart.series[0].data = [[10, 10], [10, maxOccurrences], [maxUsers,maxOccurrences], [maxUsers, 10]];
 			chart.series[1].name = "Crashes";
 			chart.series[1].data = crashes.map(c => [c.uniqueSessionCount, c.sessionCount]);
 			chart.tooltip.pointFormat = "{point.x} users, {point.y} crashes";
