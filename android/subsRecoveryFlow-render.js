@@ -12,20 +12,20 @@ var secret = nconf.get('secret');
 console.log('username is ' + username);
 console.log('secret is ' + secret);
 
-generateChart(function(err, chart) {
+generateChart(function(err, checkMark) {
 	if(err) {
 		throw err;
 	}
 
-	var totalSubscriptionRecoveries = chart.series[0].data.reduce((a, b) => a + b);
-	var subscriptionRecoveryCheckMark = totalSubscriptionRecoveries > 0 ? "status_good" : "status_bad";
 
-	var js = '$("#recoveryText").text("' + totalSubscriptionRecoveries  + '");'
-	js += '$("#subscriptionRecoveryCheckMark").addClass("' + subscriptionRecoveryCheckMark  + '");';
-	js += "new Highcharts.Chart(" + JSON.stringify(chart, null, "  ") + ");";
+	var js = `
+	$("#subsRecoveryAndroid4").addClass("${checkMark.android4}");
+	$("#subsRecoveryAndroid5").addClass("${checkMark.android5}");
+	$("#subsRecoveryAndroid6").addClass("${checkMark.android6}");
+	`;
 	console.log(js);
 
-	var filename = chart.chart.renderTo + ".js"
+	var filename = "subsRecoveryFlow.js";
 	fs.writeFile(filename, js, function(err) {
 		if(err) {
 			throw err;
@@ -36,18 +36,17 @@ generateChart(function(err, chart) {
 });
 
 function generateChart(callback) {
-	var chart = Util.getTemplate("custom-line-compact");
 	var appid = GuardianApp.getLatestAndroidAppId();
 
 	var options = { waitTime: 10, log: true, version: 1.4};
 	var reportData = {
 		reportDescription: {
 			reportSuiteID: "guardiangu-globalapps-prod",
-			dateFrom: Util.dates.aMonthAgo,
+			dateFrom: Util.dates.aWeekAgo,
 			dateTo: Util.dates.yesterday,
 			dateGranularity: "day",
-			elements: [{ id: "mobileaction", selected:["Subscription-Purchase"]}],
-			segments: [{id:"s1218_55facf7ae4b08d193fc26205"}, {element:"mobileappid", selected:[appid]}],
+			elements: [{id: "mobileosversion", top:"20"}],
+			segments: [{id:"s1218_55facf7ae4b08d193fc26205"}, {element:"mobileappid", selected:[appid]}, {element: "mobileaction", selected:["Subscription-Purchase"]}, {element:"evar5", selected:["Print"]}],
 			metrics: [{id:"instances"}]
 		}
 	};
@@ -60,21 +59,22 @@ function generateChart(callback) {
 		console.log(JSON.stringify(response));
 		console.log("*****************");
 
-		chart.chart.renderTo = "subsRecoveryFlow";
-		chart.xAxis.categories = Util.arrayOfDatesFromOmnitureData(response);
-		chart.series = highChartSeriesFrom(response);
-		chart.yAxis = [{
-            title: {
-                text: ''
-            }
-        }, {
-            opposite: true,
-            title: {
-                text: ''
-            }}];
+
+		var checkMark = {};
+		checkMark.android4 = checkMarkFor("Android 4", response);
+		checkMark.android5 = checkMarkFor("Android 5", response);
+		checkMark.android6 = checkMarkFor("Android 6", response);
         
-		callback(null, chart);
+		callback(null, checkMark);
 	});
+}
+
+function checkMarkFor(version, response) {
+	var breakdowns = _.flatMap(response.report.data, e => e.breakdown);
+	var filtered = _.filter(breakdowns, b => b.name.includes(version));
+	var total = _.reduce(filtered, (sum, f) => sum + parseInt(f.counts[0]), 0);
+	console.log(version + ":" + total);
+	return total > 0 ? "status_good" : "status_bad";
 }
 
 function highChartSeriesFrom(response) {
