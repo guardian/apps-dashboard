@@ -60,7 +60,7 @@ function generateChart(callback) {
 			chart.xAxis.title.text = "Users affected";
 			chart.yAxis.title.text = "Occurrences";
 			chart.series[0].name = "Danger zone";
-			chart.series[0].data = [[10, 10], [10, maxOccurrences], [maxUsers,maxOccurrences], [maxUsers, 10]];
+			chart.series[0].data = [[40, 40], [40, maxOccurrences], [maxUsers,maxOccurrences], [maxUsers, 40]];
 			chart.series[1].name = "Crashes";
 			chart.series[1].data = crashes.map(function(c){ return {x:c.uniqueSessionCount, y:c.sessionCount, name:c.name, hash:c.hash, reason:Util.abreviated(c.reason)}});
 			chart.tooltip.headerFormat = "{point.x} users, {point.y} crashes<br>";
