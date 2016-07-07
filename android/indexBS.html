@@ -71,8 +71,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <h3>Current Build in Production - <span id="latestVersionText"></span></h3>
-                        <p>The latest version was <b><span id="latestVersionText"></span></b> released <b><span
-                                id="releaseDays"></span></b> days ago on <b><span id="releaseDate"></span></b>.</p>
+                    <p>The latest version was <b><span id="latestVersionText"></span></b> released <b><span
+                            id="releaseDays"></span></b> days ago on <b><span id="releaseDate"></span></b>.</p>
 
                     <script src="latestVersionText.js"></script>
 
@@ -81,18 +81,42 @@
 
                     <table class="table">
                         <tr>
-                            <th>MAPI</th>
+                            <th colspan="3">MAPI</th>
                             <th>Membership</th>
                             <th>Identity</th>
                             <th>Discussion</th>
                             <th>DFP (Ads Server)</th>
                         </tr>
                         <tr>
-                            <script src="services.js"></script>
-                            <td class="danger"><span class="glyphicon glyphicon-remove-sign"></span></td>
-                            <td class="success"><span class="glyphicon glyphicon-ok-sign"></span></td>
-                            <td class="success"><span class="glyphicon glyphicon-ok-sign"></span></td>
-                            <td class="success"><span class="glyphicon glyphicon-ok-sign"></span></td>
+                            <th>UK</th>
+                            <th>US</th>
+                            <th>AU</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td id="mapiUKBackground" class=""><span
+                                    id="mapiUKCheckmark" class="glyphicon"></span></td>
+                            <td id="mapiUSBackground" class=""><span
+                                    id="mapiUSCheckmark" class="glyphicon"></span></td>
+                            <td id="mapiAUBackground" class=""><span
+                                    id="mapiAUCheckmark" class="glyphicon"></span></td>
+                            <td id="membershipBackground" class=""><span
+                                    id="membershipCheckmark" class="glyphicon"></span></td>
+                            <td id="identityBackground" class=""><span
+                                    id="identityCheckmark" class="glyphicon"></span></td>
+                            <td id="discussionBackground" class=""><span
+                                    id="discussionCheckmark" class="glyphicon"></span></td>
+                            <td id="dfpBackground" class=""><span
+                                    id="dfpCheckmark" class="glyphicon"></span></td>
+                            <script src="mapiUKCheck.js"></script>
+                            <script src="mapiUSCheck.js"></script>
+                            <script src="mapiAUCheck.js"></script>
+                            <script src="identityCheck.js"></script>
+                            <script src="discussionCheck.js"></script>
+                            <script src="dfpCheck.js"></script>
                         </tr>
 
                     </table>
