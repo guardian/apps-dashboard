@@ -55,9 +55,8 @@ function generateChart(callback) {
 
 	var report = new Report(username, secret, 'sanJose', options)
 
-//	report.request("Report.Queue", reportData, function(err, response){
-//		if(err) throw new Error(err.message);
-		var response = {"report":{"type":"trended","elements":[{"id":"page","name":"Page"},{"id":"mobileosversion","name":"Operating System Version"}],"reportSuite":{"id":"guardiangu-globalapps-prod","name":"Apps : The Guardian"},"period":"Tue. 28 Jun. 2016 - Mon.  4 Jul. 2016","metrics":[{"id":"pageviews","name":"Page Views","type":"number","decimals":0,"latency":3245,"current":false}],"segments":[{"id":"s1218_55facf7ae4b08d193fc26205","name":"!Apps: Safe app data 070316"}],"data":[{"name":"Tue. 28 Jun. 2016","year":2016,"month":6,"day":28,"breakdown":[{"name":"Membership-ThankYou","url":"","counts":["0"]},{"name":"PaymentScreen-Entry","url":"","counts":["0"]}],"breakdownTotal":["1"]},{"name":"Wed. 29 Jun. 2016","year":2016,"month":6,"day":29,"breakdown":[{"name":"Membership-ThankYou","url":"","counts":["0"]},{"name":"PaymentScreen-Entry","url":"","counts":["0"]}],"breakdownTotal":["1"]},{"name":"Thu. 30 Jun. 2016","year":2016,"month":6,"day":30,"breakdown":[{"name":"Membership-ThankYou","url":"","counts":["0"]},{"name":"PaymentScreen-Entry","url":"","counts":["0"]}],"breakdownTotal":["0"]},{"name":"Fri.  1 Jul. 2016","year":2016,"month":7,"day":1,"breakdown":[{"name":"Membership-ThankYou","url":"","counts":["0"]},{"name":"PaymentScreen-Entry","url":"","counts":["0"]}],"breakdownTotal":["0"]},{"name":"Sat.  2 Jul. 2016","year":2016,"month":7,"day":2,"breakdown":[{"name":"Membership-ThankYou","url":"","counts":["0"]},{"name":"PaymentScreen-Entry","url":"","counts":["0"]}],"breakdownTotal":["8"]},{"name":"Sun.  3 Jul. 2016","year":2016,"month":7,"day":3,"breakdown":[{"name":"Membership-ThankYou","url":"","counts":["0"]},{"name":"PaymentScreen-Entry","url":"","counts":["0"]}],"breakdownTotal":["35"]},{"name":"Mon.  4 Jul. 2016","year":2016,"month":7,"day":4,"breakdown":[{"name":"Membership-ThankYou","url":"","counts":["3"],"breakdown":[{"name":"Android 6.0.1","url":"","counts":["2"]},{"name":"Android 5.0","url":"","counts":["1"]}],"breakdownTotal":["3"]},{"name":"PaymentScreen-Entry","url":"","counts":["49"],"breakdown":[{"name":"Android 6.0.1","url":"","counts":["23"]},{"name":"Android 5.1.1","url":"","counts":["8"]},{"name":"Android 5.0","url":"","counts":["5"]},{"name":"Android 4.4.2","url":"","counts":["4"]},{"name":"Android 5.0.2","url":"","counts":["3"]},{"name":"Android 5.1","url":"","counts":["2"]},{"name":"Android 4.4.4","url":"","counts":["2"]},{"name":"Android 4.1.2","url":"","counts":["1"]},{"name":"Android 6.0","url":"","counts":["1"]}],"breakdownTotal":["49"]}],"breakdownTotal":["196869"]}],"totals":["196914"],"version":"1.4.16.4"},"waitSeconds":"1.164","runSeconds":"16.380"};
+	report.request("Report.Queue", reportData, function(err, response){
+		if(err) throw new Error(err.message);
 
 		console.log(JSON.stringify(response));
 		console.log("*****************");
@@ -79,7 +78,7 @@ function generateChart(callback) {
 		Util.print(purchaseCheckMark);
 
 		callback(null, displayCheckMark, purchaseCheckMark);
-//	});
+	});
 }
 
 function seriesWithIndex(i, response) {
