@@ -36,29 +36,22 @@ function generateChart(callback) {
         var chart = Util.getTemplate("custom-line-compact");
 	var appAnnie = new AppAnnieClient(apikey, androidProductID, iosProductID);
 
-	appAnnie.getGooglePlayReviews(Util.dates.aWeekAgo, Util.dates.aDayAgo, 1, function(err, preResult){
+	appAnnie.getGooglePlayReviews(Util.dates.aWeekAgo, Util.dates.aDayAgo, [1,2], 0, function(err, reviews){
 		if (err) {
 			callback(err);
 		}
 
-		appAnnie.getGooglePlayReviews(Util.dates.aWeekAgo, Util.dates.aDayAgo, 2, function(err, result){
-			if (err) {
-				callback(err);
-			}
+		console.log(JSON.stringify(reviews));
 
-			var reviews = preResult.reviews.concat(result.reviews);
-			console.log(JSON.stringify(reviews));
+		var histogram = calculateHistogramFor(reviews);
+		console.log(JSON.stringify(histogram));
 
-			var histogram = calculateHistogramFor(reviews);
-			console.log(JSON.stringify(histogram));
+		chart.chart.renderTo = "complaints";
+		chart.xAxis.categories = Object.keys(histogram).map(Util.shortDate);
+		var data = Object.keys(histogram).map(date => histogram[date])
+		chart.series = [{name:"Complaints", data:data}]
 
-			chart.chart.renderTo = "complaints";
-			chart.xAxis.categories = Object.keys(histogram).map(Util.shortDate);
-			var data = Object.keys(histogram).map(date => histogram[date])
-			chart.series = [{name:"Complaints", data:data}]
-
-			callback(null, chart);
-		});
+		callback(null, chart);
 	});
 };
 

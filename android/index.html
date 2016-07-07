@@ -13,6 +13,8 @@
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
     <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function () {
             $(".accordion .accord-header").click(function () {
@@ -114,31 +116,23 @@
             <div class="content-cell">
                 <h1>Current Build in Production - <span class="buildNumber" id="latestVersionText"></span>
                 </h1>
-                <p>The latest version was <b><span id="latestVersionText"></span></b> released <b><span
-                        id="releaseDays"></span></b> days ago on <b><span id="releaseDate"></span></b>.</p>
-                <script src="latestVersionText.js"></script>
+                <p>The latest version was <b><span id="latestVersionText"></span></b> release <b><span id="releaseDate"></span></b>.</p>
 
                 <!--column left -->
                 <div id="content-cell-colleft">
                     <h2>Adoption Rate<BR>
                         <span class="green" id="adoptionText"></span></h2>
                     <script src="adoption.js"></script>
-                    <h2>Rolling Star Rating<BR>
-                        <span class="green" id="starRatingText"></span></h2>
-                    <script src="starRating.js"></script>
-
+                    <h2>Time in production<BR>
+			    <span class="green"><span id="releaseDays"></span> days</span></h2>
                 </div>
+                <script src="latestVersionText.js"></script>
 
                 <!--column right-->
                 <div id="content-cell-right">
-
-			<h2>Crash Rate <span id="question_mark">�</span> <BR>
-				<div id="tooltip">
-                                 <p class="green_small">good: 0% - 0.3%</p>
-                                 <p class="amber_small">avg: 0.4% - 0.6%</p>
-                                 <p class="red_small">bad: 0.7% or above</p>
-				</div>
-				<span id="crashRateText"></span></h2>
+                    <h2>Rolling Star Rating<BR>
+                        <span class="green" id="starRatingText"></span></h2>
+                    <script src="starRating.js"></script>
                 </div>
 
             </div>
@@ -149,23 +143,58 @@
             <!-- CONTENT CELL devices-->
             <div class="content-cell-corner-top"></div>
             <div class="content-cell">
+		    <h1>Real-time stats</h1>
+		    <p>Everything is awesome</p>
+                <!--column left -->
+                <div id="content-cell-colleft">
+                    <h2>Complaints<BR>
+                        <span id="todaysNumberOfComplaints"></span></h2>
+		    <script src="todaysNumberOfComplaints.js"></script>
+                </div>
+
+                <!--column right-->
+                <div id="content-cell-right">
+			<h2>Crash Rate <span id="question_mark">�</span> <BR>
+				<div id="tooltip">
+                                 <p class="green_small">good: 0% - 0.3%</p>
+                                 <p class="amber_small">avg: 0.4% - 0.6%</p>
+                                 <p class="red_small">bad: 0.7% or above</p>
+				</div>
+				<span id="todaysCrashRate">Heloo</span></h2>
+			    <script src="todaysCrashRate.js"></script>
+                </div>
+
+            </div>
+            <div class="content-cell-corner-bottom"></div>
+
+            <!-- CONTENT CELL devices-->
+            <div class="content-cell-corner-top"></div>
+            <div class="content-cell">
                 <h1>Production Monitoring</h1>
 		<h2>Membership</h2>
                 <div id="appStatus">
                     <table>
+                        <col width="100">
                         <col width="30">
-                        <col width="180">
+                        <col width="30">
+                        <col width="30">
                         <tr>
-                            <th>Status</th>
                             <th>Description</th>
+                            <th>Android 4</th>
+                            <th>Android 5</th>
+                            <th>Android 6</th>
                         </tr>
                         <tr>
-                            <td id="paymentScreenCheckMark"></td>
                             <td>Display membership payment screen</td>
+                            <td id="memDisplayAndroid4"></td>
+                            <td id="memDisplayAndroid5"></td>
+                            <td id="memDisplayAndroid6"></td>
                         </tr>
                         <tr>
-                            <td id="thankYouScreenCheckMark"></td>
                             <td>Successfully pay for membership</td>
+                            <td id="memPurchaseAndroid4"></td>
+                            <td id="memPurchaseAndroid5"></td>
+                            <td id="memPurchaseAndroid6"></td>
                         </tr>
                     </table>
 
@@ -175,19 +204,49 @@
 		<h2>Print subscription recovery</h2>
                 <div id="appStatus">
                     <table>
+                        <col width="100">
                         <col width="30">
-                        <col width="180">
+                        <col width="30">
+                        <col width="30">
                         <tr>
-                            <th>Status</th>
                             <th>Description</th>
+                            <th>Android 4</th>
+                            <th>Android 5</th>
+                            <th>Android 6</th>
                         </tr>
                         <tr>
-                            <td id="subscriptionRecoveryCheckMark"></td>
                             <td>Successfully recovered print subscription</td>
+                            <td id="subsRecoveryAndroid4"></td>
+                            <td id="subsRecoveryAndroid5"></td>
+                            <td id="subsRecoveryAndroid6"></td>
                         </tr>
                     </table>
 
                     <script src="subsRecoveryFlow.js"></script>
+		</div>
+
+		<h2>Subscription purchase</h2>
+                <div id="appStatus">
+                    <table>
+                        <col width="100">
+                        <col width="30">
+                        <col width="30">
+                        <col width="30">
+                        <tr>
+                            <th>Description</th>
+                            <th>Android 4</th>
+                            <th>Android 5</th>
+                            <th>Android 6</th>
+                        </tr>
+                        <tr>
+                            <td>Successfully purchased google play subscription</td>
+                            <td id="subsPurchaseAndroid4"></td>
+                            <td id="subsPurchaseAndroid5"></td>
+                            <td id="subsPurchaseAndroid6"></td>
+                        </tr>
+                    </table>
+
+                    <script src="subsPurchaseFlow.js"></script>
 
                 </div>
             </div>
@@ -202,8 +261,10 @@
                 <p><span id="nullPointers"></span></p>
                 <p><span id="category"></span></p>
                 <div id="crashRate" style="height:160px"></div>
+                <div id="crashScatter" style="height:320px"></div>
                 <script src="crashRate.js"></script>
                 <script src="crashSummary.js"></script>
+                <script src="crashScatter.js"></script>
             </div>
             <div class="content-cell-corner-bottom"></div>
 

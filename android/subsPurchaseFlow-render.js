@@ -19,13 +19,13 @@ generateChart(function(err, checkMark) {
 
 
 	var js = `
-	$("#subsRecoveryAndroid4").addClass("${checkMark.android4}");
-	$("#subsRecoveryAndroid5").addClass("${checkMark.android5}");
-	$("#subsRecoveryAndroid6").addClass("${checkMark.android6}");
+	$("#subsPurchaseAndroid4").addClass("${checkMark.android4}");
+	$("#subsPurchaseAndroid5").addClass("${checkMark.android5}");
+	$("#subsPurchaseAndroid6").addClass("${checkMark.android6}");
 	`;
 	console.log(js);
 
-	var filename = "subsRecoveryFlow.js";
+	var filename = "subsPurchaseFlow.js";
 	fs.writeFile(filename, js, function(err) {
 		if(err) {
 			throw err;
@@ -46,7 +46,7 @@ function generateChart(callback) {
 			dateTo: Util.dates.yesterday,
 			dateGranularity: "day",
 			elements: [{id: "mobileosversion", top:"20"}],
-			segments: [{id:"s1218_55facf7ae4b08d193fc26205"}, {element:"mobileappid", selected:[appid]}, {element: "mobileaction", selected:["Subscription-Purchase"]}, {element:"evar5", selected:["Print"]}],
+			segments: [{id:"s1218_55facf7ae4b08d193fc26205"}, {element:"mobileappid", selected:[appid]}, {element: "mobileaction", selected:["Subscription-Purchase"]}, {element:"evar5", selected:["Play"]}],
 			metrics: [{id:"instances"}]
 		}
 	};
