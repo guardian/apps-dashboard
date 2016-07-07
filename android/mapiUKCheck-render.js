@@ -6,8 +6,8 @@ generateText(function (err, background, checkmark) {
         throw err;
     }
 
-    var js = '$("#mapiBackground").addClass("' + background + '");$("#mapiCheckmark").addClass("' + checkmark + '")';
-    var filename = "mapiCheck.js"
+    var js = '$("#mapiUKBackground").addClass("' + background + '");$("#mapiUKCheckmark").addClass("' + checkmark + '")';
+    var filename = "mapiUKCheck.js"
     console.log(js);
     fs.writeFile(filename, js, function (err) {
         if (err) {
@@ -18,9 +18,9 @@ generateText(function (err, background, checkmark) {
 });
 
 function generateText(callback) {
-    var MAPI_uk = "http://mobile-apps.guardianapis.com/uk/navigation";
+    var mapiUK = "http://mobile-apps.guardianapis.com/uk/navigation";
 
-    callAPI(MAPI_uk, function (err, result) {
+    callAPI(mapiUK, function (err, result) {
         if (err)
             callback(err);
         else
