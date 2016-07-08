@@ -118,6 +118,7 @@ function highChartSeriesDataFrom(data) {
 		"iPad5,2": "iPad mini 4",
 		"iPad5,3": "iPad Air 2",
 		"iPad5,4": "iPad Air 2",
+		"iPad6,4": "iPad Pro 9.7",
 		"iPad6,7": "iPad Pro",
 		"iPad6,8": "iPad Pro",
 		"iPhone3,1": "iPhone 4",
@@ -133,7 +134,8 @@ function highChartSeriesDataFrom(data) {
 		"iPhone7,1": "iPhone 6+",
 		"iPhone7,2": "iPhone 6",
 		"iPhone8,1": "iPhone 6s",
-		"iPhone8,2": "iPhone 6s+"
+		"iPhone8,2": "iPhone 6s+",
+		"iPhone8,4": "iPhone SE"
 	}
 	var arr = [];
 	data.report.data.forEach(function(item) {
