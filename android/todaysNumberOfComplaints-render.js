@@ -16,9 +16,9 @@ generateText(function(err, numberOfComplaints) {
 		throw err;
 	}
 
-	if (numberOfComplaints <= 0.29) {
+	if (numberOfComplaints <= 3) {
 		var color = "green";
-	} else if (numberOfComplaints <= 0.69) {
+	} else if (numberOfComplaints <= 5) {
 		var color = "amber";
 	} else {
 		var color = "red";
@@ -45,7 +45,7 @@ function generateText(callback) {
         var chart = Util.getTemplate("custom-line-compact");
 	var appAnnie = new AppAnnieClient(apikey, androidProductID, iosProductID);
 
-	appAnnie.getGooglePlayReviews(Util.dates.today, Util.dates.today, [1,2], 0, function(err, reviews){
+	appAnnie.getGooglePlayReviews(Util.dates.aDayAgo, Util.dates.today, [1,2], 0, function(err, reviews){
 		if (err) {
 			callback(err);
 		}
