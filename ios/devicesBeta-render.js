@@ -30,7 +30,7 @@ generateChart(function(err, chart) {
 
 function generateChart(callback) {
 	var chart = Util.getTemplate("column-drilldown");
-	var appid = "Guardian 4.8 (13519)";
+	var appid = "Guardian 4.8 (13573)";
 	var options = { waitTime: 10, log: true, version: 1.4};
 	var reportData = {
 		reportDescription: {

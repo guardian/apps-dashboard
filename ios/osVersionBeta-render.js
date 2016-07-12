@@ -30,7 +30,7 @@ generateChart(function(err, chart) {
 
 function generateChart(callback) {
 	var chart = Util.getTemplate("");
-	var appid = "Guardian 4.8 (13519)";
+	var appid = "Guardian 4.8 (13573)";
 	var options = { waitTime: 10, log: true, version: 1.4};
 	var reportData = {
 		reportDescription: {
@@ -55,7 +55,7 @@ function generateChart(callback) {
 		console.log("*****************");
 
 		var chart = getDonutChart(response);
-		chart.title.text = humanReadbleDate(reportData.reportDescription.dateFrom) + ' to ' + humanReadbleDate(reportData.reportDescription.dateTo);
+		chart.title.text = "Guardian 4.8 (13573)";
 		chart.chart.renderTo = "osVersionBeta";
 
 		callback(null, chart);
