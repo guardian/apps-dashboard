@@ -65,7 +65,7 @@ function generateChart(callback) {
 			chart.series[1].data = crashes.map(function(c){ return {x:c.uniqueSessionCount, y:c.sessionCount, name:c.name, hash:c.hash, reason:Util.abreviated(c.reason)}});
 			chart.tooltip.headerFormat = "{point.x} users, {point.y} crashes<br>";
 			chart.tooltip["useHTML"] = true;
-			chart.tooltip.pointFormat = "<b><a href='https://app.crittercism.com/developers/crash-details/5457bc14d478bc2b14000002/b07f10524d26853c' target='_blank'>{point.name}</a></b><br>{point.reason}";
+			chart.tooltip.pointFormat = "<b><a href='https://app.crittercism.com/developers/crash-details/5457bc14d478bc2b14000002/{point.hash}' target='_blank'>{point.name}</a></b><br>{point.reason}";
 
 			callback(null, chart);
 		});
