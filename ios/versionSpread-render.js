@@ -56,7 +56,8 @@ function generateChart(callback) {
 		chart.chart.renderTo = "versionSpread";
 		chart.series[0].name = "App version";
 		chart.series[0].data = highChartSeriesDataFrom(response).map(function(elem){elem.name = Util.abbreviatedVersionNumber(elem.name);return elem});
-		chart.title.text = Util.humanReadbleDate(reportData.reportDescription.dateFrom);
+		chart.title.text = "App version";
+		chart.plotOptions.pie = {dataLabels:{enabled:true,distance:-50,style:{fontWeight:'bold',color:'white',textShadow:'0px 1px 2px black'}}};
 
 		console.log("*****************");
 		console.log(JSON.stringify(chart.series[0].data));
@@ -68,7 +69,7 @@ function generateChart(callback) {
 function highChartSeriesDataFrom(data) {
 	var arr = [];
 	data.report.data.forEach(function(item) {
-		arr.push({name: item.name, y:parseInt(item.counts[0]), drilldown:item.name});
+		arr.push({name: item.name, y:parseInt(item.counts[0])});
 	});
 	return arr;//[{ name: 'iPhone7,2', y: 11111, drilldown: 'iPhone7,2' }, ...]
 }

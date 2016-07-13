@@ -29,14 +29,14 @@ generateChart(function(err, chart) {
 });
 
 function generateChart(callback) {
-	var chart = Util.getTemplate("column-drilldown");
+	var chart = Util.getTemplate("pie-basic");
 	var options = { waitTime: 10, log: true, version: 1.4};
 	var reportData = {
 		reportDescription: {
 			reportSuiteID: "guardiangu-globalapps-prod",
 			dateFrom: Util.dates.aMonthAndADayAgo,
 			dateTo: Util.dates.aDayAgo,
-			elements: [{ id: "mobiledevice", top: "30" },  {id: "mobileosversion", top: "5"}],
+			elements: [{ id: "mobiledevice", top: "30" }],
 			segments: [{id:"s1218_55facf7ae4b08d193fc26205"},{id:"5550876be4b0b5455b979741"}],
 			metrics: [{id:"uniquevisitors"}]
 		}
@@ -51,15 +51,18 @@ function generateChart(callback) {
 		console.log(JSON.stringify(response));
 
 		chart.chart.renderTo = "screenSize";
-		chart.title.text = Util.humanReadbleDate(reportData.reportDescription.dateFrom) + ' to ' + Util.humanReadbleDate(reportData.reportDescription.dateTo);
-		chart.yAxis.title = "Uniques";
-		chart.plotOptions.series.dataLabels.format = "{point.y:,.0f}";
-		chart.tooltip.pointFormat = '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:,.0f}</b><br/>';
+		chart.title.text = "Screen size";
 
+
+		//chart.yAxis.title = "Uniques";
+		//chart.plotOptions.series.dataLabels.format = "{point.y:,.0f}";
+		//chart.tooltip.pointFormat = '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:,.0f}</b><br/>';
+
+		chart.series[0].name = "Sizes";
 		chart.series[0].data = highChartSeriesDataFrom(response);
 		//chart.drilldown.series = highChartDrilldownSeriesFrom(response);
 
-		chart.subtitle.text = "";
+		//chart.subtitle.text = "";
 		console.log("*****************");
 		console.log(JSON.stringify(chart.series[0].data));
 		console.log("*****************");

@@ -51,7 +51,7 @@ function generateChart(callback) {
 		console.log(JSON.stringify(response));
 
 		chart.chart.renderTo = "devices";
-		chart.title.text = Util.humanReadbleDate(reportData.reportDescription.dateFrom) + ' to ' + Util.humanReadbleDate(reportData.reportDescription.dateTo);
+		chart.title.text = "iOS device"
 		chart.yAxis.title = "Uniques";
 		chart.plotOptions.series.dataLabels.format = "{point.y:,.0f}";
 		chart.tooltip.pointFormat = '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:,.0f}</b><br/>';

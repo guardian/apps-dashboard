@@ -29,7 +29,6 @@ generateChart(function(err, chart) {
 });
 
 function generateChart(callback) {
-	var chart = Util.getTemplate("");
 	var options = { waitTime: 10, log: true, version: 1.4};
 	var reportData = {
 		reportDescription: {
@@ -49,13 +48,16 @@ function generateChart(callback) {
 			callback(err);
 		}
 
+
 		console.log("*****************");
 		console.log(JSON.stringify(response));
 		console.log("*****************");
 
 		var chart = getDonutChart(response);
-		chart.title.text = humanReadbleDate(reportData.reportDescription.dateFrom) + ' to ' + humanReadbleDate(reportData.reportDescription.dateTo);
 		chart.chart.renderTo = "osVersion";
+		chart.title.text = "iOS version"
+		chart.tooltip["headerFormat"] = "iOS {point.key}<br>";
+		chart.tooltip.pointFormat = "Percentage of users: <b>{point.percentage:.1f}%</b>";
 
 		callback(null, chart);
 	});
@@ -82,13 +84,13 @@ function getDonutChart(response) {
     console.log("*****************");
 
     var colors = ["#7cb5ec", "#434348", "#90ed7d", "#f7a35c", "#8085e9", "#f15c80", "#e4d354", "#2b908f", "#f45b5b", "#91e8e1"],
-        categories = ['iOS 7', 'iOS 8', 'iOS 9'],
+        categories = ['7', '8', '9'],
         data = [{
             y: total(iOS7VersionUptake),
             color: colors[0],
             drilldown: {
                 name: 'iOS 7 versions',
-                categories: iOS7Versions,
+                categories: iOS7Versions.map(s => s.substring(4)),
                 data: iOS7VersionUptake,
                 color: colors[0]
             }
@@ -97,7 +99,7 @@ function getDonutChart(response) {
             color: colors[1],
             drilldown: {
                 name: 'iOS 8 versions',
-                categories: iOS8Versions,
+                categories: iOS8Versions.map(s => s.substring(4)),
                 data: iOS8VersionUptake,
                 color: colors[1]
             }
@@ -106,7 +108,7 @@ function getDonutChart(response) {
             color: colors[2],
             drilldown: {
                 name: 'iOS 9 versions',
-                categories: iOS9Versions,
+                categories: iOS9Versions.map(s => s.substring(4)),
                 data: iOS9VersionUptake,
                 color: colors[2]
             }
@@ -152,14 +154,6 @@ function getDonutChart(response) {
         title: {
             text: ''
         },
-        subtitle: {
-            text: ''
-        },
-        yAxis: {
-            title: {
-                text: 'Total percent market share'
-            }
-        },
         plotOptions: {
             pie: {
                 shadow: false,
@@ -170,7 +164,7 @@ function getDonutChart(response) {
 	    pointFormat: 'Number of users: <b>{point.percentage:.1f}%</b>'
         },
         series: [{
-            name: 'Browsers',
+            name: 'Major Versions',
             data: browserData,
             size: '60%',
             dataLabels: {
@@ -180,10 +174,10 @@ function getDonutChart(response) {
         }, {
             name: 'Versions',
             data: versionsData,
-            size: '80%',
+            size: '100%',
             innerSize: '60%',
             dataLabels: {
-
+		enabled: false
             }
         }],
         credits: {

@@ -74,19 +74,13 @@ body {
 
   <div class="pages">
     <div class="page" id="userbase">
-      <h2>What version are our users on?</h2>
-	<div style="border-bottom:2px #d3d3d3 solid;overflow:hidden;width: 90%;margin-left:0;margin-right:auto;">
-		<div id="versionSpread" style="width: 410px; height: 350px; float: left;"></div>
-		<div id="versionSpreadMonth" style="width: 410px; height: 350px;float:left"></div>
-		<script src="versionSpread.js"/></script>
-		<script src="versionSpreadMonth.js"/></script>
-	</div>
-      <h2>What devices do our users use?</h2>
-<div id="devices" style="width: 940px; height: 400px; margin: 0; border-bottom:2px #d3d3d3 solid;"></div><script src="devices.js"></script>
-      <h2>What are our most popular screen sizes?</h2>
-<div id="screenSize" style="width: 940px; height: 400px; margin: 0; border-bottom:2px #d3d3d3 solid;"></div><script src="screenSize.js"></script>
-      <h2>Which iOS versions do our users use?</h2>
-<div id="osVersion" style="width: 800px; height: 400px; margin: 0 "></div><script src="osVersion.js"></script>
+	    <div class="row">
+		<div class="col-xs-4 col-sm-2"></div>
+		<div id="versionSpread" class="col-xs-6 col-sm-3"></div><script src="versionSpread.js"/></script>
+		<div id="screenSize" class="col-xs-6 col-sm-3"></div><script src="screenSize.js"></script>
+		<div id="osVersion" class="col-xs-6 col-sm-3"></div><script src="osVersion.js"></script>
+	    </div>
+<div id="devices" class="col-md-11"></div><script src="devices.js"></script>
     </div><!--/.userbase-->
     <div class="page" id="beta">
       <h2>What devices do our beta users use?</h2>
