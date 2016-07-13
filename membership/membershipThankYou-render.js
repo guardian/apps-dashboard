@@ -60,10 +60,10 @@ function generateChart(callback) {
 		chart.series = highChartSeriesFrom(response);
 		chart.legend.layout = 'vertical';
 		chart.legend.align = 'right';
-		chart.legend.verticalAlign = 'bottom';
+		chart.legend.verticalAlign = 'top';
 		chart.legend.floating = true;
 		chart.legend.backgroundColor = '#FFFFFF';
-		chart.legend.y = -60;
+		chart.legend.y = -10;
 		chart.title.text = "Last 2 weeks";
 		chart.title.x = 0;
 		chart.subtitle.text = "";
