@@ -54,10 +54,13 @@ function generateChart(callback) {
 		chart.title.text = "Screen size";
 
 
-		//chart.yAxis.title = "Uniques";
-		//chart.plotOptions.series.dataLabels.format = "{point.y:,.0f}";
-		//chart.tooltip.pointFormat = '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:,.0f}</b><br/>';
-
+		delete chart.chart.plotBackgroundColor;
+		delete chart.chart.plotBorderWidth;
+		delete chart.chart.plotShadow;
+		delete chart.plotOptions.pie.dataLabels.format;
+		chart.plotOptions.pie.dataLabels.distance = -50;
+		chart.plotOptions.pie.dataLabels.style = {"fontWeight":"bold","color":"white","textShadow":"0px 1px 2px black"};
+		chart.series[0].name = "Sizes";
 		chart.series[0].name = "Sizes";
 		chart.series[0].data = highChartSeriesDataFrom(response);
 		//chart.drilldown.series = highChartDrilldownSeriesFrom(response);
@@ -94,56 +97,56 @@ function subtitleWithDeviceCategoryBreakdown(data) {
 
 function highChartSeriesDataFrom(data) {
 	var translationTable = {
-                "iPad1,1": "iPad 9.7 inches",
-                "iPad2,1": "iPad 9.7 inches",
-                "iPad2,2": "iPad 9.7 inches",
-                "iPad2,3": "iPad 9.7 inches",
-                "iPad2,4": "iPad 9.7 inches",
-                "iPad2,5": "iPad 7.9 inches",
-                "iPad2,6": "iPad 7.9 inches",
-                "iPad2,7": "iPad 7.9 inches",
-                "iPad3,1": "iPad 9.7 inches",
-                "iPad3,2": "iPad 9.7 inches",
-                "iPad3,3": "iPad 9.7 inches",
-                "iPad3,4": "iPad 9.7 inches",
-                "iPad3,5": "iPad 9.7 inches",
-                "iPad3,6": "iPad 9.7 inches",
-                "iPad4,1": "iPad 9.7 inches",
-                "iPad4,2": "iPad 9.7 inches",
-                "iPad4,3": "iPad 9.7 inches",
-                "iPad4,4": "iPad 7.9 inches",
-                "iPad4,5": "iPad 7.9 inches",
-                "iPad4,6": "iPad 7.9 inches",
-                "iPad4,7": "iPad 7.9 inches",
-                "iPad4,8": "iPad 7.9 inches",
-                "iPad4,9": "iPad 7.9 inches",
-                "iPad5,1": "iPad 7.9 inches",
-                "iPad5,2": "iPad 7.9 inches",
-                "iPad5,3": "iPad 9.7 inches",
-                "iPad5,4": "iPad 9.7 inches",
-                "iPad6,3": "iPad 9.7 inches",
-                "iPad6,4": "iPad 9.7 inches",
-                "iPad6,7": "iPad 12.9 inches",
-                "iPad6,8": "iPad 12.9 inches",
-                "iPhone3,1": "iPhone 3.5 inches",
-                "iPhone3,2": "iPhone 3.5 inches",
-                "iPhone3,3": "iPhone 3.5 inches",
-                "iPhone4,1": "iPhone 3.5 inches",
-                "iPhone5,1": "iPhone 4 inches",
-                "iPhone5,2": "iPhone 4 inches",
-                "iPhone5,3": "iPhone 4 inches",
-                "iPhone5,4": "iPhone 4 inches",
-                "iPhone6,1": "iPhone 4 inches",
-                "iPhone6,2": "iPhone 4 inches",
-                "iPhone7,1": "iPhone 5.5 inches",
-                "iPhone7,2": "iPhone 4.7 inches",
-                "iPhone8,1": "iPhone 4.7 inches",
-                "iPhone8,2": "iPhone 5.5 inches",
-                "iPhone8,4": "iPhone 4 inches"
+                'iPad1,1': '9.7 "',
+                'iPad2,1': '9.7 "',
+                'iPad2,2': '9.7 "',
+                'iPad2,3': '9.7 "',
+                'iPad2,4': '9.7 "',
+                'iPad2,5': '7.9 "',
+                'iPad2,6': '7.9 "',
+                'iPad2,7': '7.9 "',
+                'iPad3,1': '9.7 "',
+                'iPad3,2': '9.7 "',
+                'iPad3,3': '9.7 "',
+                'iPad3,4': '9.7 "',
+                'iPad3,5': '9.7 "',
+                'iPad3,6': '9.7 "',
+                'iPad4,1': '9.7 "',
+                'iPad4,2': '9.7 "',
+                'iPad4,3': '9.7 "',
+                'iPad4,4': '7.9 "',
+                'iPad4,5': '7.9 "',
+                'iPad4,6': '7.9 "',
+                'iPad4,7': '7.9 "',
+                'iPad4,8': '7.9 "',
+                'iPad4,9': '7.9 "',
+                'iPad5,1': '7.9 "',
+                'iPad5,2': '7.9 "',
+                'iPad5,3': '9.7 "',
+                'iPad5,4': '9.7 "',
+                'iPad6,3': '9.7 "',
+                'iPad6,4': '9.7 "',
+                'iPad6,7': '12.9 "',
+                'iPad6,8': '12.9 "',
+                'iPhone3,1': '3.5 "',
+                'iPhone3,2': '3.5 "',
+                'iPhone3,3': '3.5 "',
+                'iPhone4,1': '3.5 "',
+                'iPhone5,1': '4 "',
+                'iPhone5,2': '4 "',
+                'iPhone5,3': '4 "',
+                'iPhone5,4': '4 "',
+                'iPhone6,1': '4 "',
+                'iPhone6,2': '4 "',
+                'iPhone7,1': '5.5 "',
+                'iPhone7,2': '4.7 "',
+                'iPhone8,1': '4.7 "',
+                'iPhone8,2': '5.5 "',
+                'iPhone8,4': '4 "'
 	}
 	var arr = [];
 	data.report.data.forEach(function(item) {
-		arr.push({name: item.name, y:parseInt(item.counts[0]), drilldown:item.name});
+		arr.push({name: item.name, y:parseInt(item.counts[0])});
 	});
 	arr = arr.map(function(elem) {
 		console.log(elem.name + ":" + translationTable[elem.name]);
