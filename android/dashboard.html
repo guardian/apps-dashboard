@@ -4,10 +4,9 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-            crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
 
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
@@ -43,7 +42,7 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="#userbase">User base</a></li>
-                    <li><a href="#revenue">Revenue</a></li>
+                    <li><a href="#crash">Crash</a></li>
                 </ul>
                 <!--initialise jenkins_api-->
                 <script src="jenkins.js"></script>
@@ -73,14 +72,53 @@
             <div id="osVersion" style="width: 800px; height: 400px; margin: 0 "></div>
             <script src="osVersion.js"></script>
         </div><!--/.userbase-->
-        <div class="page" id="revenue">
-            <h2>How much money are we making?</h2>
-            <p>We've made &pound;<span id="revenueThisMonth"></span> this month</p>
-            <script src="revenueThisMonth.js"></script>
-            <div id="revenue6Months"
-                 style="min-width: 310px; max-width: 940px; height: 400px; margin: 0; border-bottom:2px #d3d3d3 solid;"></div>
-            <script src="revenue6Months.js"></script>
-        </div><!--/.revenue-->
+        <div class="page" id="crash">
+
+		<h2>Crashes</h2>
+		<h3>New in 4.6.733</h3>
+<div class="row">
+  <div class="col-sm-4">
+<div class="card">
+  <div class="card-header">
+<span class="label label-danger">4.6.733</span>
+<span class="label label-danger">Android 6</span>
+  </div>
+  <div class="card-block">
+    <h4 class="card-title">OutOfMemory</h4>
+      <p class="card-text">pthread_create (1040KB stack) failed: Ou...<BR>
+      ....eActual(NewThreadWorker.java:169)</p>
+  <a href="#" class="card-link">1 user, 1 crash</a>
+  </div>
+</div>
+</div>
+  <div class="col-sm-4">
+<div class="card">
+  <div class="card-header">
+<span class="label label-danger">4.6.733</span>
+<span class="label label-danger">Android 4</span>
+  </div>
+  <div class="card-block">
+    <h4 class="card-title">OutOfMemory</h4>
+      <p class="card-text">okio.Buffer.readByteArray(Buffer.java:756)</p>
+  <a href="#" class="card-link">1 user, 1 crash</a>
+  </div>
+</div>
+  </div>
+  <div class="col-sm-4">
+<div class="card">
+  <div class="card-header">
+<span class="label label-danger">4.6.733</span>
+<span class="label label-danger">Android 5</span>
+  </div>
+  <div class="card-block">
+    <h4 class="card-title">TimeoutException</h4>
+      <p class="card-text">java.util.regex.Matcher.finalize() timed out after 10 seconds</p>
+  <a href="#" class="card-link">1 user, 1 crash</a>
+  </div>
+</div>
+  </div>
+</div>
+        </div><!--/.crash-->
         <div class="page" id="home">
             <h2>Title anchor</h2>
 	    <p>The latest version is <b><span id="latestVersionText"></span></b> released <b><span id="releaseDays"></span></b> days ago on <b><span id="releaseDate"></span></b>.</p><script src="latestVersionText.js"></script>
