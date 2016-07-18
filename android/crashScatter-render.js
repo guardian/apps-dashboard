@@ -66,6 +66,7 @@ function generateChart(callback) {
 			chart.tooltip.headerFormat = "{point.x} users, {point.y} crashes<br>";
 			chart.tooltip["useHTML"] = true;
 			chart.tooltip.pointFormat = "<b><a href='https://app.crittercism.com/developers/crash-details/5457bc14d478bc2b14000002/{point.hash}' target='_blank'>{point.name}</a></b><br>{point.reason}";
+			chart["plotOptions"] = {"series":{"turboThreshold":0}};
 
 			callback(null, chart);
 		});
