@@ -62,10 +62,10 @@ function generateChart(callback) {
 			chart.series[0].name = "Danger zone";
 			chart.series[0].data = [[40, 40], [40, maxOccurrences], [maxUsers,maxOccurrences], [maxUsers, 40]];
 			chart.series[1].name = "Crashes";
-			chart.series[1].data = crashes.map(function(c){ return {x:c.uniqueSessionCount, y:c.sessionCount, name:c.name, hash:c.hash, reason:Util.abreviated(c.reason)}});
+			chart.series[1].data = crashes.map(function(c){ return {x:c.uniqueSessionCount, y:c.sessionCount, name:c.name, hash:c.hash, reason:Util.abreviated(c.reason), suspectLine:Util.abreviated(c.suspectLine)}});
 			chart.tooltip.headerFormat = "{point.x} users, {point.y} crashes<br>";
 			chart.tooltip["useHTML"] = true;
-			chart.tooltip.pointFormat = "<b><a href='https://app.crittercism.com/developers/crash-details/5457bc14d478bc2b14000002/{point.hash}' target='_blank'>{point.name}</a></b><br>{point.reason}";
+			chart.tooltip.pointFormat = "<b><a href='https://app.crittercism.com/developers/crash-details/5457bc14d478bc2b14000002/{point.hash}' target='_blank'>{point.name}</a></b><br>{point.reason}<br>{point.suspectLine}";
 			chart["plotOptions"] = {"series":{"turboThreshold":0}};
 
 			callback(null, chart);
