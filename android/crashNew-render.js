@@ -248,7 +248,7 @@ function mergeThem(crashes) {
 		if(mergedCrash = findMergedCrash(crash)) {
 			mergedCrash.sessionCount += crash.sessionCount;
 			mergedCrash.uniqueSessionCount += crash.uniqueSessionCount;
-			mergedCrash.versions = _.uniq(mergedCrash.versions.concat(crash.versions));
+			mergedCrash.versions = _.uniq(mergedCrash.versions.concat(crash.versions)).sort();
 			mergedCrash.os = mergedCrash.os.concat(crash.os);
 			mergedCrash.majorAndroidVersions = _.uniq(mergedCrash.majorAndroidVersions.concat(crash.majorAndroidVersions));
 			mergedCrash.models = mergedCrash.models.concat(crash.models);
@@ -261,20 +261,4 @@ function mergeThem(crashes) {
 	});
 
 	return merged.sort( (a,b) => importance(b) - importance(a) );
-}
-
-function generateVersionSummary(system_version, app_version) {
-	var androidVersion = crashOSVersionSummary(system_version)
-	var appVersion = crashAppVersionSummary(app_version)
-	Util.print(androidVersion);
-	Util.print(appVersion);
-	if(appVersion === "" && androidVersion === "")
-		return ""
-	else if (appVersion != "" && androidVersion != "")
-		return `Exclusive to <b>${appVersion}</b> and <b>${androidVersion}</b>.`
-	else if (appVersion != "" && androidVersion === "")
-		return `Exclusive to <b>${appVersion}</b>.`
-	else if (appVersion === "" && androidVersion !== "")
-		return `Exclusive to <b>${androidVersion}</b>.`
-
 }
