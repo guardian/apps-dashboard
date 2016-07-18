@@ -73,52 +73,14 @@
             <script src="osVersion.js"></script>
         </div><!--/.userbase-->
         <div class="page" id="crash">
-
 		<h2>Crashes</h2>
 		<h3>New in 4.6.733</h3>
-<div class="row">
-  <div class="col-sm-4">
-<div class="card">
-  <div class="card-header">
-<span class="label label-danger">4.6.733</span>
-<span class="label label-danger">Android 6</span>
-  </div>
-  <div class="card-block">
-    <h4 class="card-title">OutOfMemory</h4>
-      <p class="card-text">pthread_create (1040KB stack) failed: Ou...<BR>
-      ....eActual(NewThreadWorker.java:169)</p>
-  <a href="#" class="card-link">1 user, 1 crash</a>
-  </div>
-</div>
-</div>
-  <div class="col-sm-4">
-<div class="card">
-  <div class="card-header">
-<span class="label label-danger">4.6.733</span>
-<span class="label label-danger">Android 4</span>
-  </div>
-  <div class="card-block">
-    <h4 class="card-title">OutOfMemory</h4>
-      <p class="card-text">okio.Buffer.readByteArray(Buffer.java:756)</p>
-  <a href="#" class="card-link">1 user, 1 crash</a>
-  </div>
-</div>
-  </div>
-  <div class="col-sm-4">
-<div class="card">
-  <div class="card-header">
-<span class="label label-danger">4.6.733</span>
-<span class="label label-danger">Android 5</span>
-  </div>
-  <div class="card-block">
-    <h4 class="card-title">TimeoutException</h4>
-      <p class="card-text">java.util.regex.Matcher.finalize() timed out after 10 seconds</p>
-  <a href="#" class="card-link">1 user, 1 crash</a>
-  </div>
-</div>
-  </div>
-</div>
+		<div id="newCrashes"></div>
+		<h3>The rest</h3>
+		<div id="existingCrashes"></div>
+		<script src="newCrashes.js"></script>
         </div><!--/.crash-->
+
         <div class="page" id="home">
             <h2>Title anchor</h2>
 	    <p>The latest version is <b><span id="latestVersionText"></span></b> released <b><span id="releaseDays"></span></b> days ago on <b><span id="releaseDate"></span></b>.</p><script src="latestVersionText.js"></script>
