@@ -51,6 +51,10 @@ function importance(c) {
 	return Math.sqrt(Math.pow(c.uniqueSessionCount, 2) + Math.pow(c.sessionCount, 2) + Math.pow(c.totalSessionCount, 2))
 }
 
+function power(c) {
+	return Math.sqrt(Math.pow(c.uniqueSessionCount, 2) + Math.pow(c.sessionCount, 2) )
+}
+
 function generateCards(crashes) {
 	return crashes.map(c => {
 		var versionLabels = versionsAsLabels(c.versions);
@@ -59,7 +63,7 @@ function generateCards(crashes) {
 		var breadcrumLabel = breadcrumbAverageAsLabel(c.averageNumberOfBreadcrumbs);
 		var title = lastWord(sanitize(c.name));
 		var text = `${sanitize(c.reason)}<BR>${Util.abreviated(sanitize(c.suspectLine), 35)}`;
-		var link = `https://app.crittercism.com/developers/crash-details/555484008172e25e67906d29/${c.hash}`;
+		var link = `https://app.crittercism.com/developers/crash-details/5457bc14d478bc2b14000002/${c.hash}`;
 		var users = c.uniqueSessionCount;
 		var crashes = c.sessionCount;
 		var allTimeCrashes = c.totalSessionCount;
@@ -67,10 +71,10 @@ function generateCards(crashes) {
 	<div class="col-sm-4">
 		<div class="card"> 
 			<div class="card-header"> 
+				${breadcrumLabel}
 				${versionLabels}
 				${osLabels}
 				${modelLabels}
-				${breadcrumLabel}
 			</div> 
 			<div class="card-block"> 
 				<h4 class="card-title">${title}</h4> 
@@ -119,24 +123,54 @@ $("#existingCrashes").html(\`${generateHtmlCards(existingCrashes)}\`);
 
 function manufacturerListFromModels(models) {
 	var manufacturers =  models.map(m => {
-		if(m.startsWith("SM") || m.startsWith("GT") || m.startsWith("SAMSUNG") || m.startsWith("SPH") || m.startsWith("SGH"))
+		if(m.startsWith("SM") || m.startsWith("GT") || m.startsWith("SAMSUNG") || m.startsWith("SPH") || m.startsWith("SGH")  || m.startsWith("SCH") || m.startsWith("SHV") || m.startsWith("SCL") || m.startsWith("Galaxy")  || m.startsWith("SC"))
 			return "Samsung"
-		else if(m.startsWith("Nexus"))
+		else if(m.startsWith("Nexus") || m.startsWith("Galaxy Nexus"))
 			return "Nexus"
-		else if(m.startsWith("Wileyfox Storm"))
+		else if(m.startsWith("Wileyfox") )
+			return "Wileyfox"
+		else if(m.startsWith("ONE")  || m.startsWith("One") )
+			return "One"
+		else if(m.startsWith("Amazon"))
 			return "Amazon"
-		else if(m.startsWith("D") || m.startsWith("E") || m.startsWith("Xperia") || m.startsWith("C"))
+		else if(m.startsWith("D") || m.startsWith("E") || m.startsWith("Xperia") || m.startsWith("C")  || m.startsWith("Sony") || m.startsWith("SGP") || m.startsWith("SO"))
 			return "Sony"
-		else if(m.startsWith("XT") || m.startsWith("Moto"))
+		else if(m.startsWith("XT") || m.startsWith("Moto") || m.startsWith("MB"))
 			return "Motorola"
+		else if(m.startsWith("K") || m.startsWith("Transformer")  || m.startsWith("Asus"))
+			return "Asus"
+		else if(m.startsWith("NEO"))
+			return "Minix"
+		else if(m.startsWith("HUAWEI")  || m.startsWith("Huawei") || m.startsWith("G6")  || m.startsWith("G7"))
+			return "Huawei"
+		else if(m.startsWith("Hudl"))
+			return "Hudl"
+		else if(m.startsWith("Q"))
+			return "Contixo"
+		else if(m.startsWith("M"))
+			return "Fujitsu"
+		else if(m.startsWith("RCA"))
+			return "RCA"
+		else if(m.startsWith("Lenovo"))
+			return "Lenovo"
+		else if(m.startsWith("B"))
+			return "Acer"
+		else if(m.startsWith("A"))
+			return "Vero"
+		else if(m.startsWith("vivo"))
+			return "Vivo"
 		else if(m.startsWith("LG"))
 			return "LG"
+		else if(m.startsWith("AT"))
+			return "Bauhn"
 		else if(m.startsWith("HTC"))
 			return "HTC"
 		else if(m.startsWith("HP"))
 			return "HP"
+		else if(m.startsWith("Z"))
+			return "ZTE"
 		else
-			return m;
+			return "Other";
 	});
 	return _.uniq(manufacturers);
 }
@@ -148,7 +182,7 @@ function averageOfIntArray(arr) {
 }
  
 function generateText(callback) {
-	var appVersion = "4.6.733"
+	var appVersion = "4.6.744"
 	var majorVersion = "4.6"
 	var cc = new CrittercismClient(clientid);
 
@@ -163,7 +197,10 @@ function generateText(callback) {
 				callback(err);
 			}
 
-			console.log(JSON.stringify(crashes));
+
+			crashes = crashes.sort( (a,b) => power(b) - power(a) );
+			crashes = crashes.slice(0, 100);
+			//crashes = crashes.filter(c => c.sessionCount > 8 && c.uniqueSessionCount > 8);
 
 			function wrapper(c,cb) {
 				console.log(c.name);
@@ -181,7 +218,10 @@ function generateText(callback) {
 					c["majorAndroidVersions"] = _.uniq(c.os.map(v => "A" + v.substring(1, 9)));
 					c["models"] = result.diagnostics.discrete_diagnostic_data.model.map(m => m[0]);
 					c["totalSessionCount"] = Object.keys(result.sessionCountsByVersion).reduce((sum, k) => sum + result.sessionCountsByVersion[k], 0);
-					c["averageNumberOfBreadcrumbs"] = averageOfIntArray(result.breadcrumbTraces.map(b => b.parsedBreadcrumbs.length));
+					if(result.breadcrumbTraces)
+						c["averageNumberOfBreadcrumbs"] = averageOfIntArray(result.breadcrumbTraces.map(b => b.parsedBreadcrumbs.length));
+					else
+						c["averageNumberOfBreadcrumbs"] = -1;
 					console.log("> " + c.versions.join(" "));
 					console.log("> " + c.os.join(" "));
 					console.log("> " + c.totalSessionCount);
@@ -206,8 +246,6 @@ function generateText(callback) {
 					return c;
 				});
 
-				//crashesWithVersions = crashesWithVersions.filter(c => c.sessionCount > 1 && c.uniqueSessionCount > 1)
-	
 				var newCrashes = crashesWithVersions.filter(c => c.versions.length == 1);
 				console.log("New in " + appVersion);
 				Util.print(newCrashes);
