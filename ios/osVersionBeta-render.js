@@ -30,7 +30,7 @@ generateChart(function(err, chart) {
 
 function generateChart(callback) {
 	var chart = Util.getTemplate("");
-	var appid = "Guardian 4.8 (13573)";
+	var appid = "Guardian 4.9 (13713)";
 	var options = { waitTime: 10, log: true, version: 1.4};
 	var reportData = {
 		reportDescription: {
