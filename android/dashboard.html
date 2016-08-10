@@ -44,6 +44,7 @@
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="#userbase">User base</a></li>
                     <li><a href="#crash">Crash</a></li>
+                    <li><a href="#metrics">Metrics</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
@@ -68,22 +69,55 @@
             <script src="osVersion.js"></script>
         </div><!--/.userbase-->
         <div class="page" id="crash">
-		<h2>Crashes</h2>
-      <div class="row">
-        <div class="col-md-2">Adoption</div>
-        <div class="col-md-2">Uniques</div>
-        <div class="col-md-2">Crash rate</div>
-	<div class="col-md-6"><div id="crashScatter" style="height:320px"></div></div><script src="crashScatter.js"></script>
-      </div>
-		<h3>New in 4.6.750</h3>
+		<h2>App version 4.6.750</h2>
+<div class="container">
+  <div class="row">
+   <div class="col-sm-6">
+   <div class="row">
+    <div class="col-sm-4">
+      <h2>
+          <small class="text-muted">Crash rate</small><BR>
+          0.12%
+      </h2>
+    </div>
+    <div class="col-sm-4">
+      <h2>
+          <small class="text-muted">Adoption</small><BR>
+          56%
+      </h2>
+    </div>
+    <div class="col-sm-4">
+      <h2>
+          <small class="text-muted">Uniques</small><BR>
+          230,000
+      </h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-sm-4">
+      <h2>
+          <small class="text-muted">New crashes</small><BR>
+          1
+      </h2>
+    </div>
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-4">
+    </div>
+   </div>
+   </div>
+    <div class="col-sm-6">
+      <div id="crashScatter" style="height:320px"></div></div><script src="crashScatter.js"></script>
+    </div>
+  </div>
+		<h3>New</h3>
 		<div id="newCrashes"></div>
 		<h3>The rest</h3>
 		<div id="existingCrashes"></div>
 		<script src="newCrashes.js"></script>
         </div><!--/.crash-->
-
-        <div class="page" id="home">
-            <h2>Title anchor</h2>
+        <div class="page" id="metrics">
+            <h2>Metrics</h2>
 	    <p>The latest version is <b><span id="latestVersionText"></span></b> released <b><span id="releaseDays"></span></b> days ago on <b><span id="releaseDate"></span></b>.</p><script src="latestVersionText.js"></script>
       <div class="row">
         <div class="col-md-2"></div>
@@ -108,6 +142,7 @@
 	<script src="membershipPurchases.js"></script>
       </div><!-- /.row -->
       <div class="row">
+
         <div class="col-md-2"></div>
         <div class="col-md-4">
           <h4>Crash rate</h4>
@@ -142,6 +177,93 @@
         <div class="col-md-2"></div>
 	<script src="membershipFlow.js"></script>
       </div><!-- /.row -->
+        </div><!--/.metrics-->
+
+        <div class="page" id="home">
+		<h2>Hello world</h2>
+<div class="container">
+<div class="row">
+<div class="col-md-6">
+<div class="card">
+  <div class="card-header">
+    <h4>Overview</h4>
+  </div>
+  <div class="card-block">
+    <p class="card-text">Version <b>4.6.750</b><BR>
+    Released <b>Thu Aug 4th</b><BR>
+    Time in production <b>6 days</b><BR>
+    2 week star rating <b>4.66</b><BR>
+In this release, we've been working hard to bring you plenty of improvements to the app's performance. As well as squashing bugs, we've introduced the ability to receive notifications around your comment activity.
+   </p>
+  </div>
+</div>
+</div><!--/.col-->
+</div><!--/.row-->
+<div class="row">
+<div class="col-md-6">
+<div class="card">
+  <div class="card-header">
+    <h4>Real-time stats</h4>
+  </div>
+  <div class="card-block">
+<table class="table table-borderless">
+<thead></thead>
+<tbody>
+<tr>
+<td>
+      <h2>
+          <small class="text-muted">Crash rate</small><BR>
+          0.12%
+      </h2>
+</td>
+<td>
+      <h2>
+          <small class="text-muted">Complaints</small><BR>
+          3
+      </h2>
+</td>
+<td>
+      <h2>
+          <small class="text-muted">Adoption</small><BR>
+          56%
+      </h2>
+</td>
+</tr>
+</tbody>
+</table>
+  </div>
+  <div class="card-footer text-muted">
+    5 minutes ago
+  </div>
+</div>
+</div><!--/.col-->
+</div><!--/.row-->
+<div class="row">
+<div class="col-md-6">
+<div class="card">
+  <div class="card-block card-inverse card-success">
+    <h4 class="card-title">Crash trends</h4>
+  </div>
+  <div class="card-block">
+    <p class="card-text">Current crash rate is <b>OK</b>.<BR>
+  This version has a lot of <b>OutOfMemoryError</b> crashes.</p>
+  <a href="#crash" class="card-link">More information</a>
+  </div>
+</div>
+</div><!--/.col-->
+<div class="col-md-6">
+<div class="card">
+  <div class="card-block card-inverse card-success">
+    <h4 class="card-title">Operational metrics</h4>
+  </div>
+  <div class="card-block">
+    <p class="card-text">Everything seems to be working fine</p>
+  <a href="#crash" class="card-link">More information</a>
+  </div>
+</div>
+</div><!--/.col-->
+</div><!--/.row-->
+</div><!--/.container-->
         </div><!--/.home-->
     </div><!--/.pages -->
 
