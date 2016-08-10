@@ -182,7 +182,7 @@ function averageOfIntArray(arr) {
 }
  
 function generateText(callback) {
-	var appVersion = "4.6.744"
+	var appVersion = "4.6.750"
 	var majorVersion = "4.6"
 	var cc = new CrittercismClient(clientid);
 
