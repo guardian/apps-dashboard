@@ -110,7 +110,7 @@ $("#newCrashes").html(\`${generateHtmlCards(newCrashes)}\`);
 $("#existingCrashes").html(\`${generateHtmlCards(existingCrashes)}\`);
 	`;
 
-	var filename = "newCrashes.js"
+	var filename = "crashNew.js"
 	console.log(js);
 	fs.writeFile(filename, js, function(err) {
 		if(err) {
