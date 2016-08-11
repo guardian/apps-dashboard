@@ -25,29 +25,29 @@ function lastWord(str) {
 }
 
 function versionsAsLabels(versions) {
-	return versions.map(v => `<span class="label label-danger">${v}</span> `).join("");
+	return versions.map(v => `<span class="tag tag-danger">${v}</span> `).join("");
 }
 
 function versionAsLabel(version) {
-	return `<span class="label label-danger">${version}</span> `
+	return `<span class="tag tag-danger">${version}</span> `
 }
 
 function osAsLabels(os) {
 	if(os.length == 3)
-		return `<span class="label label-primary">All OS versions</span> `;
+		return `<span class="tag tag-primary">All OS versions</span> `;
 	else
-		return os.map(v => `<span class="label label-primary">${v}</span> `).join("");
+		return os.map(v => `<span class="tag tag-primary">${v}</span> `).join("");
 }
 
 function modelsAsLabels(models) {
 	if(models.length >= 3)
-		return `<span class="label label-success">All devices</span> `;
+		return `<span class="tag tag-success">All devices</span> `;
 	else
-		return models.map(v => `<span class="label label-success">${v}</span> `).join("");
+		return models.map(v => `<span class="tag tag-success">${v}</span> `).join("");
 }
 
 function breadcrumbAverageAsLabel(num) {
-	return `<span class="label label-warning">${num}</span>`
+	return `<span class="tag tag-warning">${num}</span>`
 }
 
 function sanitize(str) {

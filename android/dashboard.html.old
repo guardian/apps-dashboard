@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+<script type="text/javascript" src="livestamp.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title> Android App Dashboard</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+
+</head>
+
+<body>
+
+<div class="container">
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Android Dashboard</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#userbase">User base</a></li>
+                    <li><a href="#crash">Crash</a></li>
+                    <li><a href="#metrics">Metrics</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+    </nav>
+
+    <div class="pages">
+        <div class="page" id="userbase">
+            <h2>What version are our users on?</h2>
+            <div style="border-bottom:2px #d3d3d3 solid;overflow:hidden;width: 90%;margin-left:0;margin-right:auto;">
+                <div id="versionSpread" style="width: 410px; height: 350px; float: left;"></div>
+                <div id="versionSpreadMonth" style="width: 410px; height: 350px;float:left"></div>
+                <script src="versionSpread.js">
+
+                </script>
+                <script src="versionSpreadMonth.js"></script>
+            </div>
+            <h2>What devices do our users use?</h2>
+            <div id="devices" style="width: 940px; height: 400px; margin: 0; border-bottom:2px #d3d3d3 solid;"></div>
+            <script src="devices.js"></script>
+            <h2>Which Android versions do our users use?</h2>
+            <div id="osVersion" style="width: 800px; height: 400px; margin: 0 "></div>
+            <script src="osVersion.js"></script>
+        </div><!--/.userbase-->
+        <div class="page" id="crash">
+		<h2>App version 4.6.750</h2>
+<div class="container">
+  <div class="row">
+   <div class="col-sm-6">
+   <div class="row">
+    <div class="col-sm-4">
+      <h2>
+          <small class="text-muted">Crash rate</small><BR>
+	  <span id="currentCrashRate">-</span>
+      </h2>
+      <script src="todaysCrashRate.js"></script>
+    </div>
+    <div class="col-sm-4">
+      <h2>
+          <small class="text-muted">Adoption</small><BR>
+	  <span id="currentAdoptionRate">-</span>
+      </h2>
+      <script src="todaysAdoptionRate.js"></script>
+    </div>
+    <div class="col-sm-4">
+      <h2>
+          <small class="text-muted">Uniques</small><BR>
+          230,000
+      </h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-sm-4">
+      <h2>
+          <small class="text-muted">New crashes</small><BR>
+          1
+      </h2>
+    </div>
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-4">
+    </div>
+   </div>
+   </div>
+    <div class="col-sm-6">
+	      <div id="crashScatter" style="height:320px;width:440px;"></div></div><script src="crashScatter.js"></script>
+	    </div>
+	  </div>
+			<h3>New</h3>
+			<div id="newCrashes"></div>
+			<h3>The rest</h3>
+			<div id="existingCrashes"></div>
+			<script src="crashNew.js"></script>
+		</div><!--/.crash-->
+		<div class="page" id="metrics">
+		    <h2>Metrics</h2>
+		    <p>The latest version is <b><span id="latestVersionText"></span></b> released <b><span id="releaseDays"></span></b> days ago on <b><span id="releaseDate"></span></b>.</p><script src="latestVersionText.js"></script>
+	      <div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-4">
+		  <h4>Adoption</h4>
+		  <h3><span id="adoptionText"></span></h3>
+		</div><!-- /.col-lg-4 -->
+		<div id="adoption" class="col-md-4" style=" height: 160px;">
+		</div><!-- /.col-lg-4 -->
+		<div class="col-md-2"></div>
+		<script src="adoption.js"></script>
+	      </div><!-- /.row -->
+	      <div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-4">
+		  <h4>Membership Purchases</h4>
+		  <h3><span id="membershipPurchasesText"></span></h3>
+		</div><!-- /.col-lg-4 -->
+		<div id="membershipPurchases" class="col-md-4" style=" height: 160px;">
+		</div><!-- /.col-lg-4 -->
+		<div class="col-md-2"></div>
+		<script src="membershipPurchases.js"></script>
+	      </div><!-- /.row -->
+	      <div class="row">
+
+		<div class="col-md-2"></div>
+		<div class="col-md-4">
+		  <h4>Crash rate</h4>
+		  <h3><span id="crashRateText"></span></h3>
+		</div><!-- /.col-lg-4 -->
+		<div id="crashRate" class="col-md-4" style=" height: 160px;">
+		</div><!-- /.col-lg-4 -->
+		<div class="col-md-2"></div>
+		<script src="crashRate.js"></script>
+	      </div><!-- /.row -->
+	      <div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-4">
+		  <h4>Complaints per day</h4>
+		  <h3><span id="complaintsText"></span></h3>
+		</div><!-- /.col-lg-4 -->
+		<div id="complaints" class="col-md-4" style=" height: 160px;">
+		</div><!-- /.col-lg-4 -->
+		<div class="col-md-2"></div>
+		<script src="complaints.js"></script>
+	      </div><!-- /.row -->
+	      <div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-4">
+		  <h4>Membership payment screens</h4>
+		  <h4><span id="paymentText"></span></h4>
+		  <h4>Membership Purchases</h4>
+		  <h4><span id="purchaseText"></span></h4>
+		</div><!-- /.col-lg-4 -->
+		<div id="membershipFlow" class="col-md-4" style=" height: 160px;">
+		</div><!-- /.col-lg-4 -->
+		<div class="col-md-2"></div>
+		<script src="membershipFlow.js"></script>
+	      </div><!-- /.row -->
+		</div><!--/.metrics-->
+
+		<div class="page" id="home">
+	<div class="container">
+	<div class="row">
+	<div class="col-md-2">
+		<p><img src="https://lh5.ggpht.com/ekfdW6Z5Hj1A_VBG2MWazZfCuz-66Gpkou0V8maEGDgO1tgNGET8Jy9Kbf-D9F7Hnv0=w300-rw" class="img-fluid"></p>
+		<p class="lead text-center"><span class="glyphicon glyphicon-star icon-success" aria-hidden="true"></span>4.66</p>
+	</div><!--/.col-->
+	<div class="col-md-10">
+		<p class="lead">Version 4.6.755 was released 6 days ago on Thu Aug 4th<p>
+		<p>In this release, we've been working hard to bring you plenty of improvements to the app's performance. As well as squashing bugs, we've introduced the ability to receive notifications around your comment activity.</p>
+	</div><!--/.col-->
+	</div><!--/.row-->
+	<div class="row">
+	<div class="col-md-6">
+
+	<div class="row">
+	<div class="card">
+	  <div class="card-block card-inverse card-success">
+	    <h4 class="card-title">Real-time stats</h4>
+	  </div>
+	  <div class="card-block">
+	<table class="table table-borderless">
+	<thead></thead>
+	<tbody>
+	<tr>
+	<td>
+	      <h2>
+		  <small class="text-muted">Crash rate</small><BR>
+		  <span id="todaysCrashRate">-</span>
+	      </h2>
+	      <script src="todaysCrashRate.js"></script>
+	</td>
+	<td>
+	      <h2>
+		  <small class="text-muted">Complaints</small><BR>
+		  <span id="todaysNumberOfComplaints">-</span>
+	      </h2>
+	      <script src="todaysNumberOfComplaints.js"></script>
+	</td>
+	<td>
+	      <h2>
+		  <small class="text-muted">Adoption</small><BR>
+		  <span id="todaysAdoptionRate">-</span>
+	      </h2>
+	      <script src="todaysAdoptionRate.js"></script>
+	</td>
+	</tr>
+	</tbody>
+	</table>
+	  </div>
+	  <div class="card-footer text-muted">
+		  <span id="realTimeTimestamp" data-livestamp="1470412152"></span>
+	      <script src="realTimeTimestamp.js"></script>
+	  </div>
+	</div>
+
+	<div class="row">
+	<div class="col-md-6">
+	<div class="card">
+	  <div class="card-block card-inverse card-success">
+	    <h4 class="card-title">Crash trends</h4>
+	  </div>
+	  <div class="card-block">
+	    <p class="card-text">Current crash rate is <b>OK</b>.<BR>
+	  This version has a lot of <b>OutOfMemoryError</b> crashes.</p>
+	  <a href="#crash" class="card-link">More information</a>
+	  </div>
+	</div>
+	</div><!--/.col-->
+	<div class="col-md-6">
+	<div class="card">
+	  <div class="card-block card-inverse card-success">
+	    <h4 class="card-title">Operational metrics</h4>
+	  </div>
+	  <div class="card-block">
+	    <p class="card-text">Everything seems to be working fine</p>
+	  <a href="#crash" class="card-link">More information</a>
+	  </div>
+	</div>
+	</div>
+	</div>
+	</div> <!--/.row-->
+	</div><!--/.md6-->
+
+	<div class="col-md-6">
+		<div class="text-md-center">
+		<iframe frameborder="0" id="android" src="https://appetize.io/embed/1jee04kcru6w3m49zxjqvcp0kc?device=nexus5&amp;scale=75&amp;autoplay=false&amp;orientation=portrait&amp;osVersion=6.0&amp;xdocMsg=true&amp;launchUrl=x-gu://www.theguardian.com//politics/2016/aug/10/tom-watson-sends-corbyn-proof-of-trotskyist-labour-infiltration" width="300px" height="600px" scrolling="no"></iframe>
+		</div>
+	</div><!--/.md6-->
+	</div><!--/.row-->
+
+	</div><!--/.container-->
+		</div><!--/.home-->
+	    </div><!--/.pages -->
+
+</body>
+</html>
