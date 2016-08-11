@@ -2,7 +2,7 @@ TARGETS=osVersion.js devices.js crashRate.js latestVersionText.js membershipPurc
 REALTIME_TARGETS=todaysCrashRate.js todaysNumberOfComplaints.js mapiUKCheck.js mapiUSCheck.js mapiAUCheck.js identityCheck.js
 SLOW_TARGETS=crashNew.js
 
-.PHONY: clean print-targets print-real-time-targets
+.PHONY: clean print-targets print-real-time-targets print-slow-targets
 
 all: $(TARGETS) $(REALTIME_TARGETS)
 
