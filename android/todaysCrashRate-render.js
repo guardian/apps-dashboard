@@ -29,6 +29,7 @@ generateText(function(err, todaysCrashRate) {
 
 	var js = `
 	$("#todaysCrashRate").text("${todaysCrashRate}%");
+	$("#currentCrashRate").text("${todaysCrashRate}%");
 	$("#todaysCrashRate").addClass("${color}");
 	`;
 	console.log(js);
