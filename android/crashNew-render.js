@@ -28,6 +28,10 @@ function versionsAsLabels(versions) {
 	return versions.map(v => `<span class="label label-danger">${v}</span> `).join("");
 }
 
+function versionAsLabel(version) {
+	return `<span class="label label-danger">${version}</span> `
+}
+
 function osAsLabels(os) {
 	return os.map(v => `<span class="label label-primary">${v}</span> `).join("");
 }
@@ -57,7 +61,7 @@ function power(c) {
 
 function generateCards(crashes) {
 	return crashes.map(c => {
-		var versionLabels = versionsAsLabels(c.versions);
+		var versionLabels = versionAsLabel(c.oldestVersion);
 		var osLabels = osAsLabels(c.majorAndroidVersions);
 		var modelLabels = modelsAsLabels(c.manufacturers);
 		var breadcrumLabel = breadcrumbAverageAsLabel(c.averageNumberOfBreadcrumbs);
@@ -214,6 +218,7 @@ function generateText(callback) {
 						process.exit(1);
 					}
 					c["versions"] = Object.keys(result.sessionCountsByVersion);
+					c["oldestVersion"] = c.versions.sort(Util.compareVersions)[0]
 					c["os"] = result.diagnostics.discrete_diagnostic_data.system_version.map(v => v[0]);
 					c["majorAndroidVersions"] = _.uniq(c.os.map(v => "A" + v.substring(1, 9)));
 					c["models"] = result.diagnostics.discrete_diagnostic_data.model.map(m => m[0]);
