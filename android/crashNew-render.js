@@ -33,11 +33,17 @@ function versionAsLabel(version) {
 }
 
 function osAsLabels(os) {
-	return os.map(v => `<span class="label label-primary">${v}</span> `).join("");
+	if(os.length == 3)
+		return `<span class="label label-primary">All OS versions</span> `;
+	else
+		return os.map(v => `<span class="label label-primary">${v}</span> `).join("");
 }
 
 function modelsAsLabels(models) {
-	return models.map(v => `<span class="label label-success">${v}</span> `).join("");
+	if(models.length >= 3)
+		return `<span class="label label-success">All devices</span> `;
+	else
+		return models.map(v => `<span class="label label-success">${v}</span> `).join("");
 }
 
 function breadcrumbAverageAsLabel(num) {
@@ -131,8 +137,6 @@ function manufacturerListFromModels(models) {
 			return "Samsung"
 		else if(m.startsWith("Nexus") || m.startsWith("Galaxy Nexus"))
 			return "Nexus"
-		else if(m.startsWith("Wileyfox") )
-			return "Wileyfox"
 		else if(m.startsWith("ONE")  || m.startsWith("One") )
 			return "One"
 		else if(m.startsWith("Amazon"))
@@ -141,38 +145,10 @@ function manufacturerListFromModels(models) {
 			return "Sony"
 		else if(m.startsWith("XT") || m.startsWith("Moto") || m.startsWith("MB"))
 			return "Motorola"
-		else if(m.startsWith("K") || m.startsWith("Transformer")  || m.startsWith("Asus"))
-			return "Asus"
-		else if(m.startsWith("NEO"))
-			return "Minix"
 		else if(m.startsWith("HUAWEI")  || m.startsWith("Huawei") || m.startsWith("G6")  || m.startsWith("G7"))
 			return "Huawei"
 		else if(m.startsWith("Hudl"))
 			return "Hudl"
-		else if(m.startsWith("Q"))
-			return "Contixo"
-		else if(m.startsWith("M"))
-			return "Fujitsu"
-		else if(m.startsWith("RCA"))
-			return "RCA"
-		else if(m.startsWith("Lenovo"))
-			return "Lenovo"
-		else if(m.startsWith("B"))
-			return "Acer"
-		else if(m.startsWith("A"))
-			return "Vero"
-		else if(m.startsWith("vivo"))
-			return "Vivo"
-		else if(m.startsWith("LG"))
-			return "LG"
-		else if(m.startsWith("AT"))
-			return "Bauhn"
-		else if(m.startsWith("HTC"))
-			return "HTC"
-		else if(m.startsWith("HP"))
-			return "HP"
-		else if(m.startsWith("Z"))
-			return "ZTE"
 		else
 			return "Other";
 	});
@@ -220,7 +196,7 @@ function generateText(callback) {
 					c["versions"] = Object.keys(result.sessionCountsByVersion);
 					c["oldestVersion"] = c.versions.sort(Util.compareVersions)[0]
 					c["os"] = result.diagnostics.discrete_diagnostic_data.system_version.map(v => v[0]);
-					c["majorAndroidVersions"] = _.uniq(c.os.map(v => "A" + v.substring(1, 9)));
+					c["majorAndroidVersions"] = _.uniq(c.os.map(v => "A" + v.substring(1, 9).replace("N", "7"))).sort().filter( (v, i, arr) => arr.length > 1 ? v != 'Android 7' : true);
 					c["models"] = result.diagnostics.discrete_diagnostic_data.model.map(m => m[0]);
 					c["totalSessionCount"] = Object.keys(result.sessionCountsByVersion).reduce((sum, k) => sum + result.sessionCountsByVersion[k], 0);
 					if(result.breadcrumbTraces)
@@ -242,7 +218,7 @@ function generateText(callback) {
 				if(err) callback(err);
 
 				Util.print(crashesWithVersions);
-				crashesWithVersions = crashesWithVersions.sort((b,a) => importance(a) - importance(b));
+				crashesWithVersions = crashesWithVersions.sort((b,a) => power(a) - power(b));
 
 				crashesWithVersions = mergeThem(crashesWithVersions)			
 				crashesWithVersions = crashesWithVersions.map(c => {
