@@ -8,6 +8,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+<script type="text/javascript" src="livestamp.min.js"></script>
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
     <script src="https://code.highcharts.com/modules/drilldown.js"></script>
@@ -77,8 +79,9 @@
     <div class="col-sm-4">
       <h2>
           <small class="text-muted">Crash rate</small><BR>
-          0.12%
+	  <span id="currentCrashRate">-</span>
       </h2>
+      <script src="todaysCrashRate.js"></script>
     </div>
     <div class="col-sm-4">
       <h2>
@@ -197,8 +200,8 @@
 
 	<div class="row">
 	<div class="card">
-	  <div class="card-header">
-	    <h4>Real-time stats</h4>
+	  <div class="card-block card-inverse card-success">
+	    <h4 class="card-title">Real-time stats</h4>
 	  </div>
 	  <div class="card-block">
 	<table class="table table-borderless">
@@ -208,14 +211,16 @@
 	<td>
 	      <h2>
 		  <small class="text-muted">Crash rate</small><BR>
-		  0.12%
+		  <span id="todaysCrashRate">-</span>
 	      </h2>
+	      <script src="todaysCrashRate.js"></script>
 	</td>
 	<td>
 	      <h2>
 		  <small class="text-muted">Complaints</small><BR>
-		  3
+		  <span id="todaysNumberOfComplaints">-</span>
 	      </h2>
+	      <script src="todaysNumberOfComplaints.js"></script>
 	</td>
 	<td>
 	      <h2>
@@ -228,7 +233,8 @@
 	</table>
 	  </div>
 	  <div class="card-footer text-muted">
-	    5 minutes ago
+		  <span id="realTimeTimestamp" data-livestamp="1470412152"></span>
+	      <script src="realTimeTimestamp.js"></script>
 	  </div>
 	</div>
 
