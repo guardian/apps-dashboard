@@ -5,7 +5,7 @@ var _ = require ('lodash');
 var nconf = require('nconf');
 var fs = require('fs');
 var GuardianApp = require('../lib/GuardianApp.js');
-var sleep = require('sleep');
+//var sleep = require('sleep');
 var async = require('async');
 
 nconf.file({ file: '../config.json' });
