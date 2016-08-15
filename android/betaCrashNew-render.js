@@ -218,9 +218,16 @@ function generateText(callback) {
 				if(err) callback(err);
 
 				Util.print(crashesWithVersions);
-				crashesWithVersions = crashesWithVersions.sort((b,a) => power(a) - power(b));
 
-				crashesWithVersions = mergeThem(crashesWithVersions)			
+				crashesWithVersions = cc.merge(crashesWithVersions, (mergedCrash, crash) => {
+					mergedCrash.versions = _.uniq(mergedCrash.versions.concat(crash.versions)).sort();
+					mergedCrash.os = mergedCrash.os.concat(crash.os);
+					mergedCrash.majorAndroidVersions = _.uniq(mergedCrash.majorAndroidVersions.concat(crash.majorAndroidVersions));
+					mergedCrash.models = mergedCrash.models.concat(crash.models);
+					mergedCrash.averageNumberOfBreadcrumbs = Math.min(mergedCrash.averageNumberOfBreadcrumbs, crash.averageNumberOfBreadcrumbs);
+				
+				});
+				crashesWithVersions = crashesWithVersions.sort((b,a) => power(a) - power(b));
 				crashesWithVersions = crashesWithVersions.map(c => {
 					c["manufacturers"] = manufacturerListFromModels(c.models);
 					console.log(JSON.stringify(c.models) + "==>" + JSON.stringify(c["manufacturers"]))
@@ -251,8 +258,12 @@ function generateText(callback) {
 };
 
 function mergeThem(crashes) {
-	function findMergedCrash(crash) {
-		var filtered = merged.filter(c => ( c.name === crash.name && 
+	function importance(c) {
+		return Math.sqrt(Math.pow(c.uniqueSessionCount, 2) + Math.pow(c.sessionCount, 2) + Math.pow(c.totalSessionCount, 2))
+	}
+
+	function findCrashInArray(crash, arr) {
+		var filtered = arr.filter(c => ( c.name === crash.name && 
 		                                    c.reason === crash.reason)
 		                                  ) || 
 		                                  ( c.name === crash.name && 
@@ -264,7 +275,7 @@ function mergeThem(crashes) {
 	var merged = [];
 
 	crashes.forEach(crash => {
-		if(mergedCrash = findMergedCrash(crash)) {
+		if(mergedCrash = findCrashInArray(crash, merged)) {
 			mergedCrash.sessionCount += crash.sessionCount;
 			mergedCrash.uniqueSessionCount += crash.uniqueSessionCount;
 			mergedCrash.versions = _.uniq(mergedCrash.versions.concat(crash.versions)).sort();

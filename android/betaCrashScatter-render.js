@@ -45,11 +45,14 @@ function generateChart(callback) {
 		}
 
 		console.log('Crittercism API client initialized');
-		cc.topCrashByUser(appVersion, function(err, crashes){
+		cc.topCrashByUser(appVersion, function(err, unmergedCrashes){
 			if (err) {
 				callback(err);
 			}
 
+			console.log(JSON.stringify(unmergedCrashes));
+			var unsortedCrashes = cc.merge(unmergedCrashes);
+			var crashes = cc.sortCrashes(unsortedCrashes);
 			console.log(JSON.stringify(crashes));
 			var maxUsers = Math.max.apply(Math, crashes.map(c => c.uniqueSessionCount)) + 5;
 			var maxOccurrences = Math.max.apply(Math, crashes.map(c => c.sessionCount)) + 5;
