@@ -39,7 +39,7 @@ $("#category").html("${mostCommonCategory}");`
 function generateText(callback) {
 	var appVersion = GuardianApp.getLatestAndroidAppVersion();
 	//var appVersion = "4.4.664";
-	var cc = new CrittercismClient(clientid);
+	var cc = new CrittercismClient(clientid, "5457bc14d478bc2b14000002");
 
 	cc.init(username, password, function(err) {
 		if (err) {

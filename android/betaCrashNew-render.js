@@ -15,8 +15,10 @@ var clientid = nconf.get('crittercism_clientid');
 console.log('username is ' + username);
 console.log('clientid is ' + clientid);
 
+var cc = new CrittercismClient(clientid, "555484008172e25e67906d29");
+
 function crashAsHtml(c){
-	return `<a href='https://app.crittercism.com/developers/crash-details/5457bc14d478bc2b14000002/${c.hash}' target='_blank'>${c.name}</a><BR>${Util.abreviated(c.reason)}<BR>${c.uniqueSessionCount} users, ${c.sessionCount} crashes<BR><BR>`;
+	return `<a href='${cc.urlForCrash(c.hash)}' target='_blank'>${c.name}</a><BR>${Util.abreviated(c.reason)}<BR>${c.uniqueSessionCount} users, ${c.sessionCount} crashes<BR><BR>`;
 }
 
 function lastWord(str) {
@@ -73,7 +75,7 @@ function generateCards(crashes) {
 		var breadcrumLabel = breadcrumbAverageAsLabel(c.averageNumberOfBreadcrumbs);
 		var title = lastWord(sanitize(c.name));
 		var text = `${sanitize(c.reason)}<BR>${Util.abreviated(sanitize(c.suspectLine), 35)}`;
-		var link = `https://app.crittercism.com/developers/crash-details/5457bc14d478bc2b14000002/${c.hash}`;
+		var link = cc.urlForCrash(c.hash);
 		var users = c.uniqueSessionCount;
 		var crashes = c.sessionCount;
 		var allTimeCrashes = c.totalSessionCount;
@@ -89,8 +91,8 @@ function generateCards(crashes) {
 			<div class="card-block"> 
 				<h4 class="card-title">${title}</h4> 
 				<p class="card-text">${text}</p> 
-				Current version: <a href="${link}" class="card-link">${users} users, ${crashes} crashes</a><BR>
-				All time: <a href="${link}" class="card-link">${allTimeCrashes} crashes</a> 
+				Current version: <a href="${link}" target="_blank" class="card-link">${users} users, ${crashes} crashes</a><BR>
+				All time: <a href="${link}" target="_blank" class="card-link">${allTimeCrashes} crashes</a> 
 			</div> 
 		</div>
 	</div>
@@ -103,7 +105,6 @@ function generateHtmlCards(crashes) {
 	var strings = chunks.map(chunk => {
 		return `<div class="row">${generateCards(chunk)}</div>`
 	});
-	console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 	console.log(strings);
 
 	return strings.join("\n");
@@ -120,7 +121,7 @@ $("#newCrashes").html(\`${generateHtmlCards(newCrashes)}\`);
 $("#existingCrashes").html(\`${generateHtmlCards(existingCrashes)}\`);
 	`;
 
-	var filename = "crashNew.js"
+	var filename = "betaCrashNew.js"
 	console.log(js);
 	fs.writeFile(filename, js, function(err) {
 		if(err) {
@@ -162,9 +163,8 @@ function averageOfIntArray(arr) {
 }
  
 function generateText(callback) {
-	var appVersion = "4.6.750"
+	var appVersion = GuardianApp.getLatestAndroidBetaVersion();
 	var majorVersion = "4.6"
-	var cc = new CrittercismClient(clientid, "5457bc14d478bc2b14000002");
 
 	cc.init(username, password, function(err) {
 		if (err) {

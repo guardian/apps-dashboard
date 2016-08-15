@@ -50,7 +50,7 @@ generateChart(function(err, chart) {
 function generateChart(callback) {
         var chart = Util.getTemplate("custom-line-compact-percentage");
 	var appVersion = GuardianApp.getLatestAndroidAppVersion();
-	var cc = new CrittercismClient(clientid);
+	var cc = new CrittercismClient(clientid, "5457bc14d478bc2b14000002");
 
 	cc.init(username, password, function(err) {
 		if (err) {

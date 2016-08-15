@@ -36,8 +36,8 @@ generateChart(function(err, chart) {
  
 function generateChart(callback) {
         var chart = Util.getTemplate("polygon");
-	var appVersion = GuardianApp.getLatestAndroidAppVersion();
-	var cc = new CrittercismClient(clientid, "5457bc14d478bc2b14000002");
+	var appVersion = GuardianApp.getLatestAndroidBetaVersion();
+	var cc = new CrittercismClient(clientid, "555484008172e25e67906d29");
 
 	cc.init(username, password, function(err) {
 		if (err) {
@@ -54,7 +54,7 @@ function generateChart(callback) {
 			var maxUsers = Math.max.apply(Math, crashes.map(c => c.uniqueSessionCount)) + 5;
 			var maxOccurrences = Math.max.apply(Math, crashes.map(c => c.sessionCount)) + 5;
 
-			chart.chart.renderTo = "crashScatter";
+			chart.chart.renderTo = "betaCrashScatter";
 			chart.title.text = "";
 			chart.subtitle.text = "";
 			chart.xAxis.title.text = "Users affected";
