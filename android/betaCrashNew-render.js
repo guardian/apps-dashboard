@@ -36,14 +36,16 @@ function versionAsLabel(version) {
 
 function osAsLabels(os) {
 	if(os.length == 3)
-		return `<span class="tag tag-primary">All OS versions</span> `;
+		return ""
+		//return `<span class="tag tag-primary">All OS versions</span> `;
 	else
 		return os.map(v => `<span class="tag tag-primary">${v}</span> `).join("");
 }
 
 function modelsAsLabels(models) {
 	if(models.length >= 3)
-		return `<span class="tag tag-success">All devices</span> `;
+		return ""
+		//return `<span class="tag tag-success">All devices</span> `;
 	else
 		return models.map(v => `<span class="tag tag-success">${v}</span> `).join("");
 }
