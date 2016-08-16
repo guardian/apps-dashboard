@@ -1,6 +1,6 @@
-TARGETS=osVersion.js devices.js crashRate.js latestVersionText.js membershipPurchases.js versionSpread.js versionSpreadMonth.js adoption.js membershipFlow.js appsFeedback.js crashSummary.js starRating.js subsRecoveryFlow.js crashScatter.js subsPurchaseFlow.js betaCrashNew.js betaCrashScatter.js
-REALTIME_TARGETS=todaysCrashRate.js todaysNumberOfComplaints.js mapiUKCheck.js mapiUSCheck.js mapiAUCheck.js identityCheck.js realTimeTimestamp.js todaysAdoptionRate.js todaysBetaAdoption.js
-SLOW_TARGETS=crashNew.js
+TARGETS=osVersion.js devices.js crashRate.js latestVersionText.js membershipPurchases.js versionSpread.js versionSpreadMonth.js adoption.js membershipFlow.js appsFeedback.js crashSummary.js starRating.js subsRecoveryFlow.js crashScatter.js subsPurchaseFlow.js
+REALTIME_TARGETS=todaysCrashRate.js todaysNumberOfComplaints.js mapiUKCheck.js mapiUSCheck.js mapiAUCheck.js identityCheck.js realTimeTimestamp.js todaysAdoptionRate.js todaysBetaAdoption.js todaysBetaCrashRate.js
+SLOW_TARGETS=crashNew.js betaCrashNew.js betaCrashScatter.js
 
 .PHONY: clean print-targets print-real-time-targets print-slow-targets
 
