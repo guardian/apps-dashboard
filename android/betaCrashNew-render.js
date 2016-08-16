@@ -94,8 +94,8 @@ function generateCards(crashes) {
 				<h4 class="card-title">${title}</h4> 
 				<p class="card-text">${text}</p> 
 				<p class="card-text">${c.classAndFunction}</p>
-				Current version: <a href="${link}" target="_blank" class="card-link">${users} users, ${crashes} crashes</a><BR>
-				All time: <a href="${link}" target="_blank" class="card-link">${allTimeCrashes} crashes</a> 
+				<a href="${link}" target="_blank" class="card-link">Current ${users} <i class="fa fa-users" aria-hidden="true"></i> ${crashes} <i class="fa fa-bolt" aria-hidden="true"></i> | All time ${allTimeCrashes} <i class="fa fa-bolt" aria-hidden="true"></i></a>
+
 			</div> 
 		</div>
 	</div>
