@@ -91,6 +91,7 @@ function generateCards(crashes) {
 			<div class="card-block"> 
 				<h4 class="card-title">${title}</h4> 
 				<p class="card-text">${text}</p> 
+				<p class="card-text">${c.classAndFunction}</p>
 				Current version: <a href="${link}" target="_blank" class="card-link">${users} users, ${crashes} crashes</a><BR>
 				All time: <a href="${link}" target="_blank" class="card-link">${allTimeCrashes} crashes</a> 
 			</div> 
@@ -161,6 +162,23 @@ function averageOfIntArray(arr) {
 	var avg = sum / arr.length;
 	return Math.round(avg);
 }
+
+function firstLineOfStacktrace(stacktrace) {
+	try {
+		return stacktrace.filter(l => l.trace.includes("at com.guardian"))[0].trace.replace(/\t*at /g,"")
+	}
+	catch(err) {
+		return "";
+	}
+}
+
+function classAndFunctionFor(trace) {
+	try {
+		return trace.match(/(\w*\.\w*)\(/g) + ")";
+	} catch(err) {
+		return "";
+	}
+}
  
 function generateText(callback) {
 	var appVersion = GuardianApp.getLatestAndroidBetaVersion();
@@ -199,6 +217,8 @@ function generateText(callback) {
 					c["majorAndroidVersions"] = _.uniq(c.os.map(v => "A" + v.substring(1, 9).replace("N", "7"))).sort().filter( (v, i, arr) => arr.length > 1 ? v != 'Android 7' : true);
 					c["models"] = result.diagnostics.discrete_diagnostic_data.model.map(m => m[0]);
 					c["totalSessionCount"] = Object.keys(result.sessionCountsByVersion).reduce((sum, k) => sum + result.sessionCountsByVersion[k], 0);
+					c["stacktraceLineOne"] = firstLineOfStacktrace(result.stacktrace);
+					c["classAndFunction"] = classAndFunctionFor(c.stacktraceLineOne);
 					if(result.breadcrumbTraces)
 						c["averageNumberOfBreadcrumbs"] = averageOfIntArray(result.breadcrumbTraces.map(b => b.parsedBreadcrumbs.length));
 					else
@@ -207,6 +227,7 @@ function generateText(callback) {
 					console.log("> " + c.os.join(" "));
 					console.log("> " + c.totalSessionCount);
 					console.log("> " + c.averageNumberOfBreadcrumbs);
+					console.log("> " + c.stacktraceLineOne);
 					console.log("*****************************************************");
 					//sleep.sleep(30);
 					cb(null, c);
