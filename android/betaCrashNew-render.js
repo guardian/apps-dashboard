@@ -167,7 +167,7 @@ function averageOfIntArray(arr) {
 
 function firstLineOfStacktrace(stacktrace) {
 	try {
-		return stacktrace.filter(l => l.trace.includes("at com.guardian"))[0].trace.replace(/\t*at /g,"")
+		return stacktrace.filter(l => l.trace.includes("at com.guardian")).filter(l => !l.trace.includes("RxBus") && !l.trace.includes("Mapper.parseItem"))[0].trace.replace(/\t*at /g,"").replace(/\$\w*\./g,".");
 	}
 	catch(err) {
 		return "";
@@ -175,6 +175,9 @@ function firstLineOfStacktrace(stacktrace) {
 }
 
 function classAndFunctionFor(trace) {
+	if(!trace)
+		return "";
+
 	try {
 		return trace.match(/(\w*\.\w*)\(/g) + ")";
 	} catch(err) {
