@@ -1,4 +1,4 @@
-TARGETS=osVersion.js devices.js crashRate.js latestVersionText.js membershipPurchases.js versionSpread.js versionSpreadMonth.js adoption.js membershipFlow.js appsFeedback.js crashSummary.js starRating.js subsRecoveryFlow.js crashScatter.js subsPurchaseFlow.js appVersion.js
+TARGETS=osVersion.js devices.js crashRate.js latestVersionText.js membershipPurchases.js versionSpread.js versionSpreadMonth.js adoption.js membershipFlow.js appsFeedback.js crashSummary.js starRating.js subsRecoveryFlow.js crashScatter.js subsPurchaseFlow.js appVersion.js betaSubsRecoveryFlow.js
 REALTIME_TARGETS=todaysCrashRate.js todaysNumberOfComplaints.js mapiUKCheck.js mapiUSCheck.js mapiAUCheck.js identityCheck.js realTimeTimestamp.js todaysAdoptionRate.js todaysBetaAdoption.js todaysBetaCrashRate.js
 SLOW_TARGETS=crashNew.js betaCrashNew.js betaCrashScatter.js
 
