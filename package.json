@@ -18,6 +18,7 @@
     "request": "^2.70.0"
   },
   "devDependencies": {
+    "googleapis": "^12.3.0",
     "npm": "~3.3.9"
   },
   "engine": "node 0.12"
