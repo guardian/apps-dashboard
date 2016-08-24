@@ -52,9 +52,13 @@ function generateText(callback) {
 			}
 
 			var dau = result.series.dauByVersion.todayTopValues;
+			var dauForVersion = dau[appVersion];
 			Util.print(dau);
-			var totalDau = Object.keys(dau).reduce((sum, p) => sum + dau[p], 0)
-			var adoption = dau[appVersion] / totalDau;
+			var adoption ="0";
+			if(dauForVersion) {
+				var totalDau = Object.keys(dau).reduce((sum, p) => sum + dau[p], 0)
+				adoption = dauForVersion / totalDau;
+			}
 
 			callback(null, adoption);
 		});
