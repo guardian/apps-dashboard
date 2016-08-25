@@ -2,6 +2,7 @@ var CrittercismClient = require('../lib/CrittercismClient.js');
 var Util = require('../lib/Util.js');
 var moment = require ('moment');
 var nconf = require('nconf');
+var moment = require('moment');
 var fs = require('fs');
 var GuardianApp = require('../lib/GuardianApp.js');
 
@@ -46,7 +47,8 @@ function generateText(callback) {
 		}
 
 		console.log('Crittercism API client initialized');
-		cc.trends(function(err, result){
+		var startOfToday = moment().startOf("day").format();
+		cc.trends(startOfToday, function(err, result){
 			if (err) {
 				callback(err);
 			}
