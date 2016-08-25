@@ -162,8 +162,8 @@ function averageOfIntArray(arr) {
 }
  
 function generateText(callback) {
-	var appVersion = "4.6.750"
-	var majorVersion = "4.6"
+	var appVersion = GuardianApp.getLatestAndroidAppVersion();
+	var majorVersion = "4.7"
 	var cc = new CrittercismClient(clientid, "5457bc14d478bc2b14000002");
 
 	cc.init(username, password, function(err) {
