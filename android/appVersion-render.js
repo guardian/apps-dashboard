@@ -6,8 +6,9 @@ var Util = require('../lib/Util.js');
 
 var app = GuardianApp.getLatestAndroidApp();
 Util.print(app);
+
 var js = `
-$('#appReleaseTimestamp').attr('data-livestamp', '${moment(app.releaseDate).unix()}');
+$('#appReleaseTimestamp').attr('data-livestamp', '${moment(app.releaseDate).add(12, "hour").unix()}');
 $('#appVersion').text('${app.version}');
 $('#appReleaseDate').text('${Util.dayOfMonthAndWeek(app.releaseDate)}');
 `;
