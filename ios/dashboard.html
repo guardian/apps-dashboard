@@ -55,7 +55,7 @@ body {
 
     <div class="container">
 
-      <!-- Static navbar -->
+      <!-- Dynamic navbar -->
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -63,18 +63,18 @@ body {
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#userbase" >User base</a></li>
-              <li><a href="#beta" >Beta</a></li>
-              <li><a href="#revenue" >Revenue</a></li>
-              <li><a href="#metrics" >Metrics</a><li>
+              <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+              <li><a data-toggle="tab" href="#userbase" >User base</a></li>
+              <li><a data-toggle="tab" href="#beta" >Beta</a></li>
+              <li><a data-toggle="tab" href="#revenue" >Revenue</a></li>
+              <li><a data-toggle="tab" href="#metrics" >Metrics</a><li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
 
-  <div class="pages">
-    <div class="page" id="userbase">
+  <div class="tab-content">
+    <div class="tab-pane" id="userbase">
 	    <div class="row">
 		<div class="col-xs-4 col-sm-2"></div>
 		<div id="versionSpread" class="col-xs-6 col-sm-3"></div><script src="versionSpread.js"/></script>
@@ -83,7 +83,7 @@ body {
 	    </div>
 <div id="devices" class="col-md-11"></div><script src="devices.js"></script>
     </div><!--/.userbase-->
-    <div class="page" id="beta">
+    <div class="tab-pane" id="beta">
 	    <div class="row">
 		<div class="col-xs-4 col-sm-2"></div>
 		<div id="screenSizeBeta" class="col-xs-6 col-sm-3"></div><script src="screenSizeBeta.js"></script>
@@ -93,28 +93,28 @@ body {
       <h2>What iOS version do our beta users use?</h2>
 <div id="osVersionBeta" style="width: 940px; height: 400px; margin: 0; border-bottom:2px #d3d3d3 solid;"></div><script src="osVersionBeta.js"></script>
     </div><!--/.beta-->
-    <div class="page" id="revenue">
+    <div class="tab-pane" id="revenue">
       <h2>How much money are we making?</h2>
 <p>We've made &pound;<span id="revenueThisMonth"></span> this month</p><script src="revenueThisMonth.js"></script>
 <div id="revenue6Months" style="min-width: 310px; max-width: 940px; height: 400px; margin: 0; border-bottom:2px #d3d3d3 solid;"></div><script src="revenue6Months.js"></script>
     </div><!--/.revenue-->
-    <div class="page" id="metrics">
+    <div class="tab-pane" id="metrics">
             <div class="row" style="margin-top: 30px">
                 <div class="col-md-4">
-                  <div id="starRatingsGraph" style="width:300px; height:400px;"></div>
+                  <div id="starRatingsGraph" style="width:300px; height:400px"></div>
                   <script src="starRatingsGraph.js"></script>
                 </div>
                 <div class="col-md-4">
-                  <div id="crashRatesGraph" style="width:300px; height:400px;"></div>
+                  <div id="crashRatesGraph" style="width:300px; height:400px"></div>
                   <script src="crashRatesGraph.js"></script>
                 </div>
                 <div class="col-md-4">
-                  <div id="developmentTimeGraph" style="width:300px; height:400px;"></div>
+                  <div id="developmentTimeGraph" style="width:300px; height:400px"></div>
                   <script src="developmentTimeGraph.js"></script>
                 </div>
             </div>
     </div><!--/.metrics-->
-    <div class="page" id="home">
+    <div class="tab-pane active" id="home">
       <h2>The iOS app at a glance.</h2>
       <p>The latest version is <b>4.7</b>.</p>
 <div style="border-bottom:2px #d3d3d3 solid;overflow:hidden;width: 90%;margin-left:0;margin-right:auto;">
@@ -126,7 +126,7 @@ body {
 	<div style="width: 410px; height: 350px;float:left;overflow:scroll;"><table class="table" id="appsFeedback"></table><script src="appsFeedback.js"></script></div>
 </div>
     </div><!--/.home-->
-  </div><!--/.pages -->
-
+  </div><!--/.tab-content -->
+  </script>
   </body>
 </html>
