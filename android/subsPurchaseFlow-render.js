@@ -12,16 +12,21 @@ var secret = nconf.get('secret');
 console.log('username is ' + username);
 console.log('secret is ' + secret);
 
-generateChart(function(err, checkMark) {
+generateChart(function(err, result) {
 	if(err) {
 		throw err;
 	}
 
-
 	var js = `
-	$("#subsPurchaseAndroid4").addClass("${checkMark.android4}");
-	$("#subsPurchaseAndroid5").addClass("${checkMark.android5}");
-	$("#subsPurchaseAndroid6").addClass("${checkMark.android6}");
+	$("#subsPurchaseAndroid4").addClass("${result.android4.background}");
+	$("#subsPurchaseAndroid4").prop('title', '${result.android4.stats}');
+	$("#subsPurchaseAndroid4").html('${result.android4.icon}');
+	$("#subsPurchaseAndroid5").addClass("${result.android5.background}");
+	$("#subsPurchaseAndroid5").prop('title', '${result.android5.stats}');
+	$("#subsPurchaseAndroid5").html('${result.android5.icon}');
+	$("#subsPurchaseAndroid6").addClass("${result.android6.background}");
+	$("#subsPurchaseAndroid6").prop('title', '${result.android6.stats}');
+	$("#subsPurchaseAndroid6").html('${result.android6.icon}');
 	`;
 	console.log(js);
 
@@ -60,13 +65,22 @@ function generateChart(callback) {
 		console.log("*****************");
 
 
-		var checkMark = {};
-		checkMark.android4 = checkMarkFor("Android 4", response);
-		checkMark.android5 = checkMarkFor("Android 5", response);
-		checkMark.android6 = checkMarkFor("Android 6", response);
+		var result = {};
+		result.android4 = resultFor("Android 4", response.report.data);
+		result.android5 = resultFor("Android 5", response.report.data);
+		result.android6 = resultFor("Android 6", response.report.data);
         
-		callback(null, checkMark);
+		callback(null, result);
 	});
+}
+
+// _.compact removes all nulls
+function resultFor(version, data) {
+	var breakdowns = _.compact(_.flatMap(data, e => e.breakdown));
+	var filtered = _.filter(breakdowns, b => b.name.includes(version));
+	var total = _.reduce(filtered, (sum, f) => sum + parseInt(f.counts[0]), 0);
+	console.log(version + ":" + total);
+	return total > 0 ? {background:"bg-success", icon:'<i class="fa fa-check" aria-hidden="true"></i>', stats:total} : {background:"bg-danger", icon:'<i class="fa fa-remove" aria-hidden="true"></i>', stats:total};
 }
 
 function checkMarkFor(version, response) {
