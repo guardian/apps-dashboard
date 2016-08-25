@@ -12,18 +12,30 @@ var secret = nconf.get('secret');
 console.log('username is ' + username);
 console.log('secret is ' + secret);
 
-generateChart(function(err, displayCheckMark, paymentCheckMark) {
+generateChart(function(err, display, purchase) {
 	if(err) {
 		throw err;
 	}
 
 	var js = `
-	$("#memDisplayAndroid4").addClass("${displayCheckMark.android4}");
-	$("#memDisplayAndroid5").addClass("${displayCheckMark.android5}");
-	$("#memDisplayAndroid6").addClass("${displayCheckMark.android6}");
-	$("#memPurchaseAndroid4").addClass("${paymentCheckMark.android4}");
-	$("#memPurchaseAndroid5").addClass("${paymentCheckMark.android5}");
-	$("#memPurchaseAndroid6").addClass("${paymentCheckMark.android6}");
+	$("#memDisplayAndroid4").addClass("${display.android4.background}");
+	$("#memDisplayAndroid4").prop('title', '${display.android4.stats}');
+	$("#memDisplayAndroid4").html('${display.android4.icon}');
+	$("#memDisplayAndroid5").addClass("${display.android5.background}");
+	$("#memDisplayAndroid5").prop('title', '${display.android5.stats}');
+	$("#memDisplayAndroid5").html('${display.android5.icon}');
+	$("#memDisplayAndroid6").addClass("${display.android6.background}");
+	$("#memDisplayAndroid6").prop('title', '${display.android6.stats}');
+	$("#memDisplayAndroid6").html('${display.android6.icon}');
+	$("#memPurchaseAndroid4").addClass("${purchase.android4.background}");
+	$("#memPurchaseAndroid4").prop('title', '${purchase.android4.stats}');
+	$("#memPurchaseAndroid4").html('${purchase.android4.icon}');
+	$("#memPurchaseAndroid5").addClass("${purchase.android5.background}");
+	$("#memPurchaseAndroid5").prop('title', '${purchase.android5.stats}');
+	$("#memPurchaseAndroid5").html('${purchase.android5.icon}');
+	$("#memPurchaseAndroid6").addClass("${purchase.android6.background}");
+	$("#memPurchaseAndroid6").prop('title', '${purchase.android6.stats}');
+	$("#memPurchaseAndroid6").html('${purchase.android6.icon}');
 	`;
 
 	var filename = "membershipFlow.js"
@@ -63,26 +75,37 @@ function generateChart(callback) {
         
 		var displaySeries = seriesWithIndex(1, response);
 		var purchaseSeries = seriesWithIndex(0, response);
+		Util.print(displaySeries);
 
-		var displayCheckMark = {};
-		displayCheckMark.android4 = checkMarkFor("Android 4", displaySeries);
-		displayCheckMark.android5 = checkMarkFor("Android 5", displaySeries);
-		displayCheckMark.android6 = checkMarkFor("Android 6", displaySeries);
 
-		var purchaseCheckMark = {};
-		purchaseCheckMark.android4 = checkMarkFor("Android 4", purchaseSeries);
-		purchaseCheckMark.android5 = checkMarkFor("Android 5", purchaseSeries);
-		purchaseCheckMark.android6 = checkMarkFor("Android 6", purchaseSeries);
+		var display = {};
+		display.android4 = resultFor("Android 4", displaySeries);
+		display.android5 = resultFor("Android 5", displaySeries);
+		display.android6 = resultFor("Android 6", displaySeries);
 
-		Util.print(displayCheckMark);
-		Util.print(purchaseCheckMark);
+		var purchase = {};
+		purchase.android4 = resultFor("Android 4", purchaseSeries);
+		purchase.android5 = resultFor("Android 5", purchaseSeries);
+		purchase.android6 = resultFor("Android 6", purchaseSeries);
 
-		callback(null, displayCheckMark, purchaseCheckMark);
+		Util.print(display);
+		Util.print(purchase);
+
+		callback(null, display, purchase);
 	});
 }
 
 function seriesWithIndex(i, response) {
 	return response.report.data.map(item => item.breakdown[i]);
+}
+
+// _.compact removes all nulls
+function resultFor(version, data) {
+	var breakdowns = _.compact(_.flatMap(data, e => e.breakdown));
+	var filtered = _.filter(breakdowns, b => b.name.includes(version));
+	var total = _.reduce(filtered, (sum, f) => sum + parseInt(f.counts[0]), 0);
+	console.log(version + ":" + total);
+	return total > 0 ? {background:"bg-success", icon:'<i class="fa fa-check" aria-hidden="true"></i>', stats:total} : {background:"bg-danger", icon:'<i class="fa fa-remove" aria-hidden="true"></i>', stats:total};
 }
 
 function checkMarkFor(version, data) {
