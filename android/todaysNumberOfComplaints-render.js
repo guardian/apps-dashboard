@@ -44,12 +44,17 @@ generateText(function(err, numberOfComplaints, oneStarReviews, twoStarReviews) {
 });
 
 function generateCard(review) {
-  var header = "Review";
   var title = review.title;
   var content = review.text;
-  
+  if (review.rating == 1) { 
+      var outline = "danger";
+      var header = "One Star Review"
+  } else { 
+      var outline = "warning";
+      var header = "Two Star Review"
+  }
   return `
-    <div class="card card-outline-danger">
+    <div class="card card-outline-${outline}">
       <div class="card-header">${header}</div>
       <div class="card-block">
       <h4 class="card-title">${title}</h4>
