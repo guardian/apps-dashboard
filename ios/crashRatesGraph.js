@@ -8,16 +8,16 @@ $(function () {
         },
         xAxis: {
             categories: [
-                'Guardian 4.0',
-                'Guardian 4.1',
-                'Guardian 4.2',
-                'Guardian 4.3',
-                'Guardian 4.4',
-                'Guardian 4.5',
-                'Guardian 4.6',
-                'Guardian 4.7',
-                'Guardian 4.8',           
-                'Guardian 4.9',
+                '4.0',
+                '4.1',
+                '4.2',
+                '4.3',
+                '4.4',
+                '4.5',
+                '4.6',
+                '4.7',
+                '4.8',           
+                '4.9',
             ],
             crosshair: true
         },
@@ -44,7 +44,7 @@ $(function () {
         },
         series: [{
             name: 'Crash Rate',
-            data: [0.39, 0.34, 0.33, 0.27, 0.25, 0.29, 0.30]
+            data: [0.39, 0.34, 0.33, 0.27, 0.25, 0.29, 0.30, 0.24, 0.15, 0.17]
         }]
     });
 });

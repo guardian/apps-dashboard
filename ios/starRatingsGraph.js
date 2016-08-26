@@ -8,16 +8,16 @@ $(function () {
         },
         xAxis: {
             categories: [
-                'Guardian 4.0',
-                'Guardian 4.1',
-                'Guardian 4.2',
-                'Guardian 4.3',
-                'Guardian 4.4',
-                'Guardian 4.5',
-                'Guardian 4.6',
-                'Guardian 4.7',
-                'Guardian 4.8',
-                'Guardian 4.9',
+                '4.0',
+                '4.1',
+                '4.2',
+                '4.3',
+                '4.4',
+                '4.5',
+                '4.6',
+                '4.7',
+                '4.8',
+                '4.9',
             ],
             crosshair: true
         },
@@ -44,7 +44,7 @@ $(function () {
         },
         series: [{
             name: 'Star Rating',
-            data: [4.76, 4.76, 4.63, 4.73, 4.70, 4.70, 4.80, 4.90]
+            data: [4.76, 4.76, 4.63, 4.73, 4.70, 4.70, 4.80, 4.90, 4.3, 4.3]
         }]
     });
 });
