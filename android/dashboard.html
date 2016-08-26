@@ -130,7 +130,6 @@ body {
 		  <small class="text-muted">Complaints</small><BR>
 		  <span id="todaysNumberOfComplaints">-</span>
 	      </h4>
-	      <script src="todaysNumberOfComplaints.js"></script>
 	</td>
 	<td>
 	      <h4>
@@ -301,23 +300,11 @@ body {
   <div class="row">
   <div class="col-md-6">
     <h2>One Star Reviews</h2>
-    <div class="card card-outline-danger">
-      <div class="card-header">One Star</div>
-      <div class="card-block">
-      <h4 class="card-title">No good for me..</h4>
-      <p class="card-text">Freeze and crash every time I open an article, on Nook HD, if that matters...</p>
-      </div>
-    </div>
+    <div id="todaysOneStarReviews"></div>
   </div>
   <div class="col-md-6">
       <h2>Two Star Reviews</h2>
-      <div class="card card-outline-warning">
-        <div class="card-header">Two Stars</div>
-        <div class="card-block">
-        <h4 class="card-title">Creeping decline</h4>
-        <p class="card-text">Uninstalling after many years, bad journalism and a bias have crept into this once decent news site.</p>
-      </div>
-    </div>
+    <div id="todaysTwoStarReviews"></div>
   </div>
   </div>
   </div>
@@ -330,5 +317,6 @@ body {
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
+	      <script src="todaysNumberOfComplaints.js"></script>
   </body>
 </html>

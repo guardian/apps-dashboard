@@ -10,7 +10,7 @@ var apikey = nconf.get("appannie_apikey");
 var androidProductID = nconf.get("appannie_androidProductID");
 var iosProductID = nconf.get("appannie_iosProductID");
 
-generateText(function(err, numberOfComplaints) {
+generateText(function(err, numberOfComplaints, oneStarReviews, twoStarReviews) {
 	if(err) {
 		console.log(JSON.stringify(err.message))
 		throw err;
@@ -28,6 +28,8 @@ generateText(function(err, numberOfComplaints) {
 	var js = `
 	$("#todaysNumberOfComplaints").text("${numberOfComplaints}");
 	$("#todaysNumberOfComplaints").addClass("${color}");
+	$("#todaysOneStarReviews").html(\`${oneStarReviews}\`);
+	$("#todaysTwoStarReviews").html(\`${twoStarReviews}\`);
 	`;
 	console.log(js);
 
@@ -40,9 +42,25 @@ generateText(function(err, numberOfComplaints) {
 		console.log(filename + " was saved!");
 	}); 
 });
+
+function generateCard(review) {
+  var header = "Review";
+  var title = review.title;
+  var content = review.text;
+  
+  return `
+    <div class="card card-outline-danger">
+      <div class="card-header">${header}</div>
+      <div class="card-block">
+      <h4 class="card-title">${title}</h4>
+      <p class="card-text">${content}</p>
+      </div>
+    </div>
+    `;
+
+}
  
 function generateText(callback) {
-        var chart = Util.getTemplate("custom-line-compact");
 	var appAnnie = new AppAnnieClient(apikey, androidProductID, iosProductID);
 
 	appAnnie.getGooglePlayReviews(Util.dates.aDayAgo, Util.dates.today, [1,2], 0, function(err, reviews){
@@ -52,6 +70,14 @@ function generateText(callback) {
 		console.log(JSON.stringify(reviews));
 
 
-		callback(null, reviews.length);
+                var oneStarReviews = reviews.filter(r => r.rating == 1);
+                var twoStarReviews = reviews.filter(r => r.rating == 2);
+                
+                oneStarReviewsHtml = oneStarReviews.map(r => generateCard(r)).join("\n");
+                twoStarReviewsHtml = twoStarReviews.map(r => generateCard(r)).join("\n");
+                console.log(JSON.stringify(oneStarReviewsHtml));
+                console.log(JSON.stringify(twoStarReviewsHtml));
+
+		callback(null, reviews.length, oneStarReviewsHtml, twoStarReviewsHtml);
 	});
 };
