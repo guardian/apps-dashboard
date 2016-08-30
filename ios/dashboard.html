@@ -4,8 +4,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" crossorigin="anonymous"></script>
 
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
@@ -21,11 +20,12 @@
 
     <!-- Bootstrap core CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
 <style>
 body {
-  padding-top: 50px;
+  padding-top: 80px;
   padding-bottom: 20px;
 }
 
@@ -63,18 +63,18 @@ body {
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-              <li><a data-toggle="tab" href="#userbase" >User base</a></li>
-              <li><a data-toggle="tab" href="#beta" >Beta</a></li>
-              <li><a data-toggle="tab" href="#revenue" >Revenue</a></li>
-              <li><a data-toggle="tab" href="#metrics" >Metrics</a><li>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#userbase" >User base</a></li>
+              <li><a href="#beta" >Beta</a></li>
+              <li><a href="#revenue" >Revenue</a></li>
+              <li><a href="#metrics" >Metrics</a><li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
 
-  <div class="tab-content">
-    <div class="tab-pane" id="userbase">
+  <div class="pages">
+    <div class="page" id="userbase">
 	    <div class="row">
 		<div class="col-xs-4 col-sm-2"></div>
 		<div id="versionSpread" class="col-xs-6 col-sm-3"></div><script src="versionSpread.js"/></script>
@@ -83,7 +83,7 @@ body {
 	    </div>
 <div id="devices" class="col-md-11"></div><script src="devices.js"></script>
     </div><!--/.userbase-->
-    <div class="tab-pane" id="beta">
+    <div class="page" id="beta">
 	    <div class="row">
 		<div class="col-xs-4 col-sm-2"></div>
 		<div id="screenSizeBeta" class="col-xs-6 col-sm-3"></div><script src="screenSizeBeta.js"></script>
@@ -93,12 +93,12 @@ body {
       <h2>What iOS version do our beta users use?</h2>
 <div id="osVersionBeta" style="width: 940px; height: 400px; margin: 0; border-bottom:2px #d3d3d3 solid;"></div><script src="osVersionBeta.js"></script>
     </div><!--/.beta-->
-    <div class="tab-pane" id="revenue">
+    <div class="page" id="revenue">
       <h2>How much money are we making?</h2>
 <p>We've made &pound;<span id="revenueThisMonth"></span> this month</p><script src="revenueThisMonth.js"></script>
 <div id="revenue6Months" style="min-width: 310px; max-width: 940px; height: 400px; margin: 0; border-bottom:2px #d3d3d3 solid;"></div><script src="revenue6Months.js"></script>
     </div><!--/.revenue-->
-    <div class="tab-pane" id="metrics">
+    <div class="page" id="metrics">
             <div class="row" style="margin-top: 30px">
                 <div class="col-md-4">
                   <div id="starRatingsGraph" style="width:300px; height:400px"></div>
@@ -114,7 +114,7 @@ body {
                 </div>
             </div>
     </div><!--/.metrics-->
-    <div class="tab-pane active" id="home">
+    <div class="page" id="home">
       <h2>The iOS app at a glance.</h2>
       <p>The latest version is <b>4.7</b>.</p>
 <div style="border-bottom:2px #d3d3d3 solid;overflow:hidden;width: 90%;margin-left:0;margin-right:auto;">
@@ -127,5 +127,7 @@ body {
 </div>
     </div><!--/.home-->
   </div><!--/.tab-content -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
   </body>
 </html>
