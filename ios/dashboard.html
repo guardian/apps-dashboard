@@ -5,6 +5,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
@@ -139,7 +140,6 @@ body {
 	<div class="row">
 	<div class="col-md-6">
 
-	<div class="row">
 	<div class="card">
 	  <div class="card-block card-inverse card-success">
 	    <h4 class="card-title">Today's stats</h4>
@@ -170,7 +170,44 @@ body {
 	  <div class="card-footer text-muted">
 		  Updated <span id="realTimeTimestamp" data-livestamp="1470412152"></span>
 	      <script src="realTimeTimestamp.js"></script>
-	  </div> <!-- /.col-md-6-->
+	  </div>
+	  </div> <!-- /.card -->
+	</div><!-- /.col-md-6-->
+	<div class="col-md-6">
+	<div class="card">
+	  <div class="card-block card-inverse card-success">
+	    <h4 class="card-title">Operational Metrics</h4>
+	  </div>
+	  <div class="card-block">
+<table class="table">
+  <thead class="thead-default">
+    <tr>
+      <th style="background-color: #ffffff;border-bottom: 2px solid #fff;"></th>
+      <th>iOS 8</th>
+      <th>iOS 9</th>
+      <th>iOS 10</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Display membership payment screen</th>
+      <td id="memDisplayiOS8"></td>
+      <td id="memDisplayiOS9"></td>
+      <td id="memDisplayiOS10"</td>
+    </tr>
+    <tr>
+      <th scope="row">Purchase membership</th>
+      <td id="memPurchaseiOS8"></td>
+      <td id="memPurchaseiOS9"></td>
+      <td id="memPurchaseiOS10"></td>
+    </tr>
+  </tbody>
+</table>
+	      <script src="membershipFlow.js"></script>
+	  </div>
+	  </div> <!-- /.card -->
+
+	</div><!--/.md6-->
 	</div> <!-- /.row-->
     </div><!--/.home-->
   </div><!--/.tab-content -->
