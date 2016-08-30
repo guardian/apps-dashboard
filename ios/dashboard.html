@@ -27,9 +27,11 @@
 html {
 	font-size: 14px;
 }
+.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
+	border: none;
+}
 body {
   padding-top: 80px;
-  padding-bottom: 20px;
 }
 
 .navbar {
@@ -132,7 +134,44 @@ body {
 <p>-- We’d love to hear from you --</p>
 <p>We value your feedback, so if you have something to share then email us at apps.feedback@theguardian.com. If you’re enjoying the app, please leave us a rating and a review.</p>
 	</div><!--/.col-->
-  </div>
+  </div><!-- /row -->
+
+	<div class="row">
+	<div class="col-md-6">
+
+	<div class="row">
+	<div class="card">
+	  <div class="card-block card-inverse card-success">
+	    <h4 class="card-title">Today's stats</h4>
+	  </div>
+	  <div class="card-block">
+	<table class="table table-borderless">
+	<thead></thead>
+	<tbody>
+	<tr>
+	<td>
+	      <h4>
+		  <small class="text-muted" title="Percentage of app loads that ended with a crash.">Crash rate</small><BR>
+		  <span id="todaysCrashRate" title="Percentage of app loads that ended with a crash.">-</span>
+	      </h4>
+	      <script src="todaysCrashRate.js"></script>
+	</td>
+	<td>
+	      <h4>
+		  <small class="text-muted" title="How many of our users have installed the latest version of the app.">Adoption</small><BR>
+		  <span id="todaysAdoptionRate" title="How many of our users have installed the latest version of the app.">-</span>
+	      </h4>
+	      <script src="todaysAdoptionRate.js"></script>
+	</td>
+	</tr>
+	</tbody>
+	</table>
+	  </div>
+	  <div class="card-footer text-muted">
+		  Updated <span id="realTimeTimestamp" data-livestamp="1470412152"></span>
+	      <script src="realTimeTimestamp.js"></script>
+	  </div> <!-- /.col-md-6-->
+	</div> <!-- /.row-->
     </div><!--/.home-->
   </div><!--/.tab-content -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
