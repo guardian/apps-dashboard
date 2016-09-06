@@ -4,6 +4,7 @@ var moment = require ('moment');
 var nconf = require('nconf');
 var _ = require('lodash');
 var fs = require('fs');
+var GuardianApp = require('../lib/GuardianApp.js');
 
 nconf.file({ file: '../config.json' });
 var username = nconf.get('username');
@@ -30,7 +31,7 @@ generateChart(function(err, chart) {
 
 function generateChart(callback) {
 	var chart = Util.getTemplate("column-drilldown");
-	var appid = "Guardian 4.9 (13713)";
+	var appid = GuardianApp.getLatestiOSBetaAppId();
 	var options = { waitTime: 10, log: true, version: 1.4};
 	var reportData = {
 		reportDescription: {

@@ -4,6 +4,7 @@ var moment = require ('moment');
 var nconf = require('nconf');
 var _ = require('lodash');
 var fs = require('fs');
+var GuardianApp = require('../lib/GuardianApp.js');
 
 nconf.file({ file: '../config.json' });
 var username = nconf.get('username');
@@ -30,7 +31,7 @@ generateChart(function(err, chart) {
 
 function generateChart(callback) {
 	var chart = Util.getTemplate("");
-	var appid = "Guardian 4.9 (13713)";
+	var appid = GuardianApp.getLatestiOSBetaAppId();
 	var options = { waitTime: 10, log: true, version: 1.4};
 	var reportData = {
 		reportDescription: {
@@ -55,7 +56,7 @@ function generateChart(callback) {
 		console.log("*****************");
 
 		var chart = getDonutChart(response);
-		chart.title.text = "Guardian 4.8 (13573)";
+		chart.title.text = appid;
 		chart.chart.renderTo = "osVersionBeta";
 
 		callback(null, chart);
@@ -70,20 +71,24 @@ function getDonutChart(response) {
     iOS7Versions = categories.filter(function(elem){ return elem.indexOf("iOS 7") > -1});
     iOS8Versions = categories.filter(function(elem){ return elem.indexOf("iOS 8") > -1});
     iOS9Versions = categories.filter(function(elem){ return elem.indexOf("iOS 9") > -1});
+    iOS10Versions = categories.filter(function(elem){ return elem.indexOf("iOS 10") > -1});
     console.log(JSON.stringify(iOS7Versions));
     console.log(JSON.stringify(iOS8Versions));
     console.log(JSON.stringify(iOS9Versions));
+    console.log(JSON.stringify(iOS10Versions));
     
     iOS7VersionUptake = arrayOfCountsForDataWithNames(response, iOS7Versions), response.report.totals[0];
     iOS8VersionUptake = arrayOfCountsForDataWithNames(response, iOS8Versions);
     iOS9VersionUptake = arrayOfCountsForDataWithNames(response, iOS9Versions);
+    iOS10VersionUptake = arrayOfCountsForDataWithNames(response, iOS10Versions);
     console.log(JSON.stringify(iOS7VersionUptake));
     console.log(JSON.stringify(iOS8VersionUptake));
     console.log(JSON.stringify(iOS9VersionUptake));
+    console.log(JSON.stringify(iOS10VersionUptake));
     console.log("*****************");
 
     var colors = ["#7cb5ec", "#434348", "#90ed7d", "#f7a35c", "#8085e9", "#f15c80", "#e4d354", "#2b908f", "#f45b5b", "#91e8e1"],
-        categories = ['iOS 7', 'iOS 8', 'iOS 9'],
+        categories = ['iOS 7', 'iOS 8', 'iOS 9', 'iOS 10'],
         data = [{
             y: total(iOS7VersionUptake),
             color: colors[0],
@@ -109,6 +114,15 @@ function getDonutChart(response) {
                 name: 'iOS 9 versions',
                 categories: iOS9Versions,
                 data: iOS9VersionUptake,
+                color: colors[2]
+            }
+        }, {
+            y: total(iOS10VersionUptake),
+            color: colors[3],
+            drilldown: {
+                name: 'iOS 10 versions',
+                categories: iOS10Versions,
+                data: iOS10VersionUptake,
                 color: colors[2]
             }
         }
