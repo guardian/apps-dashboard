@@ -109,15 +109,14 @@ function generateHtmlCards(crashes) {
 	return strings.join("\n");
 }
 
-generateText(function(err, appVersion, majorVersion, newCrashes, existingCrashes) {
+generateText(function(err, appVersion, majorVersion, crashes) {
 	if(err) {
 		console.log(JSON.stringify(err.message))
 		throw err;
 	}
 
 	var js = `
-$("#newCrashes").html(\`${generateHtmlCards(newCrashes)}\`);
-$("#existingCrashes").html(\`${generateHtmlCards(existingCrashes)}\`);
+$("#existingCrashes").html(\`${generateHtmlCards(crashes)}\`);
 	`;
 
 	var filename = "crashNew.js"
@@ -179,7 +178,7 @@ function generateText(callback) {
 
 
 			crashes = crashes.sort( (a,b) => power(b) - power(a) );
-			crashes = crashes.slice(0, 100);
+			crashes = crashes.slice(0, 20);
 			//crashes = crashes.filter(c => c.sessionCount > 8 && c.uniqueSessionCount > 8);
 
 			function wrapper(c,cb) {
@@ -227,23 +226,14 @@ function generateText(callback) {
 					return c;
 				});
 
-				var newCrashes = crashesWithVersions.filter(c => c.versions.length == 1);
-				console.log("New in " + appVersion);
-				Util.print(newCrashes);
-			
 				//var newMajorVersionCrashes = crashesWithVersions.filter(c => { 
 				//	var versionsInterested = c.versions.filter(v => v.indexOf(majorVersion) > -1);
 				//	return versionsInterested.length == c.versions.length;
 				//});
 				//console.log("New in " + majorVersion);
 				//Util.print(newMajorVersionCrashes);
-				var existingCrashes = crashesWithVersions.filter(c => c.versions.length != 1);
-				console.log("Rest");
-				Util.print(existingCrashes);
-				
-				
 
-				callback(null, appVersion, majorVersion, newCrashes, existingCrashes);
+				callback(null, appVersion, majorVersion, crashesWithVersions);
 			});
 
 		});
