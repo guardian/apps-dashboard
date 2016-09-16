@@ -8,6 +8,7 @@
   "dependencies": {
     "app-store-scraper": "^0.3.1",
     "deasync": "^0.1.7",
+    "github-api": "^2.3.0",
     "google-play-scraper": "^1.0.5",
     "imap-simple": "^1.6.0",
     "itunesconnect": "^0.2.0",
