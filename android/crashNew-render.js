@@ -176,7 +176,6 @@ function generateText(callback) {
 				callback(err);
 			}
 
-
 			crashes = crashes.sort( (a,b) => power(b) - power(a) );
 			crashes = crashes.slice(0, 20);
 			//crashes = crashes.filter(c => c.sessionCount > 8 && c.uniqueSessionCount > 8);
@@ -217,7 +216,6 @@ function generateText(callback) {
 				if(err) callback(err);
 
 				Util.print(crashesWithVersions);
-				crashesWithVersions = crashesWithVersions.sort((b,a) => power(a) - power(b));
 
 				crashesWithVersions = mergeThem(crashesWithVersions)			
 				crashesWithVersions = crashesWithVersions.map(c => {
@@ -225,6 +223,7 @@ function generateText(callback) {
 					console.log(JSON.stringify(c.models) + "==>" + JSON.stringify(c["manufacturers"]))
 					return c;
 				});
+				crashesWithVersions = crashesWithVersions.sort((b,a) => power(a) - power(b));
 
 				//var newMajorVersionCrashes = crashesWithVersions.filter(c => { 
 				//	var versionsInterested = c.versions.filter(v => v.indexOf(majorVersion) > -1);
