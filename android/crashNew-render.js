@@ -177,7 +177,7 @@ function generateText(callback) {
 			}
 
 			crashes = crashes.sort( (a,b) => power(b) - power(a) );
-			crashes = crashes.slice(0, 20);
+			crashes = crashes.slice(0, 100);
 			//crashes = crashes.filter(c => c.sessionCount > 8 && c.uniqueSessionCount > 8);
 
 			function wrapper(c,cb) {
