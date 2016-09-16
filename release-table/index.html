@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <title>Android Releases</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+
+    <!-- Custom styles for this template -->
+    <link href="navbar-top-fixed.css" rel="stylesheet">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+<script type="text/javascript" src="livestamp.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<style>
+html {
+	font-size: 14px;
+}
+
+.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
+	border: none;
+}
+
+.tag {
+	line-height:1.3;
+}
+
+
+.card-title {
+	margin-bottom:0rem;
+}
+
+body {
+  /* Show it's not fixed to the top */
+  min-height: 75rem;
+  padding-top: 4rem;
+}
+</style>
+  </head>
+
+  <body>
+
+<!-- Tab panes -->
+<div class="container">
+  <div class="row">
+	<div class="col-md-4">
+	<div class="card">
+	  <div class="card-block card-inverse card-success">
+	    <h4 class="card-title">Production</h4>
+	  </div>
+	  <div class="card-block">
+	      <h4>
+		  <small class="text-muted">Version</small><BR>
+		  <span id="productionVersion">-</span>
+	      </h4>
+	      <h4>
+		  <small class="text-muted">Released</small><BR>
+		  <span id="productionReleased">-</span>
+	      </h4>
+	      <h4>
+		  <small class="text-muted">Date</small><BR>
+		  <span id="productionDate">-</span>
+	      </h4>
+	  </div>
+	</div>
+	</div>
+	<div class="col-md-4">
+	<div class="card">
+	  <div class="card-block card-inverse card-success">
+	    <h4 class="card-title">Beta</h4>
+	  </div>
+	  <div class="card-block">
+	      <h4>
+		  <small class="text-muted">Version</small><BR>
+		  <span id="betaVersion">-</span>
+	      </h4>
+	      <h4>
+		  <small class="text-muted">Released</small><BR>
+		  <span id="betaReleased">-</span>
+	      </h4>
+	      <h4>
+		  <small class="text-muted">Date</small><BR>
+		  <span id="betaDate">-</span>
+	      </h4>
+	  </div>
+	</div>
+	</div>
+	<div class="col-md-4">
+	<div class="card">
+	  <div class="card-block card-inverse card-success">
+	    <h4 class="card-title">Alpha</h4>
+	  </div>
+	  <div class="card-block">
+	      <h4>
+		  <small class="text-muted">Version</small><BR>
+		  <span id="alphaVersion">-</span>
+	      </h4>
+	      <h4>
+		  <small class="text-muted">Released</small><BR>
+		  <span id="alphaReleased">-</span>
+	      </h4>
+	      <h4>
+		  <small class="text-muted">Date</small><BR>
+		  <span id="alphaDate">-</span>
+	      </h4>
+	  </div>
+	</div>
+	</div>
+    <script src="releaseTable.js"></script>
+</div>
+</div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
+	      <script src="todaysNumberOfComplaints.js"></script>
+  </body>
+</html>
