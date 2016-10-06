@@ -33,7 +33,7 @@ function generateChart(callback) {
 	var reportData = {
 		reportDescription: {
 			reportSuiteID: "guardiangu-globalapps-prod",
-			dateFrom: Util.dates.aMonthAndADayAgo,
+			dateFrom: Util.dates.aWeekAgo,
 			dateTo: Util.dates.aDayAgo,
 			elements: [{id: "mobileosversion", top: "20"}],
 			segments: [{id:"s1218_55facf7ae4b08d193fc26205"},{id:"5550876be4b0b5455b979741"}],
