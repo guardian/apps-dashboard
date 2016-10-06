@@ -35,7 +35,7 @@ function generateChart(callback) {
 			reportSuiteID: "guardiangu-globalapps-prod",
 			dateFrom: Util.dates.aMonthAndADayAgo,
 			dateTo: Util.dates.aDayAgo,
-			elements: [{id: "mobileosversion", top: "10"}],
+			elements: [{id: "mobileosversion", top: "20"}],
 			segments: [{id:"s1218_55facf7ae4b08d193fc26205"},{id:"5550876be4b0b5455b979741"}],
 			metrics: [{id:"uniquevisitors"}]
 		}
@@ -71,20 +71,24 @@ function getDonutChart(response) {
     iOS7Versions = categories.filter(function(elem){ return elem.indexOf("iOS 7") > -1});
     iOS8Versions = categories.filter(function(elem){ return elem.indexOf("iOS 8") > -1});
     iOS9Versions = categories.filter(function(elem){ return elem.indexOf("iOS 9") > -1});
+    iOS10Versions = categories.filter(function(elem){ return elem.indexOf("iOS 10") > -1});
     console.log(JSON.stringify(iOS7Versions));
     console.log(JSON.stringify(iOS8Versions));
     console.log(JSON.stringify(iOS9Versions));
+    console.log(JSON.stringify(iOS10Versions));
     
     iOS7VersionUptake = arrayOfCountsForDataWithNames(response, iOS7Versions), response.report.totals[0];
     iOS8VersionUptake = arrayOfCountsForDataWithNames(response, iOS8Versions);
     iOS9VersionUptake = arrayOfCountsForDataWithNames(response, iOS9Versions);
+    iOS10VersionUptake = arrayOfCountsForDataWithNames(response, iOS10Versions);
     console.log(JSON.stringify(iOS7VersionUptake));
     console.log(JSON.stringify(iOS8VersionUptake));
     console.log(JSON.stringify(iOS9VersionUptake));
+    console.log(JSON.stringify(iOS10VersionUptake));
     console.log("*****************");
 
     var colors = ["#7cb5ec", "#434348", "#90ed7d", "#f7a35c", "#8085e9", "#f15c80", "#e4d354", "#2b908f", "#f45b5b", "#91e8e1"],
-        categories = ['7', '8', '9'],
+        categories = ['7', '8', '9', '10'],
         data = [{
             y: total(iOS7VersionUptake),
             color: colors[0],
@@ -111,6 +115,15 @@ function getDonutChart(response) {
                 categories: iOS9Versions.map(s => s.substring(4)),
                 data: iOS9VersionUptake,
                 color: colors[2]
+            }
+        }, {
+            y: total(iOS10VersionUptake),
+            color: colors[3],
+            drilldown: {
+                name: 'iOS 10 versions',
+                categories: iOS10Versions.map(s => s.substring(4)),
+                data: iOS10VersionUptake,
+                color: colors[3]
             }
         }
         ],
