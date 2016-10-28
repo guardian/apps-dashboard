@@ -12,17 +12,17 @@ Util.print(beta);
 Util.print(alpha);
 
 var js = `
-$('#productionReleased').text('${improveReadability(moment(app.releaseDate).from(moment()))}');
+$('#productionReleased').attr('data-livestamp','${moment(app.releaseDate).unix()}');
 $('#productionVersion').text('${app.version}');
-$('#productionDate').attr('data-livestamp','${moment(app.releaseDate).unix()}');
+$('#productionDate').text('${Util.dayOfMonthAndWeek(app.releaseDate)}');
 
-$('#betaReleased').text('${improveReadability(moment(beta.releaseDate).from(moment()))}');
+$('#betaReleased').attr('data-livestamp','${moment(beta.releaseDate).unix()}');
 $('#betaVersion').text('${beta.version}');
-$('#betaDate').attr('data-livestamp','${moment(beta.releaseDate).unix()}');
+$('#betaDate').text('${Util.dayOfMonthAndWeek(beta.releaseDate)}');
 
-$('#alphaReleased').text('${improveReadability(moment(alpha.releaseDate).from(moment()))}');
+$('#alphaReleased').attr('data-livestamp','${moment(alpha.releaseDate).unix()}');
 $('#alphaVersion').text('${alpha.version}');
-$('#alphaDate').attr('data-livestamp','${moment(alpha.releaseDate).unix()}');
+$('#alphaDate').text('${Util.dayOfMonthAndWeek(alpha.releaseDate)}');
 
 `;
 console.log(js);
