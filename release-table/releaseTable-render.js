@@ -6,7 +6,6 @@ var Util = require('../lib/Util.js');
 
 var app = GuardianApp.getLatestAndroidApp();
 var beta = GuardianApp.getLatestAndroidBetaAsync();
-process.exit(1);
 var alpha = GuardianApp.getLatestAndroidAlphaAsync();
 Util.print(app);
 Util.print(beta);
