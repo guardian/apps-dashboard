@@ -18,11 +18,11 @@ $('#productionDate').attr('data-livestamp','${moment(app.releaseDate).unix()}');
 
 $('#betaReleased').text('${improveReadability(moment(beta.releaseDate).from(moment()))}');
 $('#betaVersion').text('${beta.version}');
-$('#betaDate')..attr('data-livestamp','${moment(beta.releaseDate).unix()}');
+$('#betaDate').attr('data-livestamp','${moment(beta.releaseDate).unix()}');
 
 $('#alphaReleased').text('${improveReadability(moment(alpha.releaseDate).from(moment()))}');
 $('#alphaVersion').text('${alpha.version}');
-$('#alphaDate')..attr('data-livestamp','${moment(alpha.releaseDate).unix()}');
+$('#alphaDate').attr('data-livestamp','${moment(alpha.releaseDate).unix()}');
 
 `;
 console.log(js);
