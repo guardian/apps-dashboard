@@ -14,7 +14,7 @@ Util.print(alpha);
 var js = `
 $('#productionReleased').text('${improveReadability(moment(app.releaseDate).from(moment()))}');
 $('#productionVersion').text('${app.version}');
-$('#productionDate')..attr('data-livestamp','${moment(production.releaseDate).unix()}');
+$('#productionDate').attr('data-livestamp','${moment(app.releaseDate).unix()}');
 
 $('#betaReleased').text('${improveReadability(moment(beta.releaseDate).from(moment()))}');
 $('#betaVersion').text('${beta.version}');
