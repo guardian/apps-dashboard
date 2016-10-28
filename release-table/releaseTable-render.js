@@ -6,6 +6,7 @@ var Util = require('../lib/Util.js');
 
 var app = GuardianApp.getLatestAndroidApp();
 var beta = GuardianApp.getLatestAndroidBetaAsync();
+process.exit(1);
 var alpha = GuardianApp.getLatestAndroidAlphaAsync();
 Util.print(app);
 Util.print(beta);
@@ -14,15 +15,15 @@ Util.print(alpha);
 var js = `
 $('#productionReleased').text('${improveReadability(moment(app.releaseDate).from(moment()))}');
 $('#productionVersion').text('${app.version}');
-$('#productionDate').text('${Util.dayOfMonthAndWeek(app.releaseDate)}');
+$('#productionDate')..attr('data-livestamp','${moment(production.releaseDate).unix()}');
 
 $('#betaReleased').text('${improveReadability(moment(beta.releaseDate).from(moment()))}');
 $('#betaVersion').text('${beta.version}');
-$('#betaDate').text('${Util.dayOfMonthAndWeek(beta.releaseDate)}');
+$('#betaDate')..attr('data-livestamp','${moment(beta.releaseDate).unix()}');
 
 $('#alphaReleased').text('${improveReadability(moment(alpha.releaseDate).from(moment()))}');
 $('#alphaVersion').text('${alpha.version}');
-$('#alphaDate').text('${Util.dayOfMonthAndWeek(alpha.releaseDate)}');
+$('#alphaDate')..attr('data-livestamp','${moment(alpha.releaseDate).unix()}');
 
 `;
 console.log(js);
