@@ -7,12 +7,9 @@ var Util = require('../lib/Util.js');
 var app = GuardianApp.getLatestAndroidApp();
 var beta = GuardianApp.getLatestAndroidBetaAsync();
 var alpha = GuardianApp.getLatestAndroidAlphaAsync();
-Util.print(app);
-Util.print(beta);
-Util.print(alpha);
 
 var js = `
-$('#productionReleased').attr('data-livestamp','${moment(app.releaseDate).unix()}');
+$('#productionReleased').attr('data-livestamp','${moment(app.releaseDate).unix() + 21600}');
 $('#productionVersion').text('${app.version}');
 $('#productionDate').text('${Util.dayOfMonthAndWeek(app.releaseDate)}');
 
