@@ -1,4 +1,3 @@
-window.onload=function(){
 var apiURL = 'releases.json'
 
 var demo = new Vue({
@@ -24,5 +23,3 @@ var demo = new Vue({
     }
   }
 })
-
-}//]]> 
