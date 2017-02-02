@@ -5,7 +5,7 @@ var demo = new Vue({
   el: '#dataZone',
 
   data: {
-    releases: null
+    releases: {production:{version:"?",releaseDateUnix:0,releaseDateHumanReadable:"?"},"beta":{version:"?",releaseDateUnix:0,releaseDateHumanReadable:""},alpha:{version:"?",releaseDateUnix:0,releaseDateHumanReadable:"?"}}
   },
 
   created: function () {
