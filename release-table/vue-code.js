@@ -10,6 +10,7 @@ var demo = new Vue({
 
   created: function () {
     this.fetchData()
+    setInterval(this.fetchData, 10000)
   },
 
   methods: {
