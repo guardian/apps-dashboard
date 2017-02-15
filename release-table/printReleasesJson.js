@@ -7,5 +7,7 @@ var tracks = GuardianApp.getLatestGooglePlayReleases((err, releases) => {
 		"releaseDateUnix": moment(r.releaseDate).unix(),
 		"releaseDateHumanReadable": moment(r.releaseDate).format('ddd MMM Do')}
 		));
+	if(releasesExtendedDates["rollout"] == undefined)
+		releasesExtendedDates["rollout"] = {version:"",releaseDateUnix:"",releaseDateHumanReadable:"",userFraction:""};
 	console.log(JSON.stringify(releasesExtendedDates, null, "  "));
 });
