@@ -59,18 +59,18 @@ body {
 	  <div class="card-block">
 	      <h4>
 		  <small class="text-muted">Version</small><BR>
-		  <span>{{ releases.production.version + (releases.rollout != undefined ? " (" + (100 - releases.rollout.userFraction*100) + "%)" : "") }}</span><BR>
-		  <span>{{ (releases.rollout != undefined ? releases.rollout.version + " (" + (releases.rollout.userFraction*100) + "%)" : "") }}</span>
+		  <span>{{ releases.production.version + (releases.rollout.userFraction ? " (" + (100 - releases.rollout.userFraction*100) + "%)" : "") }}</span><BR>
+		  <span>{{ (releases.rollout.userFraction ? releases.rollout.userFraction + " (" + (releases.rollout.userFraction*100) + "%)" : "") }}</span>
 	      </h4>
 	      <h4>
 		  <small class="text-muted">Released</small><BR>
 		  <span :data-livestamp="releases.production.releaseDateUnix">?</span><BR>
-		  <span :data-livestamp="releases.rollout != undefined ? releases.rollout.releaseDateUnix : ''"></span>
+		  <span :data-livestamp="releases.rollout.userFraction ? releases.rollout.releaseDateUnix : ''"></span>
 	      </h4>
 	      <h4>
 		  <small class="text-muted">Date</small><BR>
 		  <span>{{ releases.production.releaseDateHumanReadable }}</span><BR>
-		  <span>{{ releases.rollout != undefined? releases.rollout.releaseDateHumanReadable : ""}}</span>
+		  <span>{{ releases.rollout.userFraction ? releases.rollout.releaseDateHumanReadable : ""}}</span>
 	      </h4>
 	  </div>
 	</div>
