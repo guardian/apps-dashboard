@@ -20,10 +20,7 @@ var demo = new Vue({
       xhr.onload = () => {
 	var response = JSON.parse(xhr.responseText)
 
-	if(typeof response.rollout === "undefined")
-		this.releases = response;
-	else
-		this.releases = Object.assign(this.releases, response)
+	this.releases = Object.assign(this.releases, response)
 
 	this.releases.production.daysAgo = moment.unix(this.releases.beta.releaseDateUnix).diff(moment.now(), 'days') * -1 + 1;
 	this.releases.beta.daysAgo = moment.unix(this.releases.beta.releaseDateUnix).diff(moment.now(), 'days') * -1 + 1;
