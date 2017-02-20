@@ -77,7 +77,7 @@ body {
 	</div>
 	<div class="col-md-4">
 	<div class="card">
-	  <div class="card-block card-inverse"  :class="[ releases.beta.daysAgo > 3 ? 'card-danger' : 'card-success' ]">
+	  <div class="card-block card-inverse"  :class="[ releases.beta.workingDaysAgo > 3 ? 'card-danger' : 'card-success' ]">
 	    <h4 class="card-title">Beta</h4>
 	  </div>
 	  <div class="card-block">
@@ -87,7 +87,7 @@ body {
 	      </h4>
 	      <h4>
 		  <small class="text-muted">Released</small><BR>
-		  <span :data-livestamp="releases.beta.releaseDateUnix">?</span>
+		  <span>{{ releases.beta.workingDaysAgoMessage }}</span>
 	      </h4>
 	      <h4>
 		  <small class="text-muted">Date</small><BR>
@@ -98,7 +98,7 @@ body {
 	</div>
 	<div class="col-md-4">
 	<div class="card">
-	  <div class="card-block card-inverse"  :class="[ releases.alpha.daysAgo > 2 ? 'card-danger' : 'card-success' ]">
+	  <div class="card-block card-inverse"  :class="[ releases.alpha.workingDaysAgo > 2 ? 'card-danger' : 'card-success' ]">
 	    <h4 class="card-title">Alpha</h4>
 	  </div>
 	  <div class="card-block">
@@ -108,7 +108,7 @@ body {
 	      </h4>
 	      <h4>
 		  <small class="text-muted">Released</small><BR>
-		  <span :data-livestamp="releases.alpha.releaseDateUnix">?</span>
+		  <span>{{ releases.alpha.workingDaysAgoMessage }}</span>
 	      </h4>
 	      <h4>
 		  <small class="text-muted">Date</small><BR>
