@@ -17,15 +17,13 @@ function numberOfWorkingDaysBetween(start, end) {
 }
 
 function numberOfWorkingDaysMessage(days) {
-  switch(days) {
-    case 0:
-      return "today";
-    case 1:
-      return `${days} working day ago`;
-    default:
-      return `${days} working days ago`;
+  if (days < 1) {
+    return "today";
+  }  else if( days == 1) {
+    return `${days} working day ago`;
+  } else {
+    return `${days} working days ago`;
   }
-
 }
 
 var demo = new Vue({
