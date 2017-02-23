@@ -13,7 +13,7 @@ function workday_count(start,end) {
 }
 
 function numberOfWorkingDaysBetween(start, end) {
-  return workday_count(start, end) - 1;
+  return Math.floor(workday_count(start, end)) - 1;
 }
 
 function numberOfWorkingDaysMessage(days) {
