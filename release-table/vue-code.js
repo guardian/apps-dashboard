@@ -52,9 +52,9 @@ var demo = new Vue({
 	this.releases.beta.daysAgo = moment.unix(this.releases.beta.releaseDateUnix).diff(moment.now(), 'days') * -1 + 1;
 	this.releases.alpha.daysAgo = moment.unix(this.releases.alpha.releaseDateUnix).diff(moment.now(), 'days') * -1 + 1;
 
-	this.releases.production.workingDaysAgo = numberOfWorkingDaysBetween(moment.unix(this.releases.beta.releaseDateUnix), moment());
+	this.releases.production.workingDaysAgo = numberOfWorkingDaysBetween(moment.unix(this.releases.production.releaseDateUnix), moment());
 	this.releases.beta.workingDaysAgo = numberOfWorkingDaysBetween(moment.unix(this.releases.beta.releaseDateUnix), moment());
-	this.releases.alpha.workingDaysAgo = numberOfWorkingDaysBetween(moment.unix(this.releases.beta.releaseDateUnix), moment());
+	this.releases.alpha.workingDaysAgo = numberOfWorkingDaysBetween(moment.unix(this.releases.alpha.releaseDateUnix), moment());
 
 	this.releases.production.workingDaysAgoMessage = numberOfWorkingDaysMessage(this.releases.production.workingDaysAgo);
 	this.releases.beta.workingDaysAgoMessage = numberOfWorkingDaysMessage(this.releases.beta.workingDaysAgo);
