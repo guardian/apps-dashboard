@@ -48,7 +48,7 @@ var demo = new Vue({
 
 	this.releases = Object.assign(this.releases, response)
 
-	this.releases.production.daysAgo = moment.unix(this.releases.beta.releaseDateUnix).diff(moment.now(), 'days') * -1 + 1;
+	this.releases.production.daysAgo = moment.unix(this.releases.production.releaseDateUnix).diff(moment.now(), 'days') * -1 + 1;
 	this.releases.beta.daysAgo = moment.unix(this.releases.beta.releaseDateUnix).diff(moment.now(), 'days') * -1 + 1;
 	this.releases.alpha.daysAgo = moment.unix(this.releases.alpha.releaseDateUnix).diff(moment.now(), 'days') * -1 + 1;
 

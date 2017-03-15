@@ -53,7 +53,7 @@ body {
 	  <div id="dataZone">
 	<div class="col-md-4">
 	<div class="card">
-	  <div class="card-block card-inverse card-success">
+	  <div class="card-block card-inverse"  :class="[ releases.production.daysAgo > 15 ? 'card-danger' : 'card-success' ]">
 	    <h4 class="card-title">Production</h4>
 	  </div>
 	  <div class="card-block">
