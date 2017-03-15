@@ -60,7 +60,7 @@ body {
 	      <h4>
 		  <small class="text-muted">Version</small><BR>
 		  <span>{{ releases.production.version + (releases.rollout.userFraction ? " (" + (100 - releases.rollout.userFraction*100) + "%)" : "") }}</span><BR>
-		  <span>{{ (releases.rollout.userFraction ? releases.rollout.userFraction + " (" + (releases.rollout.userFraction*100) + "%)" : "") }}</span>
+		  <span>{{ (releases.rollout.userFraction ? releases.rollout.version + " (" + (releases.rollout.userFraction*100) + "%)" : "") }}</span>
 	      </h4>
 	      <h4>
 		  <small class="text-muted">Released</small><BR>
