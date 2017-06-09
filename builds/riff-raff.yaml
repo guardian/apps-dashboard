@@ -1,0 +1,11 @@
+deployments:
+  builds-gutools:
+    parameters:
+      cacheControl: max-age=600
+      publicReadAcl: false
+      prefixPackage: false
+      bucket: builds.gutools.co.uk
+      prefixStage: false
+    type: aws-s3
+regions:
+- eu-west-1
