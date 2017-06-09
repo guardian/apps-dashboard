@@ -1,5 +1,5 @@
 deployments:
-  builds-gutools:
+  builds:
     parameters:
       cacheControl: max-age=600
       publicReadAcl: false
