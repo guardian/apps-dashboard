@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mobile Builds</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<style>
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Custom page header */
+.header {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+
+</style>
+
+  </head>
+  <body>
+<div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a href="mailto:jorge.azevedo@theguardian.com">Something wrong?</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Mobile Builds</h3>
+      </div>
+
+      <div class="jumbotron">
+        <h1>Android</h1>
+	<p class="lead">Development version <span id="androidDebug"></span><script src="androidDebug.js"></script></p>
+        <p><a class="btn btn-lg btn-success" href="android-news-app-prodGoogle-debug.apk" role="button">Install Debug</a></p>
+      </div>
+
+      <div class="jumbotron">
+        <h1>iOS</h1>
+	<p class="lead">Development version <span id="iOSDebug"></span><script src="iOSDebug.js"></script></p>
+        <p><a class="btn btn-lg btn-success" href="itms-services://?action=download-manifest&url=https://builds.gutools.co.uk/manifest.plist" role="button">Install Debug</a></p>
+        <p><a class="btn btn-lg btn-success" href="itms-services://?action=download-manifest&url=https://builds.gutools.co.uk/manifest-enterprise.plist" role="button">Install Enterprise</a></p>
+	<p class="lead"><a href="https://builds.gutools.co.uk/enterprise-how-to.gif">How do I install an enterprise build?</a></p>
+	<p class="lead"><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg">Debug installation fails? Check if your device is supported</a></p>
+</div>
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Supported devices</h4>
+      </div>
+      <div class="modal-body">
+         <pre id="iOSDeviceDump"></pre><script src="iOSDeviceDump.js"></script>
+     </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+  </div>
+      </div>
+</div>
+
+      <div class="jumbotron">
+        <h1>iOS</h1>
+	<p class="lead">Production version <span id="iOSProdDebug"></span><script src="iOSProdDebug.js"></script></p>
+        <p><a class="btn btn-lg btn-success" href="itms-services://?action=download-manifest&url=https://builds.gutools.co.uk/prod-manifest.plist" role="button">Install Debug</a></p>
+      </div>
+
+      <div class="jumbotron">
+        <h1>iOS Daily Edition</h1>
+	<p class="lead">Production version <span id="GCE"></span><script src="GCE.js"></script></p>
+        <p><a class="btn btn-lg btn-success" href="itms-services://?action=download-manifest&url=https://builds.gutools.co.uk/manifest-gce.plist" role="button">Install Enterprise Internal</a></p>
+	<p><a class="btn btn-lg btn-success" href="https://builds.gutools.co.uk/GCEInternal.ipa" role="button">Enterprise Internal IPA</a></p>
+      </div>
+
+      
+
+      <footer class="footer">
+        <p>© 2016 The Guardian</p>
+      </footer>
+
+    </div>
+  </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</html>
