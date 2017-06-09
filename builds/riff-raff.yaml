@@ -6,6 +6,7 @@ deployments:
       prefixPackage: false
       bucket: builds.gutools.co.uk
       prefixStage: false
+      prefixStack: false
     type: aws-s3
 regions:
 - eu-west-1
