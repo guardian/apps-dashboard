@@ -9,3 +9,5 @@ deployments:
     type: aws-s3
 regions:
 - eu-west-1
+stacks:
+- mobile
