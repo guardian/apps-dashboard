@@ -8,6 +8,15 @@ deployments:
       prefixStage: false
       prefixStack: false
     type: aws-s3
+  releases:
+    parameters:
+      cacheControl: max-age=600
+      publicReadAcl: false
+      prefixPackage: false
+      bucket: releases.gutools.co.uk
+      prefixStage: false
+      prefixStack: false
+    type: aws-s3
 regions:
 - eu-west-1
 stacks:
