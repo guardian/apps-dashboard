@@ -1,6 +1,6 @@
 var apiURL = 'releases.json'
 
-// This ugly code comes from http://stackoverflow.com/questions/28425132/how-to-calculate-number-of-working-days-between-two-dates-in-javascript-using
+// Hello. This ugly code comes from http://stackoverflow.com/questions/28425132/how-to-calculate-number-of-working-days-between-two-dates-in-javascript-using
 function workday_count(start,end) {
   var first = start.clone().endOf('week'); // end of first week
   var last = end.clone().startOf('week'); // start of last week
