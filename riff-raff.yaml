@@ -1,5 +1,6 @@
 deployments:
   builds:
+    type: aws-s3
     parameters:
       cacheControl: max-age=600
       publicReadAcl: false
@@ -7,8 +8,8 @@ deployments:
       bucket: builds.gutools.co.uk
       prefixStage: false
       prefixStack: false
-    type: aws-s3
   releases:
+    type: aws-s3
     parameters:
       cacheControl: max-age=600
       publicReadAcl: false
@@ -16,7 +17,6 @@ deployments:
       bucket: releases.gutools.co.uk
       prefixStage: false
       prefixStack: false
-    type: aws-s3
 regions:
 - eu-west-1
 stacks:
