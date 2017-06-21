@@ -1,4 +1,4 @@
-var apiURL = 'releases.json'
+var apiURL = 'https://s3-eu-west-1.amazonaws.com/static-content-dist/android/releases.json'
 
 // This ugly code comes from http://stackoverflow.com/questions/28425132/how-to-calculate-number-of-working-days-between-two-dates-in-javascript-using
 function workday_count(start,end) {
