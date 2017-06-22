@@ -12,7 +12,7 @@ deployments:
       bucket: builds.gutools.co.uk
       prefixStage: false
       prefixStack: false
-  releases:
+  releases-s3-files:
     type: aws-s3
     parameters:
       cacheControl: max-age=600
@@ -21,8 +21,7 @@ deployments:
       bucket: releases.gutools.co.uk
       prefixStage: false
       prefixStack: false
-  releases-cloud-formation:
+  releases:
     type: cloud-formation
-    app: releases
     parameters:
       templatePath: releases-cloud-formation.yaml
