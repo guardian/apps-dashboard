@@ -3,7 +3,7 @@ regions:
 stacks:
 - mobile
 deployments:
-  builds:
+  builds-s3-files:
     type: aws-s3
     parameters:
       cacheControl: max-age=600
@@ -12,6 +12,10 @@ deployments:
       bucket: builds.gutools.co.uk
       prefixStage: false
       prefixStack: false
+  builds:
+    type: cloud-formation
+    parameters:
+      templatePath: builds-cloud-formation.yaml
   releases-s3-files:
     type: aws-s3
     parameters:

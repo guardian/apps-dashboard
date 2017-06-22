@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: builds.gutools.co.uk
+      WebsiteConfiguration:
+        IndexDocument: index.html
+  S3BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: builds.gutools.co.uk
+      PolicyDocument:
+        Version: 2012-10-17
+        Id: S3PolicyId1
+        Statement:
+        - Sid: IPAllow
+          Effect: Allow
+          Principal: "*"
+          Action: s3:*
+          Resource: arn:aws:s3:::builds.gutools.co.uk/*
+          Condition:
+            IpAddress:
+              aws:SourceIp:
+              - 77.91.248.0/21
+              - 162.213.134.128/26
+        - Sid: 3
+          Effect: Allow
+          Principal:
+            AWS: arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity E2Z1MBET8XCP38
+          Action: s3:GetObject
+          Resource: arn:aws:s3:::builds.gutools.co.uk/*
