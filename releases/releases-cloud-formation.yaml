@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: releases.gutools.co.uk
+      WebsiteConfiguration:
+        IndexDocument: index.html
+  S3BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: releases.gutools.co.uk
+      PolicyDocument:
+        Version: 2012-10-17
+        Id: S3PolicyId1
+        Statement:
+        - Sid: IPAllow
+          Effect: Allow
+          Principal: "*"
+          Action: s3:*
+          Resource: arn:aws:s3:::releases.gutools.co.uk/*
+          Condition:
+            IpAddress:
+              aws:SourceIp:
+              - 77.91.248.0/21

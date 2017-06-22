@@ -1,3 +1,7 @@
+regions:
+- eu-west-1
+stacks:
+- mobile
 deployments:
   builds:
     type: aws-s3
@@ -17,7 +21,8 @@ deployments:
       bucket: releases.gutools.co.uk
       prefixStage: false
       prefixStack: false
-regions:
-- eu-west-1
-stacks:
-- mobile
+  releases-cloud-formation:
+    type: cloud-formation
+    app: releases
+    parameters:
+      templatePath: releases-cloud-formation.yaml
