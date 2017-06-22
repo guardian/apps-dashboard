@@ -110,8 +110,8 @@ body {
 
       <div class="jumbotron">
         <h1>iOS</h1>
-	<p class="lead">Development version <span id="iOSDebug"></span><script src="iOSDebug.js"></script></p>
-        <p><a class="btn btn-lg btn-success" href="itms-services://?action=download-manifest&url=https://builds.gutools.co.uk/manifest.plist" role="button">Install Debug</a></p>
+	<p class="lead">Development version <span id="ios-debug"></span><script src="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/ios-debug.js"></script></p>
+        <p><a class="btn btn-lg btn-success" href="itms-services://?action=download-manifest&url=https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/manifest.plist" role="button">Install Debug</a></p>
 	<p class="lead"><a href="#" data-toggle="modal" data-target=".bs-example-modal-lg">Debug installation fails? Check if your device is supported</a></p>
 </div>
 
@@ -123,7 +123,7 @@ body {
         <h4 class="modal-title">Supported devices</h4>
       </div>
       <div class="modal-body">
-         <pre id="iOSDeviceDump"></pre><script src="iOSDeviceDump.js"></script>
+         <pre id="ios-device-dump"></pre><script src="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/ios-device-dump.js"></script>
      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
