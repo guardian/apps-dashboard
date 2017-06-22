@@ -29,4 +29,4 @@ Resources:
           Principal:
             AWS: arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity E2Z1MBET8XCP38
           Action: s3:GetObject
-          Resource: arn:aws:s3:::builds.gutools.co.uk/*
+          Resource: arn:aws:s3:::builds.gutools.co.uk/index.html
