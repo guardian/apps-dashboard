@@ -6,7 +6,7 @@ deployments:
   builds-s3-files:
     type: aws-s3
     parameters:
-      cacheControl: max-age=600
+      cacheControl: max-age=10
       publicReadAcl: false
       prefixPackage: false
       bucket: builds.gutools.co.uk
@@ -19,7 +19,7 @@ deployments:
   releases-s3-files:
     type: aws-s3
     parameters:
-      cacheControl: max-age=600
+      cacheControl: max-age=10
       publicReadAcl: false
       prefixPackage: false
       bucket: releases.gutools.co.uk
