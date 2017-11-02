@@ -43,12 +43,8 @@ var demo = new Vue({
 
   methods: {
     fetchData: function () {
-      var xhr = new XMLHttpRequest()
-      xhr.open('GET', apiURL)
-      xhr.onload = () => {
-	var response = JSON.parse(xhr.responseText)
-
-	this.releases = Object.assign(this.releases, response)
+      $.get(apiURL, data => {
+	this.releases = Object.assign(this.releases, data)
 
 	this.releases.production.daysAgo = moment.unix(this.releases.production.releaseDateUnix).diff(moment.now(), 'days') * -1 + 1;
 	this.releases.beta.daysAgo = moment.unix(this.releases.beta.releaseDateUnix).diff(moment.now(), 'days') * -1 + 1;
@@ -63,18 +59,13 @@ var demo = new Vue({
 	this.releases.alpha.workingDaysAgoMessage = numberOfWorkingDaysMessage(this.releases.alpha.workingDaysAgo);
 
 	console.log(this.releases);
-      }
-      xhr.send()
 
-      var xhr2 = new XMLHttpRequest()
-      xhr2.open('GET', iOSReleasesURL)
-      xhr2.onload = () => {
-	var response2 = JSON.parse(xhr2.responseText)
+      })
 
-	this.iOSReleases = Object.assign(this.iOSReleases, response2)
+      $.get(iOSReleasesURL, data => {
+	this.iOSReleases = Object.assign(this.iOSReleases, data)
 	console.log(this.iOSReleases);
-      }
-      xhr2.send()
+      })
     }
   }
 })
