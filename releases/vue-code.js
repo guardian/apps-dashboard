@@ -1,4 +1,5 @@
 var apiURL = 'https://s3-eu-west-1.amazonaws.com/static-content-dist/android/releases.json'
+var iOSReleasesURL = 'https://s3-eu-west-1.amazonaws.com/static-content-dist/ios/releases.json'
 
 // This ugly code comes from http://stackoverflow.com/questions/28425132/how-to-calculate-number-of-working-days-between-two-dates-in-javascript-using
 function workday_count(start,end) {
@@ -31,7 +32,8 @@ var demo = new Vue({
   el: '#dataZone',
 
   data: {
-    releases: {production:{version:"?",releaseDateUnix:0,releaseDateHumanReadable:"?"},rollout:{version:"",releaseDateUnix:"",releaseDateHumanReadable:"",userFraction:""},"beta":{version:"?",releaseDateUnix:0,releaseDateHumanReadable:""},alpha:{version:"?",releaseDateUnix:0,releaseDateHumanReadable:"?"}}
+    releases: {production:{version:"?",releaseDateUnix:0,releaseDateHumanReadable:"?"},rollout:{version:"",releaseDateUnix:"",releaseDateHumanReadable:"",userFraction:""},"beta":{version:"?",releaseDateUnix:0,releaseDateHumanReadable:""},alpha:{version:"?",releaseDateUnix:0,releaseDateHumanReadable:"?"}},
+    iOSReleases: {production:{bundleShortVersion:"?",releaseDateUnix:0,releaseDateHumanReadable:"?"}},
   },
 
   created: function () {
@@ -63,6 +65,16 @@ var demo = new Vue({
 	console.log(this.releases);
       }
       xhr.send()
+
+      var xhr2 = new XMLHttpRequest()
+      xhr2.open('GET', iOSReleasesURL)
+      xhr2.onload = () => {
+	var response2 = JSON.parse(xhr2.responseText)
+
+	this.iOSReleases = Object.assign(this.iOSReleases, response2)
+	console.log(this.iOSReleases);
+      }
+      xhr2.send()
     }
   }
 })
