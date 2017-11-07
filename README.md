@@ -9,6 +9,8 @@ structure. sup
 
 More changes
 
+Another change
+
     {
       "username": "",
       "secret": "",
