@@ -5,7 +5,11 @@ Dashboard with data relating to the iOS app.
 ## Configuration
 
 This project depends on a `config.json` existing on the root with the following
-structure
+structure. sup
+
+More changes
+
+Another change
 
     {
       "username": "",
