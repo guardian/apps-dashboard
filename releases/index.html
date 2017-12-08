@@ -17,6 +17,9 @@
             integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/livestamp/1.1.2/livestamp.js"></script>
+    <!-- Fontawesome bootstrap -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <style>
@@ -28,16 +31,13 @@
             border: none;
         }
 
-        .tag {
-            line-height: 1.3;
-        }
-
         .card-title {
             margin-bottom: 0rem;
         }
 
         body {
             /* Show it's not fixed to the top */
+            font-family: 'Dosis', 'Tahoma', sans-serif;
             min-height: 75rem;
             padding-top: 1rem;
         }
@@ -63,6 +63,7 @@
             padding-top: 5px;
             padding-right: 30px;
             padding-bottom: 0px;
+            width: 400px;
         }
 
         h4 span {
@@ -74,9 +75,25 @@
         }
 
         hr.clear {
-            border-top: 3px solid rgba(0,0,0,.1);
+            border-top: 3px solid rgba(0, 0, 0, .1);
             clear: both;
         }
+
+        .fa-android {
+            font-size: 60px;
+            color: yellowgreen;
+        }
+
+        .fa-apple {
+            font-size: 60px;
+            color: royalblue;
+        }
+
+        .fa-newspaper {
+            font-size: 60px;
+            color: darkblue;
+        }
+
     </style>
 
 </head>
@@ -93,21 +110,20 @@
         <div class="row">
             <div class="col-md-4">
                 <div>
-                    <h4><img class="card-img-top" src="../releases/src/andlogo.png" alt="Card image cap">&nbsp;&nbsp;Android
-                        (LIVE)</h4>
+                    <h4>
+                        <i class="fab fa-android"></i>&nbsp;&nbsp;Android (LIVE)</h4>
                 </div>
             </div>
 
             <div class="col-md-4">
-                <h4><img class="card-img-top" src="../releases/src/ioslogo.png" alt="Card image cap">
-                    <img class="card-img-top" src="src/ioslivelogo.png" alt="Card image cap">&nbsp;&nbsp;iOS (LIVE)</h4>
+                <h4>
+                    <i class="fab fa-apple"></i>&nbsp;&nbsp;iOS (LIVE)</h4>
 
             </div>
 
             <div class="col-md-4">
-                <h4><img class="card-img-top" src="../releases/src/ioslogo.png" alt="Card image cap">
-                    <img class="card-img-top" src="src/iosdelogo.png" alt="Card image cap">&nbsp;&nbsp;iOS Daily Edition
-                </h4>
+                <h4>
+                    <i class="far fa-newspaper"></i>&nbsp;&nbsp;iOS Daily Edition</h4>
             </div>
         </div>
 
@@ -182,19 +198,19 @@
                         <h3>Not available!</h3>
                         <h3>(coming soon)</h3>
                         <!--<h4>-->
-                            <!--<small class="text-muted">Version</small>-->
-                            <!--<BR>-->
-                            <!--<span>{{ iOSReleases.production.bundleShortVersion }}</span><BR>-->
+                        <!--<small class="text-muted">Version</small>-->
+                        <!--<BR>-->
+                        <!--<span>{{ iOSReleases.production.bundleShortVersion }}</span><BR>-->
                         <!--</h4>-->
                         <!--<h4>-->
-                            <!--<small class="text-muted">Released</small>-->
-                            <!--<BR>-->
-                            <!--<span :data-livestamp="iOSReleases.production.releaseDateUnix">?</span><BR>-->
+                        <!--<small class="text-muted">Released</small>-->
+                        <!--<BR>-->
+                        <!--<span :data-livestamp="iOSReleases.production.releaseDateUnix">?</span><BR>-->
                         <!--</h4>-->
                         <!--<h4>-->
-                            <!--<small class="text-muted">Date</small>-->
-                            <!--<BR>-->
-                            <!--<span>{{ iOSReleases.production.releaseDateHumanReadable }}</span><BR>-->
+                        <!--<small class="text-muted">Date</small>-->
+                        <!--<BR>-->
+                        <!--<span>{{ iOSReleases.production.releaseDateHumanReadable }}</span><BR>-->
                         <!--</h4>-->
                     </div>
                 </div>
@@ -247,19 +263,19 @@
                         <h3>Not available!</h3>
                         <h3>(coming soon)</h3>
                         <!--<h4>-->
-                            <!--<small class="text-muted">Version</small>-->
-                            <!--<BR>-->
-                            <!--<span>{{ iOSReleases.beta.version }}</span>-->
+                        <!--<small class="text-muted">Version</small>-->
+                        <!--<BR>-->
+                        <!--<span>{{ iOSReleases.beta.version }}</span>-->
                         <!--</h4>-->
                         <!--<h4>-->
-                            <!--<small class="text-muted">Released</small>-->
-                            <!--<BR>-->
-                            <!--<span>{{ iOSReleases.beta.workingDaysAgoMessage }}</span>-->
+                        <!--<small class="text-muted">Released</small>-->
+                        <!--<BR>-->
+                        <!--<span>{{ iOSReleases.beta.workingDaysAgoMessage }}</span>-->
                         <!--</h4>-->
                         <!--<h4>-->
-                            <!--<small class="text-muted">Date</small>-->
-                            <!--<BR>-->
-                            <!--<span>{{ iOSReleases.beta.releaseDateHumanReadable }}</span>-->
+                        <!--<small class="text-muted">Date</small>-->
+                        <!--<BR>-->
+                        <!--<span>{{ iOSReleases.beta.releaseDateHumanReadable }}</span>-->
                         <!--</h4>-->
                     </div>
                 </div>
@@ -275,19 +291,19 @@
                         <h3>Not available!</h3>
                         <h3>(coming soon)</h3>
                         <!--<h4>-->
-                            <!--<small class="text-muted">Version</small>-->
-                            <!--<BR>-->
-                            <!--<span>{{ iOSDEReleases.beta.version }}</span>-->
+                        <!--<small class="text-muted">Version</small>-->
+                        <!--<BR>-->
+                        <!--<span>{{ iOSDEReleases.beta.version }}</span>-->
                         <!--</h4>-->
                         <!--<h4>-->
-                            <!--<small class="text-muted">Released</small>-->
-                            <!--<BR>-->
-                            <!--<span>{{ iOSDEReleases.beta.workingDaysAgoMessage }}</span>-->
+                        <!--<small class="text-muted">Released</small>-->
+                        <!--<BR>-->
+                        <!--<span>{{ iOSDEReleases.beta.workingDaysAgoMessage }}</span>-->
                         <!--</h4>-->
                         <!--<h4>-->
-                            <!--<small class="text-muted">Date</small>-->
-                            <!--<BR>-->
-                            <!--<span>{{ iOSDEReleases.beta.releaseDateHumanReadable }}</span>-->
+                        <!--<small class="text-muted">Date</small>-->
+                        <!--<BR>-->
+                        <!--<span>{{ iOSDEReleases.beta.releaseDateHumanReadable }}</span>-->
                         <!--</h4>-->
                     </div>
                 </div>
@@ -339,19 +355,19 @@
                         <h3>Not available!</h3>
                         <h3>(coming soon)</h3>
                         <!--<h4>-->
-                            <!--<small class="text-muted">Version</small>-->
-                            <!--<BR>-->
-                            <!--<span>{{ iOSReleases.alpha.version }}</span>-->
+                        <!--<small class="text-muted">Version</small>-->
+                        <!--<BR>-->
+                        <!--<span>{{ iOSReleases.alpha.version }}</span>-->
                         <!--</h4>-->
                         <!--<h4>-->
-                            <!--<small class="text-muted">Released</small>-->
-                            <!--<BR>-->
-                            <!--<span>{{ iOSReleases.alpha.workingDaysAgoMessage }}</span>-->
+                        <!--<small class="text-muted">Released</small>-->
+                        <!--<BR>-->
+                        <!--<span>{{ iOSReleases.alpha.workingDaysAgoMessage }}</span>-->
                         <!--</h4>-->
                         <!--<h4>-->
-                            <!--<small class="text-muted">Date</small>-->
-                            <!--<BR>-->
-                            <!--<span>{{ iOSReleases.alpha.releaseDateHumanReadable }}</span>-->
+                        <!--<small class="text-muted">Date</small>-->
+                        <!--<BR>-->
+                        <!--<span>{{ iOSReleases.alpha.releaseDateHumanReadable }}</span>-->
                         <!--</h4>-->
                     </div>
                 </div>
@@ -368,19 +384,19 @@
                         <h3>Not available!</h3>
                         <h3>(coming soon)</h3>
                         <!--<h4>-->
-                            <!--<small class="text-muted">Version</small>-->
-                            <!--<BR>-->
-                            <!--<span>{{ iOSDEReleases.alpha.version }}</span>-->
+                        <!--<small class="text-muted">Version</small>-->
+                        <!--<BR>-->
+                        <!--<span>{{ iOSDEReleases.alpha.version }}</span>-->
                         <!--</h4>-->
                         <!--<h4>-->
-                            <!--<small class="text-muted">Released</small>-->
-                            <!--<BR>-->
-                            <!--<span>{{ iOSDEReleases.alpha.workingDaysAgoMessage }}</span>-->
+                        <!--<small class="text-muted">Released</small>-->
+                        <!--<BR>-->
+                        <!--<span>{{ iOSDEReleases.alpha.workingDaysAgoMessage }}</span>-->
                         <!--</h4>-->
                         <!--<h4>-->
-                            <!--<small class="text-muted">Date</small>-->
-                            <!--<BR>-->
-                            <!--<span>{{ iOSDEReleases.alpha.releaseDateHumanReadable }}</span>-->
+                        <!--<small class="text-muted">Date</small>-->
+                        <!--<BR>-->
+                        <!--<span>{{ iOSDEReleases.alpha.releaseDateHumanReadable }}</span>-->
                         <!--</h4>-->
                     </div>
                 </div>
