@@ -14,16 +14,6 @@ Resources:
         Version: 2012-10-17
         Id: S3PolicyId1
         Statement:
-        - Sid: IPAllow
-          Effect: Allow
-          Principal: "*"
-          Action: s3:*
-          Resource: arn:aws:s3:::builds.gutools.co.uk/*
-          Condition:
-            IpAddress:
-              aws:SourceIp:
-              - 77.91.248.0/21
-              - 162.213.134.128/26
         - Sid: "3"
           Effect: Allow
           Principal:
