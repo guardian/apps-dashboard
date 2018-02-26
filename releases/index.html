@@ -26,66 +26,37 @@
         html {
             font-size: 14px;
         }
+
         .table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
             border: none;
         }
+
         .card-title {
             margin-bottom: 0rem;
         }
+
         body {
             /* Show it's not fixed to the top */
             font-family: 'Dosis', 'Tahoma', sans-serif;
             min-height: 75rem;
             padding-top: 1rem;
         }
-        h1 {
-            text-align: center;
-            text-decoration-line: underline;
-            padding-bottom: 2.5rem;
-            font-weight: bold;
-        }
-        h2 {
-            padding-top: 10px;
-            text-decoration-line: underline;
-            font-size: 18px;
-            color: black;
-            font-weight: bold;
-        }
-        h3 {
-            float: left;
-            padding-top: 5px;
-            padding-right: 30px;
-            padding-bottom: 0px;
-            font-size: 18px;
-            color: firebrick;
-            font-style: italic;
-        }
-        h4 {
-            float: left;
-            padding-top: 5px;
-            padding-right: 30px;
-            padding-bottom: 0px;
-            width: 400px;
-        }
-        h4 span {
-            font-size: 18px;
-        }
+
         .card-block {
             padding: 0.7rem;
         }
+
         hr.clear {
             border-top: 3px solid rgba(0, 0, 0, .1);
             clear: both;
         }
+
         .fa-android {
             font-size: 60px;
             color: yellowgreen;
         }
-        .fa-apple {
-            font-size: 60px;
-            color: royalblue;
-        }
-        .fa-newspaper {
+
+        .fa-apple, .fa-newspaper {
             font-size: 60px;
             color: royalblue;
         }
@@ -94,14 +65,16 @@
 </head>
 
 <body>
+<header>
+    <center><h1 class="font-weight-bold">Mobile Apps Release Status</h1></center>
+</header>
 
-<h1>Mobile Apps Release Status</h1>
 <!-- Tab panes -->
 <div class="container">
 
     <div id="dataZone">
 
-        <div><h2>PRODUCTION BUILDS</h2></div>
+        <div><h3 class="font-weight-bold">PRODUCTION BUILDS</h3></div>
 
         <!-- Headings -->
 
@@ -208,7 +181,7 @@
 
 
             <div class="col-md-4">
-                <h2>BETA BUILDS</h2>
+                <h3 class="font-weight-bold">BETA BUILDS</h3>
                 <div>
                     <h4>
                         <i class="fab fa-android"></i>&nbsp;&nbsp;Android (BETA)</h4>
@@ -216,7 +189,7 @@
             </div>
 
             <div class="col-md-4">
-                <h2>ALPHA BUILDS</h2>
+                <h3 class="font-weight-bold">ALPHA BUILDS</h3>
                 <div>
                     <h4>
                         <i class="fab fa-android"></i>&nbsp;&nbsp;Android (ALPHA)</h4>
