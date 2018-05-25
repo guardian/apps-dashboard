@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Android Releases</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css"
+          crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"
+            integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/livestamp/1.1.2/livestamp.js"></script>
+    <!-- Fontawesome bootstrap -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <style>
+        html {
+            font-size: 14px;
+        }
+
+        .table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
+            border: none;
+        }
+
+        .card-title {
+            margin-bottom: 0rem;
+        }
+
+        body {
+            /* Show it's not fixed to the top */
+            font-family: 'Dosis', 'Tahoma', sans-serif;
+            min-height: 75rem;
+            padding-top: 1rem;
+        }
+
+        h1 {
+            text-align: center;
+            text-decoration-line: underline;
+            padding-bottom: 2.5rem;
+            font-weight: bold;
+        }
+
+        h2 {
+            padding-top: 10px;
+            text-decoration-line: underline;
+            font-size: 18px;
+            color: black;
+            font-weight: bold;
+
+        }
+
+        h3 {
+            float: left;
+            padding-top: 5px;
+            padding-right: 30px;
+            padding-bottom: 0px;
+            font-size: 18px;
+            color: firebrick;
+            font-style: italic;
+        }
+
+        h4 {
+            float: left;
+            padding-top: 5px;
+            padding-right: 30px;
+            padding-bottom: 0px;
+            width: 400px;
+        }
+
+        h4 span {
+            font-size: 18px;
+        }
+
+        .card-block {
+            padding: 0.7rem;
+        }
+
+        hr.clear {
+            border-top: 3px solid rgba(0, 0, 0, .1);
+            clear: both;
+        }
+
+        .fa-android {
+            font-size: 60px;
+            color: yellowgreen;
+        }
+
+        .fa-apple {
+            font-size: 60px;
+            color: royalblue;
+        }
+
+        .fa-newspaper {
+            font-size: 60px;
+            color: royalblue;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>Mobile Apps Release Status</h1>
+<!-- Tab panes -->
+<div class="container">
+
+    <div id="dataZone">
+
+        <div><h2>PRODUCTION BUILDS</h2></div>
+
+        <!-- Headings -->
+
+        <div class="row">
+            <div class="col-md-4">
+                <div>
+                    <h4>
+                        <i class="fab fa-android"></i>&nbsp;&nbsp;Android (LIVE)</h4>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <h4>
+                    <i class="fab fa-apple"></i>&nbsp;&nbsp;iOS (LIVE)</h4>
+
+            </div>
+
+            <div class="col-md-4">
+                <h4>
+                    <i class="far fa-newspaper"></i>&nbsp;&nbsp;iOS Daily Edition</h4>
+            </div>
+        </div>
+
+        <!-- Production -->
+
+        <div class="row">
+            <div class="col-md-4">
+                <!-- andriod - Production-->
+                <div class="card">
+                    <div class="card-block card-inverse"
+                         :class="[ releases.production.daysAgo > 15 ? 'card-danger' : 'card-success' ]">
+                        <h4 class="card-title">Production</h4>
+                    </div>
+                    <div class="card-block">
+                        <h4>
+                            <small class="text-muted">Version</small>
+                            <BR>
+                            <span>{{ releases.production.version + (releases.rollout.userFraction ? " (" + (100 - releases.rollout.userFraction*100) + "%)" : "") }}</span><BR>
+                            <span>{{ (releases.rollout.userFraction ? releases.rollout.version + " (" + (releases.rollout.userFraction*100) + "%)" : "") }}</span>
+                        </h4>
+                        <h4>
+                            <small class="text-muted">Released</small>
+                            <BR>
+                            <span :data-livestamp="releases.production.releaseDateUnix">?</span><BR>
+                            <span :data-livestamp="releases.rollout.userFraction ? releases.rollout.releaseDateUnix : ''"></span>
+                        </h4>
+                        <h4>
+                            <small class="text-muted">Date</small>
+                            <BR>
+                            <span>{{ releases.production.releaseDateHumanReadable }}</span><BR>
+                            <span>{{ releases.rollout.userFraction ? releases.rollout.releaseDateHumanReadable : ""}}</span>
+                        </h4>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <!-- iOS (Live) - Production-->
+                <div class="card">
+                    <div class="card-block card-inverse card-success">
+                        <h4 class="card-title">Production</h4>
+                    </div>
+                    <div class="card-block">
+                        <h4>
+                            <small class="text-muted">Version</small>
+                            <BR>
+                            <span>{{ iOSReleases.production.version }}</span><BR>
+                        </h4>
+                        <h4>
+                            <small class="text-muted">Released</small>
+                            <BR>
+                            <span :data-livestamp="iOSReleases.production.releaseDateUnix">?</span><BR>
+                        </h4>
+                        <h4>
+                            <small class="text-muted">Date</small>
+                            <BR>
+                            <span>{{ iOSReleases.production.releaseDateHumanReadable }}</span><BR>
+                        </h4>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <!-- iOS Daily Edition - Production-->
+                <div class="card">
+                    <div class="card-block card-inverse card-success">
+                        <h4 class="card-title">Production</h4>
+                    </div>
+                    <div class="card-block">
+                        <h3>Not available!</h3>
+                        <h3>(coming soon)</h3>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="clear">
+
+        <div class="row">
+
+
+            <div class="col-md-4">
+                <h2>BETA BUILDS</h2>
+                <div>
+                    <h4>
+                        <i class="fab fa-android"></i>&nbsp;&nbsp;Android (BETA)</h4>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <h2>ALPHA BUILDS</h2>
+                <div>
+                    <h4>
+                        <i class="fab fa-android"></i>&nbsp;&nbsp;Android (ALPHA)</h4>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <div>
+                    <!-- Android (Beta) -  -->
+                    <div class="card">
+                        <div class="card-block card-inverse"
+                             :class="[ releases.beta.workingDaysAgo > 3 ? 'card-danger' : 'card-success' ]">
+                            <h4 class="card-title">Beta</h4>
+                        </div>
+                        <div class="card-block">
+                            <h4>
+                                <small class="text-muted">Version</small>
+                                <BR>
+                                <span>{{ releases.beta.version }}</span>
+                            </h4>
+                            <h4>
+                                <small class="text-muted">Released</small>
+                                <BR>
+                                <span>{{ releases.beta.workingDaysAgoMessage }}</span>
+                            </h4>
+                            <h4>
+                                <small class="text-muted">Date</small>
+                                <BR>
+                                <span>{{ releases.beta.releaseDateHumanReadable }}</span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <!--  Android (Alpha) -->
+                <div>
+                    <div class="card">
+                        <div class="card-block card-inverse"
+                             :class="[ releases.alpha.workingDaysAgo > 2 ? 'card-danger' : 'card-success' ]">
+                            <h4 class="card-title">Alpha</h4>
+                        </div>
+                        <div class="card-block">
+                            <h4>
+                                <small class="text-muted">Version</small>
+                                <BR>
+                                <span>{{ releases.alpha.version }}</span>
+                            </h4>
+                            <h4>
+                                <small class="text-muted">Released</small>
+                                <BR>
+                                <span>{{ releases.alpha.workingDaysAgoMessage }}</span>
+                            </h4>
+                            <h4>
+                                <small class="text-muted">Date</small>
+                                <BR>
+                                <span>{{ releases.alpha.releaseDateHumanReadable }}</span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="https://unpkg.com/vue@latest/dist/vue.js"></script>
+<script type="text/javascript" src="vue-code.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"
+        integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js"
+        crossorigin="anonymous"></script>
+</body>
+</html>

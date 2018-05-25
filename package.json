@@ -1,0 +1,25 @@
+{
+  "name": "apps-dashboard",
+  "description": "A dashboard for the apps team",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guardian/apps-dashboard.git"
+  },
+  "dependencies": {
+    "app-store-scraper": "^0.3.1",
+    "deasync": "^0.1.7",
+    "github-api": "^2.3.0",
+    "google-play-scraper": "^1.0.5",
+    "imap-simple": "^1.6.0",
+    "itunesconnect": "^0.2.0",
+    "lodash": "^4.5.1",
+    "moment": "2.0.0",
+    "nconf": "^0.8.2",
+    "request": "^2.70.0"
+  },
+  "devDependencies": {
+    "googleapis": "^12.3.0",
+    "npm": "~3.3.9"
+  },
+  "engine": "node 0.12"
+}
