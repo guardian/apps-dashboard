@@ -23,6 +23,6 @@
     "npm": "~3.3.9"
   },
   "scripts": {
-    "start": "node node_modules/http-server/bin/http-server"
+    "start": "node node_modules/http-server/bin/http-server builds/ -c-1"
   }
 }
