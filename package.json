@@ -22,5 +22,7 @@
     "googleapis": "^12.3.0",
     "npm": "~3.3.9"
   },
-  "engine": "node 0.12"
+  "scripts": {
+    "start": "node node_modules/http-server/bin/http-server"
+  }
 }
