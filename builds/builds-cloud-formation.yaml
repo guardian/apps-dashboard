@@ -33,6 +33,7 @@ Resources:
             IpAddress:
               aws:SourceIp:
               - 77.91.248.0/21
+              - 162.213.134.128/26
         - Sid: "3"
           Effect: Allow
           Principal:
