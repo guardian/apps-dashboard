@@ -2,9 +2,8 @@ AWSTemplateFormatVersion: '2010-09-09'
 
 Parameters:
   OriginAccessId:
-    Description: Id of OriginAccessIdentity user user by the cloudfront distribution
+    Description: Id of OriginAccessIdentity user user by the cloudfront distribution. Needs to be changed in the console.
     Type: String
-    Default: change-me-in-the-console
   SSLCertificate:
     Description: ACM certificate for CloudFront
     Type: String
