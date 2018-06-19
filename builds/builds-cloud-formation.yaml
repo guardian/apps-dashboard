@@ -1,0 +1,81 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Parameters:
+  OriginAccessId:
+    Description: Id of OriginAccessIdentity user user by the cloudfront distribution
+    Type: String
+    Default: change-me-in-the-console
+  SSLCertificate:
+    Description: ACM certificate for CloudFront
+    Type: String
+    Default: arn:aws:acm:us-east-1:201359054765:certificate/fa0755f0-75b5-4a53-b414-6ebf715c0739
+
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: builds.gutools.co.uk
+      WebsiteConfiguration:
+        IndexDocument: index.html
+  S3BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: builds.gutools.co.uk
+      PolicyDocument:
+        Version: 2012-10-17
+        Id: S3PolicyId1
+        Statement:
+        - Sid: IPAllow
+          Effect: Allow
+          Principal: "*"
+          Action: s3:*
+          Resource: arn:aws:s3:::builds.gutools.co.uk/*
+          Condition:
+            IpAddress:
+              aws:SourceIp:
+              - 77.91.248.0/21
+              - 162.213.134.128/26
+        - Sid: "3"
+          Effect: Allow
+          Principal:
+            AWS: !Sub 'arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${OriginAccessId}'
+          Action: s3:GetObject
+          Resource: arn:aws:s3:::builds.gutools.co.uk/index.html
+  CloundFrontHTTPSEndpoint:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Origins:
+        - DomainName: builds.gutools.co.uk.s3.amazonaws.com
+          Id: help
+          S3OriginConfig:
+            OriginAccessIdentity: !Sub 'origin-access-identity/cloudfront/${OriginAccessId}'
+        Enabled: 'true'
+        Aliases:
+        - builds.mobile-aws.gutools.co.uk
+        - builds.gutools.co.uk
+        DefaultCacheBehavior:
+          AllowedMethods:
+          - GET
+          - HEAD
+          TargetOriginId: help
+          ForwardedValues:
+            QueryString: 'true'
+            Cookies:
+              Forward: none
+          ViewerProtocolPolicy: redirect-to-https
+        ViewerCertificate:
+          AcmCertificateArn: !Ref SSLCertificate
+          MinimumProtocolVersion: TLSv1
+          SslSupportMethod: sni-only
+        DefaultRootObject: index.html
+        HttpVersion: http2
+  Route53DNSConfig:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      HostedZoneName: mobile-aws.gutools.co.uk.
+      Name: builds.mobile-aws.gutools.co.uk.
+      Type: CNAME
+      TTL: '60'
+      ResourceRecords:
+      - !GetAtt CloundFrontHTTPSEndpoint.DomainName
