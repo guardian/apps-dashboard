@@ -14,6 +14,16 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: builds.gutools.co.uk
+      CorsConfiguration:
+        CorsRules:
+        - AllowedHeaders:
+          - Authorization
+          MaxAge: '300'
+          AllowedMethods:
+          - GET
+          Id: AllowHTTP
+          AllowedOrigins:
+          - '*'
       WebsiteConfiguration:
         IndexDocument: index.html
   S3BucketPolicy:
