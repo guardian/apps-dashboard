@@ -21,8 +21,10 @@
         <div class="col-md-6 offset-md-3">
           <div class="jumbotron">
             <h1 class="text-center">Android</h1>
-            <p class="lead text-center">Dev version <span id="android-debug"></span><script src="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/android-debug.js"></script></p>
-            <p class="text-center"><a class="btn btn-lg btn-success" href="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/android-news-app-0-google-debug.apk" role="button">Install build</a></p>
+            <p class="lead text-center">Dev version {{ releases.android.development.version }}<br>
+              <a :href="releases.android.development.teamcity">{{ releases.android.development.date }}</a> 
+              <a :href="releases.android.development.github">#{{ releases.android.development.sha1 }}</a></p>
+            <p class="text-center"><a class="btn btn-primary btn-lg btn-success text-center" href="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/android-news-app-0-google-debug.apk" role="button">Install build</a></p>
           </div>
         </div>
       </div>
@@ -50,6 +52,23 @@
       </div>
 
     </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+<script src="https://unpkg.com/vue@latest/dist/vue.js"></script> 
+<script>
+new Vue({
+  el: '.container',
+  data: {
+    releases:{"android":{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}},ios:{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}}},
+  },
+  created: function() {
+    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/androidDevelopment.json", android => {
+      console.log(android)
+      this.releases.android = JSON.parse(android)
+    })
+  }
+})
+</script>
 
   </body>
 </html>
