@@ -37,7 +37,7 @@
               <a :href="releases.ios.development.teamcity">{{ releases.ios.development.date }}</a> 
               <a :href="releases.ios.development.github">#{{ releases.ios.development.sha1 }}</a></p>
             <p class="lead text-center"><a href="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/devices.html">Supported devices</a></p>
-            <p class="text-center"><a class="btn btn-primary btn-lg btn-success" href="itms-services://?action=download-manifest&url=https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/manifest.plist" role="button">Install build</a></p>
+            <p class="text-center"><a class="btn btn-primary btn-lg btn-success" href="itms-services://?action=download-manifest&url=https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GLADebug.plist" role="button">Install build</a></p>
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@ new Vue({
   },
   created: function() {
     $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/androidDevelopment.json", android => this.releases.android = JSON.parse(android) )
-    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/iosDevelopment.json", ios => this.releases.ios = JSON.parse(ios) )
+    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GLADebug.json", ios => this.releases.ios = JSON.parse(ios) )
     $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GCEInternal.json", de => this.releases.de = de )
   }
 })
