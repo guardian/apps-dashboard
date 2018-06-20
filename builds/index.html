@@ -46,8 +46,10 @@
         <div class="col-md-6 offset-md-3">
           <div class="jumbotron">
             <h1 class="text-center">Daily Edition</h1>
-            <p class="lead text-center">Dev version <span id="gce"></span><script src="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/gce.js"></script></p>
-            <p class="text-center"><a class="btn btn-lg btn-success" href="itms-services://?action=download-manifest&url=https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/manifest-gce.plist" role="button">Install Enterprise Internal</a></p>
+            <p class="lead text-center">Dev version {{ releases.de.development.version }}<br>
+              <a :href="releases.de.development.teamcity">{{ releases.de.development.date }}</a>
+              <a :href="releases.de.development.github">#{{ releases.de.development.sha1 }}</a></p>
+            <p class="text-center"><a class="btn btn-lg btn-success" href="itms-services://?action=download-manifest&url=https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GCEInternal.plist" role="button">Install Enterprise Internal</a></p>
             <p class="text-center"><a class="btn btn-lg btn-success" href="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GCEInternal.ipa" role="button">Enterprise Internal IPA</a></p>
           </div>
         </div>
@@ -61,7 +63,7 @@
 new Vue({
   el: '.container',
   data: {
-    releases:{"android":{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}},ios:{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}}},
+    releases:{"android":{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}},ios:{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}},de:{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}}},
   },
   created: function() {
     $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/androidDevelopment.json", android => {
@@ -69,6 +71,9 @@ new Vue({
     })
     $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/iosDevelopment.json", ios => {
       this.releases.ios = JSON.parse(ios)
+    })
+    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GCEInternal.json", de => {
+      this.releases.de = de
     })
   }
 })
