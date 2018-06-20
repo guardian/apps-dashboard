@@ -33,9 +33,11 @@
         <div class="col-md-6 offset-md-3">
           <div class="jumbotron">
             <h1 class="text-center">iOS</h1>
-            <p class="lead text-center">Dev version <span id="ios-debug"></span><script src="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/ios-debug.js"></script></p>
+            <p class="lead text-center">Dev version {{ releases.ios.development.version }}<br>
+              <a :href="releases.ios.development.teamcity">{{ releases.ios.development.date }}</a> 
+              <a :href="releases.ios.development.github">#{{ releases.ios.development.sha1 }}</a></p>
             <p class="lead text-center"><a href="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/devices.html">Supported devices</a></p>
-            <p class="text-center"><a class="btn btn-lg btn-success" href="itms-services://?action=download-manifest&url=https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/manifest.plist" role="button">Install build</a></p>
+            <p class="text-center"><a class="btn btn-primary btn-lg btn-success" href="itms-services://?action=download-manifest&url=https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/manifest.plist" role="button">Install build</a></p>
           </div>
         </div>
       </div>
@@ -63,8 +65,10 @@ new Vue({
   },
   created: function() {
     $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/androidDevelopment.json", android => {
-      console.log(android)
       this.releases.android = JSON.parse(android)
+    })
+    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/iosDevelopment.json", ios => {
+      this.releases.ios = JSON.parse(ios)
     })
   }
 })
