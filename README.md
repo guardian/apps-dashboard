@@ -1,29 +1,13 @@
 # Apps Dashboard
 
-Dashboard with data relating to the iOS app.
+Collection of dashboards related to the guardian apps.
 
-## Configuration
+## Builds
 
-This project depends on a `config.json` existing on the root with the following
-structure
+Mobile-friendly bootstrap/vue.js webpage providing over-the-air installation of
+the latest development builds from TeamCity.
 
-    {
-      "username": "",
-      "secret": "",
-      "itc_username": "",
-      "itc_secret": "",
-      "crittercism_username": "",
-      "crittercism_password": "",
-      "crittercism_clientid": "",
-      "appannie_apikey": "",
-      "appannie_androidProductID": "",
-      "appannie_iosProductID": "",
-      "gmail_user": "",
-      "gmail_password": ""
-    }
+## Releases
 
-## Building
-
-    cd ios
-    make -j8
-    open dashboard.html
+Dashboard with the latest releases. Contains information like version number and
+release date.
