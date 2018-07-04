@@ -66,9 +66,10 @@ new Vue({
     releases:{"android":{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}},ios:{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}},de:{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}}},
   },
   created: function() {
-    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/android-news-app-0-google-debug.json", android => this.releases.android = android )
-    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GLADebug.json", ios => this.releases.ios = ios )
-    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GCEInternal.json", de => this.releases.de = de )
+    var that = this;
+    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/android-news-app-0-google-debug.json", function(android) { that.releases.android = android });
+    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GLADebug.json", function(ios) { that.releases.ios = ios });
+    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GCEInternal.json", function(de) { that.releases.de = de });
   }
 })
 </script>
