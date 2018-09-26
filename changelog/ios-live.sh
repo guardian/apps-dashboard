@@ -1,13 +1,5 @@
 #!/bin/bash -x
 
-# Version in app store
-PREVIOUS=$(git tag | grep '7\..$' | sort -rn | head -1)
-CURRENT=$(git tag | sort -rn | head -1)
-
-# Latest uploaded beta
-#PREVIOUS=$(git tag | sort -rn | head -1)
-#CURRENT=master
-
 git log --pretty=oneline --abbrev-commit ${PREVIOUS}..${CURRENT} > git_history.txt
 
 grep -o '#....)$' git_history.txt | grep -o '[0-9][0-9][0-9][0-9]' | xargs -I {} curl --silent --user "${GITHUB_CREDENTIALS}" https://api.github.com/repos/guardian/ios-live/pulls/{} | jq -r '.title + " <a href=\"" + ._links.html.href + "\">(#" + (.number|tostring) + ")</a><br>"' > pr_subjects.txt
