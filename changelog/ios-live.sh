@@ -38,9 +38,9 @@ cat > index.html <<EOF
   </div>
 </div>
       <p class="lead">Stories</p>
-      <p>$(grep Story+Done+ jira_tickets.txt | cut -d+ -f4)</p>
+      <p>$(grep Story+Done+ jira_tickets.txt | cut -d+ -f4  | awk '!seen[$0]++')</p>
       <p class="lead">Bugs</p>
-      <p>$(grep Bug+Done+ jira_tickets.txt | cut -d+ -f4)</p>
+      <p>$(grep Bug+Done+ jira_tickets.txt | cut -d+ -f4  | awk '!seen[$0]++')</p>
       <p class="lead">Pull Requests</p>
       <p>$(grep -v GLA- pr_subjects.txt)
          $(cat wip_prs.txt)</p>
