@@ -1,17 +1,20 @@
 #!/bin/bash -x
 
+PREVIOUS=$2
+CURRENT=$1
+
 git log --pretty=oneline --abbrev-commit ${PREVIOUS}..${CURRENT} > git_history.txt
 
 grep -o '#....)$' git_history.txt | grep -o '[0-9][0-9][0-9][0-9]' | xargs -I {} curl --silent --user "${GITHUB_CREDENTIALS}" https://api.github.com/repos/guardian/ios-live/pulls/{} | jq -r '.title + " <a href=\"" + ._links.html.href + "\">(#" + (.number|tostring) + ")</a><br>"' > pr_subjects.txt
 
-grep mobile-apps-article-templates git_history.txt | cut -d'@' -f2 | xargs -I {} curl --silent --user "${GITHUB_CREDENTIALS}" https://api.github.com/repos/guardian/mobile-apps-article-templates/git/refs/tags/{} | jq -r '.object.url' | xargs curl --user "${GITHUB_CREDENTIALS}" --silent | jq -r '.object.url' | xargs curl --user "${GITHUB_CREDENTIALS}" --silent | jq '.message' | grep -o '#...' | grep -o '[0-9][0-9][0-9]' | xargs -I {} curl --silent --user "${GITHUB_CREDENTIALS}" https://api.github.com/repos/guardian/mobile-apps-article-templates/pulls/{} | jq -r '.title + " <a href=\"" + ._links.html.href + "\">(#" + (.number|tostring) + ")</a><br>"' > templates.txt
+grep -o '1.0.[0-9][0-9][0-9]' git_history.txt | xargs -I {} curl --silent --user "${GITHUB_CREDENTIALS}" https://api.github.com/repos/guardian/mobile-apps-article-templates/git/refs/tags/{} | jq -r '.object.url' | xargs curl --user "${GITHUB_CREDENTIALS}" --silent | jq -r '.object.url' | xargs curl --user "${GITHUB_CREDENTIALS}" --silent | jq '.message' | grep -o '#...' | grep -o '[0-9][0-9][0-9]' | xargs -I {} curl --silent --user "${GITHUB_CREDENTIALS}" https://api.github.com/repos/guardian/mobile-apps-article-templates/pulls/{} | jq -r '.title + " <a href=\"" + ._links.html.href + "\">(#" + (.number|tostring) + ")</a><br>"' > templates.txt
 
 grep -o GLA-[0-9][0-9][0-9] git_history.txt | xargs -I{} curl -s -u ${JIRA_CREDENTIALS} https://theguardian.atlassian.net/rest/api/latest/issue/{} | jq -r '.key + "+" + .fields.issuetype.name + "+" + .fields.resolution.name + "+" + .fields.summary + " <a href=\"https://theguardian.atlassian.net/browse/" + .key + "\">(" + .key + ")</a><br>"' > jira_tickets.txt
 
 grep -v +Done+ jira_tickets.txt | cut -d'+' -f1 > jira_in_progress.txt
 grep -F -f jira_in_progress.txt pr_subjects.txt > wip_prs.txt
 
-cat > index.html <<EOF
+cat > ${CURRENT}.html <<EOF
 <!doctype html>
 <html lang="en">
   <head>
@@ -26,17 +29,7 @@ cat > index.html <<EOF
   </head>
   <body>
 <main role="main" class="container">
-      <h3 class="mt-5">Changes since ${PREVIOUS}</h3>
-<p>
-  <a class="btn btn-light" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Raw git diff
-  </a>
-</p>
-<div class="collapse" id="collapseExample">
-  <div class="card card-body">
-    <pre>$(cat git_history.txt)</pre>
-  </div>
-</div>
+      <h3 class="mt-5">${CURRENT}</h3>
       <p class="lead">Stories</p>
       <p>$(grep Story+Done+ jira_tickets.txt | cut -d+ -f4  | awk '!seen[$0]++')</p>
       <p class="lead">Bugs</p>
@@ -46,6 +39,16 @@ cat > index.html <<EOF
          $(cat wip_prs.txt)</p>
       <p class="lead">Templates changes</p>
       <p>$(cat templates.txt)</p>
+<p class="lead">
+  <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Git diff
+  </a>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <pre>$(cat git_history.txt)</pre>
+  </div>
+</div>
     </main>
 
     <!-- Optional JavaScript -->
