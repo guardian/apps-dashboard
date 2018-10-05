@@ -2,7 +2,7 @@
 
 MOST_RECENT_TAG=$(git tag | sort -rn | head -1)
 TAGS=$(git log --oneline --decorate 7.0~1..master | grep "(tag: " | grep -o "[0-9].[0-9]-[0-9]*")
-echo "$TAGS" | sed p | tail -n +2 | tail -r | tail -n +2 | tail -r  | xargs -n 2 ./ios-live.sh
+echo "$TAGS" | sed p | tail -n +2 | sort | tail -n +2 | sort -r  | xargs -n 2 ./ios-live.sh
 
 ./ios-live.sh master $MOST_RECENT_TAG
 
