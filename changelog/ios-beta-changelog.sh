@@ -4,6 +4,7 @@ MOST_RECENT_TAG=$(git tag | sort -rn | head -1)
 TAGS=$(git log --oneline --decorate 7.0~1..master | grep "(tag: " | grep -o "[0-9].[0-9]-[0-9]*")
 echo "$TAGS" | sed p | tail -n +2 | sort | tail -n +2 | sort -r  | xargs -n 2 ./ios-live.sh
 
+
 ./ios-live.sh master $MOST_RECENT_TAG
 
 cat > index.html <<EOF
@@ -26,7 +27,7 @@ cat > index.html <<EOF
 <div class="row">
     <div class="col-md-12">
       <iframe src="master.html" frameborder=0 style="width: 80vw;"></iframe>
-      $(echo "$TAGS" | xargs -I{} echo '<iframe src="{}.html" frameborder=0 style="width: 80vw;"></iframe>')
+      $(echo "$TAGS" | sort | tail -n +2 | sort -r | xargs -I{} echo '<iframe src="{}.html" frameborder=0 style="width: 80vw;"></iframe>')
     </div>
 </div>
 
