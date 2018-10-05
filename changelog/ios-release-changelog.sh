@@ -3,7 +3,7 @@
 MOST_RECENT_TAG=$(git tag | sort -rn | head -1)
 TAGS=$(git tag | grep -E '6\..$|7\..$')
 LATEST_APP_STORE_VERSION=$(git tag | grep -E '6\..$|7\..$' | tail -n 1)
-echo "$TAGS" | sort -rn | sed p | tail -n +2 | tail -r | tail -n +2 | tail -r | xargs -n 2 ./ios-live.sh
+echo "$TAGS" | sort -rn | sed p | tail -n +2 | sort | tail -n +2 | sort -r | xargs -n 2 ./ios-live.sh
 
 
 ./ios-live.sh $MOST_RECENT_TAG $LATEST_APP_STORE_VERSION
