@@ -1,7 +1,8 @@
 #!/bin/bash -x
 
 MOST_RECENT_TAG=$(git tag | sort -rn | head -1)
-TAGS=$(git log --oneline --decorate 7.0~1..master | grep "(tag: " | grep -o "[0-9].[0-9]-[0-9]*")
+LATEST_APP_STORE_VERSION=$(git tag | grep -E '6\..$|7\..$' | tail -n 1)
+TAGS=$(git log --oneline --decorate $LATEST_APP_STORE_VERSION~1..master | grep "tag: [0-9]." | grep -o "[0-9].[0-9]-[0-9]*")
 echo "$TAGS" | sed p | tail -n +2 | sort | tail -n +2 | sort -r  | xargs -n 2 ./ios-live.sh
 
 
