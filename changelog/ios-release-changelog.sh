@@ -1,12 +1,10 @@
 #!/bin/bash -x
 
-MOST_RECENT_TAG=$(git tag | sort -rn | head -1)
-TAGS=$(git tag | grep -E '6\..$|7\..$')
-LATEST_APP_STORE_VERSION=$(git tag | grep -E '6\..$|7\..$' | tail -n 1)
-echo "$TAGS" | sort -rn | sed p | tail -n +2 | sort | tail -n +2 | sort -r | xargs -n 2 ./ios-live.sh
+MOST_RECENT_TAG=$(git tag -l --sort=-refname "7.*" "6.*" | head -n 1)
+TAGS=$(git tag -l --sort=-refname "7.[0-9]" "6.[0-9]")
 
+echo -e "$MOST_RECENT_TAG\n$TAGS" | sed 'p;1d;$d' | xargs -n 2 ./ios-live.sh
 
-./ios-live.sh $MOST_RECENT_TAG $LATEST_APP_STORE_VERSION
 
 cat > index.html <<EOF
 <!doctype html>
@@ -27,8 +25,7 @@ cat > index.html <<EOF
 
 <div class="row">
     <div class="col-md-12">
-      <iframe src="$MOST_RECENT_TAG.html" frameborder=0 style="width: 80vw;"></iframe>
-      $(echo "$TAGS" | sort | tail -n +2 | sort -r | xargs -I{} echo '<iframe src="{}.html" frameborder=0 style="width: 80vw;"></iframe>')
+      $(echo -e "$MOST_RECENT_TAG\n$TAGS" | sed '$d' | xargs -I{} echo '<iframe src="{}.html" frameborder=0 style="width: 80vw;"></iframe>')
     </div>
 </div>
 
