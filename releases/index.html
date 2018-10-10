@@ -24,11 +24,18 @@
       <div class="col-4">
         <div class="card mb-4">
           <div class="card-body">
-            <h5 class="card-title">Android Production</h5>
+            <h5 class="card-title">Android</h5>
             <p class="card-text">
-              Version {{ releases.android.release.version }}<br>
-              Released <span :data-livestamp="releases.android.release.date"></span><br>
-              Date {{ moment(releases.android.release.date).format('ddd MMM D') }}</p> 
+	      <span class="card-subtitle mb-2 text-muted">Version</span><br>
+	      {{ releases.android.release.version }}</p>
+            <p class="card-text">
+	      <span class="card-subtitle mb-2 text-muted">Released</span><br>
+	      <span :data-livestamp="releases.android.release.date"></span>
+	    </p>
+            <p class="card-text">
+	      <span class="card-subtitle mb-2 text-muted">Date</span><br>
+              {{ moment(releases.android.release.date).format('ddd MMM D') }}
+	    </p>
             <a :href="releases.android.release.download">Download</a>
           </div>
         </div>
@@ -37,12 +44,19 @@
       <div class="col-4">
         <div class="card mb-4">
           <div class="card-body">
-            <h5 class="card-title">iOS Production</h5>
+            <h5 class="card-title">iOS</h5>
             <p class="card-text">
-              Version {{ releases.ios.production.version }}<br>
-              Released <span :data-livestamp="releases.ios.production.releaseDate"></span><br>
-              Date {{ moment(releases.ios.production.releaseDate).format('ddd MMM D') }}</p>
-            <a :href="releases.android.alpha.download">Download</a>
+	      <span class="card-subtitle mb-2 text-muted">Version</span><br>
+	      {{ releases.ios.production.version }}</p>
+            <p class="card-text">
+	      <span class="card-subtitle mb-2 text-muted">Released</span><br>
+	      <span :data-livestamp="releases.ios.production.releaseDate"></span>
+	    </p>
+            <p class="card-text">
+	      <span class="card-subtitle mb-2 text-muted">Date</span><br>
+              {{ moment(releases.ios.production.releaseDate).format('ddd MMM D') }}
+	    </p>
+            <a :href="releases.android.release.download">Download</a>
           </div>
         </div>
       </div>
@@ -52,42 +66,67 @@
           <div class="card-body">
             <h5 class="card-title">Daily Edition</h5>
             <p class="card-text">
-              Version {{ releases.dailyEdition.production.version }}<br>
-              Released <span :data-livestamp="releases.dailyEdition.production.releaseDate"></span><br>
-              Date {{ moment(releases.dailyEdition.production.releaseDate).format('ddd MMM D') }}</p>
-            <a :href="releases.android.alpha.download">Download</a>            
+	      <span class="card-subtitle mb-2 text-muted">Version</span><br>
+	      {{ releases.dailyEdition.production.version }}</p>
+            <p class="card-text">
+	      <span class="card-subtitle mb-2 text-muted">Released</span><br>
+	      <span :data-livestamp="releases.dailyEdition.production.releaseDate"></span>
+	    </p>
+            <p class="card-text">
+	      <span class="card-subtitle mb-2 text-muted">Date</span><br>
+              {{ moment(releases.dailyEdition.production.releaseDate).format('ddd MMM D') }}
+	    </p>
+            <a :href="releases.android.release.download">Download</a>
           </div>
         </div>
       </div>
+
       
       </div>
       <div class="row">
-      
-        <div class="col-4">
-          <div class="card mb-4">
-            <div class="card-body">
-              <h5 class="card-title">Android Beta</h5>
-              <p class="card-text">
-                Version {{ releases.android.beta.version }}<br>
-                Released <span :data-livestamp="releases.android.beta.date"></span><br>
-                Date {{ moment(releases.android.beta.date).format('ddd MMM D') }}</p> 
-              <a :href="releases.android.beta.download">Download</a>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-4">
-          <div class="card mb-4">
-            <div class="card-body">
-              <h5 class="card-title">Android Alpha</h5>
-              <p class="card-text">
-                Version {{ releases.android.alpha.version }}<br>
-                Released <span :data-livestamp="releases.android.alpha.date"></span><br>
-                Date {{ moment(releases.android.alpha.date).format('ddd MMM D') }}</p> 
-              <a :href="releases.android.alpha.download">Download</a>
-            </div>
+      <div class="col-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Android Beta</h5>
+            <p class="card-text">
+	      <span class="card-subtitle mb-2 text-muted">Version</span><br>
+	      {{ releases.android.beta.version }}</p>
+            <p class="card-text">
+	      <span class="card-subtitle mb-2 text-muted">Released</span><br>
+	      <span :data-livestamp="releases.android.beta.date"></span>
+	    </p>
+            <p class="card-text">
+	      <span class="card-subtitle mb-2 text-muted">Date</span><br>
+              {{ moment(releases.android.beta.date).format('ddd MMM D') }}
+	    </p>
+            <a :href="releases.android.beta.download">Download</a>
           </div>
         </div>
+      </div>
+
+      </div>
+      <div class="row">
+
+      <div class="col-4">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Android Alpha</h5>
+            <p class="card-text">
+	      <span class="card-subtitle mb-2 text-muted">Version</span><br>
+	      {{ releases.android.alpha.version }}</p>
+            <p class="card-text">
+	      <span class="card-subtitle mb-2 text-muted">Released</span><br>
+	      <span :data-livestamp="releases.android.alpha.date"></span>
+	    </p>
+            <p class="card-text">
+	      <span class="card-subtitle mb-2 text-muted">Date</span><br>
+              {{ moment(releases.android.alpha.date).format('ddd MMM D') }}
+	    </p>
+            <a :href="releases.android.alpha.download">Download</a>
+          </div>
+        </div>
+      </div>
 
     </div>     
       
@@ -112,7 +151,6 @@
   },
   created: function() {
     var that = this;
-
 
     $.get("https://s3-eu-west-1.amazonaws.com/release-archive-android-app/alpha.json", function(alpha) { that.releases.android.alpha = alpha });
     $.get("https://s3-eu-west-1.amazonaws.com/release-archive-android-app/beta.json", function(beta) { that.releases.android.beta = beta });
