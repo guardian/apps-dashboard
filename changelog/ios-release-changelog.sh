@@ -16,6 +16,13 @@ cat > index.html <<EOF
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script>
+      function resize() {
+        Array.from(document.getElementsByClassName('iframe')).forEach(iframe => {
+          iframe.setAttribute('height', parseInt(iframe.contentWindow.document.body.scrollHeight)+75)
+        })
+      }
+    </script>
 
     <title>Release notes</title>
   </head>
@@ -25,7 +32,7 @@ cat > index.html <<EOF
 
 <div class="row">
     <div class="col-md-12">
-      $(echo -e "$MOST_RECENT_TAG\n$TAGS" | sed '$d' | xargs -I{} echo '<iframe src="{}.html" frameborder=0 style="width: 80vw;"></iframe>')
+      $(echo -e "$MOST_RECENT_TAG\n$TAGS" | sed '$d' | xargs -I{} echo '<iframe src="{}.html" class="iframe" onload="resize();" frameborder=0 scrolling="yes" width="100%" "></iframe>')
     </div>
 </div>
 
