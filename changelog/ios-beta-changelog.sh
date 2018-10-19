@@ -23,7 +23,7 @@ cat > index.html <<EOF
     <main role="main" class="container">
       <h1 class="mt-5">Beta changelog</h1>
 
-      $(echo -e "master\n$TAGS" | sed '$d' | xargs -I{} echo '<iframe src="{}.html"></iframe>')
+      $(echo -e "master\n$TAGS" | sed '$d' | xargs -I{} echo '<iframe src="beta/{}.html"></iframe>')
 
     </main>
 

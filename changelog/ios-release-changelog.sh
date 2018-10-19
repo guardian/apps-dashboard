@@ -24,7 +24,7 @@ cat > index.html <<EOF
     <main role="main" class="container">
       <h1 class="mt-5">App Store versions changelog</h1>
 
-      $(echo -e "$MOST_RECENT_TAG\n$TAGS" | sed '$d' | xargs -I{} echo '<iframe src="{}.html"></iframe>')
+      $(echo -e "$MOST_RECENT_TAG\n$TAGS" | sed '$d' | xargs -I{} echo '<iframe src="release/{}.html"></iframe>')
 
     </main>
 
