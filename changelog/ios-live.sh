@@ -5,11 +5,11 @@ CURRENT=$1
 
 git log --pretty=oneline --abbrev-commit ${PREVIOUS}..${CURRENT} > git_history.txt
 
-grep -o '#....)$' git_history.txt | grep -o '[0-9][0-9][0-9][0-9]' | xargs -I {} curl --silent --user "${GITHUB_CREDENTIALS}" https://api.github.com/repos/guardian/ios-live/pulls/{} | jq -r '.title + " <a target=\"_blank\" href=\"" + ._links.html.href + "\">(#" + (.number|tostring) + ")</a><br>"' > pr_subjects.txt
+grep -o '#....)$' git_history.txt | grep -o [0-9][0-9]* | xargs -I {} curl --silent --user "${GITHUB_CREDENTIALS}" https://api.github.com/repos/guardian/ios-live/pulls/{} | jq -r '.title + " <a target=\"_blank\" href=\"" + ._links.html.href + "\">(#" + (.number|tostring) + ")</a><br>"' > pr_subjects.txt
 
-grep -o '1.0.[0-9][0-9][0-9]' git_history.txt | xargs -I {} curl --silent --user "${GITHUB_CREDENTIALS}" https://api.github.com/repos/guardian/mobile-apps-article-templates/git/refs/tags/{} | jq -r '.object.url' | xargs curl --user "${GITHUB_CREDENTIALS}" --silent | jq -r '.object.url' | xargs curl --user "${GITHUB_CREDENTIALS}" --silent | jq '.message' | grep -o '#...' | grep -o '[0-9][0-9][0-9]' | xargs -I {} curl --silent --user "${GITHUB_CREDENTIALS}" https://api.github.com/repos/guardian/mobile-apps-article-templates/pulls/{} | jq -r '.title + " <a target=\"_blank\" href=\"" + ._links.html.href + "\">(#" + (.number|tostring) + ")</a><br>"' > templates.txt
+grep -o 1.0.[0-9]* git_history.txt | xargs -I {} curl --silent --user "${GITHUB_CREDENTIALS}" https://api.github.com/repos/guardian/mobile-apps-article-templates/git/refs/tags/{} | jq -r '.object.url' | xargs curl --user "${GITHUB_CREDENTIALS}" --silent | jq -r '.object.url' | xargs curl --user "${GITHUB_CREDENTIALS}" --silent | jq '.message' | grep -o '#...' | grep -o [0-9][0-9]* | xargs -I {} curl --silent --user "${GITHUB_CREDENTIALS}" https://api.github.com/repos/guardian/mobile-apps-article-templates/pulls/{} | jq -r '.title + " <a target=\"_blank\" href=\"" + ._links.html.href + "\">(#" + (.number|tostring) + ")</a><br>"' > templates.txt
 
-grep -o GLA-[0-9][0-9][0-9] git_history.txt | xargs -I{} curl -s -u ${JIRA_CREDENTIALS} https://theguardian.atlassian.net/rest/api/latest/issue/{} | jq -r '.key + "+" + .fields.issuetype.name + "+" + .fields.resolution.name + "+" + .fields.summary + " <a target=\"_blank\" href=\"https://theguardian.atlassian.net/browse/" + .key + "\">(" + .key + ")</a><br>"' > jira_tickets.txt
+grep -o GLA-[0-9]* git_history.txt | xargs -I{} curl -s -u ${JIRA_CREDENTIALS} https://theguardian.atlassian.net/rest/api/latest/issue/{} | jq -r '.key + "+" + .fields.issuetype.name + "+" + .fields.resolution.name + "+" + .fields.summary + " <a target=\"_blank\" href=\"https://theguardian.atlassian.net/browse/" + .key + "\">(" + .key + ")</a><br>"' > jira_tickets.txt
 
 grep -v +Done+ jira_tickets.txt | cut -d'+' -f1 > jira_in_progress.txt
 grep -F -f jira_in_progress.txt pr_subjects.txt > wip_prs.txt
