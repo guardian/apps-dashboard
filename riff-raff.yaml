@@ -25,3 +25,7 @@ deployments:
       bucket: releases.gutools.co.uk
       prefixStage: false
       prefixStack: false
+  releases:
+    type: cloud-formation
+    parameters:
+      templatePath: releases-cloud-formation.yaml
