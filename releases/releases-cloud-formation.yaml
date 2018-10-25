@@ -7,7 +7,7 @@ Parameters:
   SSLCertificate:
     Description: ACM certificate for CloudFront
     Type: String
-    Default: arn:aws:acm:eu-west-1:201359054765:certificate/53c42bc2-df14-4a52-8d66-bad8e196aaad
+    Default: arn:aws:acm:us-east-1:201359054765:certificate/ea06915f-5176-40fc-9944-b4bf47c7b9a0
 
 Resources:
   S3Bucket:
