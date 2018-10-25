@@ -49,7 +49,7 @@ Resources:
           Principal:
             AWS: !Sub 'arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${OriginAccessId}'
           Action: s3:GetObject
-          Resource: arn:aws:s3:::changelog.gutools.co.uk/index.html
+          Resource: arn:aws:s3:::changelog.gutools.co.uk/*
   CloundFrontHTTPSEndpoint:
     Type: AWS::CloudFront::Distribution
     Properties:
