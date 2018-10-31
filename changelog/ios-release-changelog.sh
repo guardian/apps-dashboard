@@ -1,10 +1,8 @@
 #!/bin/bash -x
 
-MOST_RECENT_TAG=$(git tag -l --sort=-refname "7.*" "6.*" | head -n 1)
-TAGS=$(git tag -l --sort=-refname "7.[0-9]" "6.[0-9]")
+TAGS=$(git tag -l --sort=-refname "7.*-*" "6.*-*" | grep -o '[6,7]\.[0-9]*' | uniq | xargs -I {} sh -c 'git tag -l --sort=-refname "{}-*" | head -1')
 
-echo -e "$MOST_RECENT_TAG\n$TAGS" | sed 'p;1d;$d' | xargs -n 2 ./ios-live.sh
-
+echo -e "$TAGS" | sed 'p;1d;$d' | xargs -n 2 ./ios-live.sh
 
 cat > index.html <<EOF
 <!doctype html>
@@ -24,7 +22,7 @@ cat > index.html <<EOF
     <main role="main" class="container">
       <h1 class="mt-5">App Store versions changelog</h1>
 
-      $(echo -e "$MOST_RECENT_TAG\n$TAGS" | sed '$d' | xargs -I{} echo '<iframe src="release/{}.html"></iframe>')
+      $(echo -e "$TAGS" | sed '$d' | xargs -I{} echo '<iframe src="release/{}.html"></iframe>')
 
     </main>
 
