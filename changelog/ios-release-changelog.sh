@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-TAGS=$(git tag -l --sort=-refname "7.*-*" "6.*-*" | grep -o '[6,7]\.[0-9]*' | uniq | xargs -I {} sh -c 'git tag -l --sort=-refname "{}-*" | head -1')
+TAGS=$(git tag -l --sort=-version:refname "7.*-*" "6.*-*" | grep -o '[6,7]\.[0-9]*' | uniq | xargs -I {} sh -c 'git tag -l --sort=-refname "{}-*" | head -1')
 
 echo -e "$TAGS" | sed 'p;1d;$d' | xargs -n 2 ./ios-live.sh
 

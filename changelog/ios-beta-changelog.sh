@@ -1,7 +1,7 @@
 #!/bin/bash -x
 
-PENULTIMATE_APP_STORE_VERSION=$(git tag -l --sort=-refname "7.[0-9]" | head -n 2 | tail -n 1)
-TAGS=$(git tag -l --sort=-refname --contains $PENULTIMATE_APP_STORE_VERSION "7.*-*" | sed '$d')
+PENULTIMATE_APP_STORE_VERSION=$(git tag -l --sort=-version:refname "7.[0-9]" "7.[0-9][0-9]" | head -n 2 | tail -n 1)
+TAGS=$(git tag -l --sort=-version:refname --contains $PENULTIMATE_APP_STORE_VERSION "7.*-*" | sed '$d')
 
 echo -e "master\n$TAGS" | sed 'p;1d;$d' | xargs -n 2 ./ios-live.sh
 
