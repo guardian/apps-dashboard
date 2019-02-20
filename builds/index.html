@@ -24,7 +24,7 @@
             <p class="lead text-center">Dev version {{ releases.android.development.version }}<br>
               <a :href="releases.android.development.teamcity">{{ releases.android.development.date }}</a> 
               <a :href="releases.android.development.github">#{{ releases.android.development.sha1 }}</a></p>
-            <p class="text-center"><a class="btn btn-primary btn-lg btn-success text-center" href="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/android-news-app-0-google-debug.apk" role="button">Install build</a></p>
+            <p class="text-center"><a class="btn btn-primary btn-lg btn-success text-center" href="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/android-news-app-1-google-debug.apk" role="button">Install build</a></p>
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@ new Vue({
   },
   created: function() {
     var that = this;
-    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/android-news-app-0-google-debug.json", function(android) { that.releases.android = android });
+    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/android-news-app-1-google-debug.json", function(android) { that.releases.android = android });
     $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GLADebug.json", function(ios) { that.releases.ios = ios });
     $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GCEInternal.json", function(de) { that.releases.de = de });
   }
