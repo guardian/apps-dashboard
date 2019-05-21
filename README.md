@@ -16,3 +16,23 @@ release date.
 
 Dashboard with the changelog for latest release note. Useful to write release
 notes.
+
+## Development
+
+### Install
+
+```
+$ npm install
+```
+
+### Builds
+
+```
+$ npm run start-builds
+```
+
+### Releases
+
+```
+$ npm start
+```
