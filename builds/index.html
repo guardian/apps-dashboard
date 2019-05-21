@@ -54,6 +54,18 @@
           </div>
         </div>
       </div>
+      
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="jumbotron">
+            <h1 class="text-center">Editions</h1>
+            <p class="lead text-center">Dev version {{ releases.androidEditions.development.version }}<br>
+              <a :href="releases.android.development.teamcity">{{ releases.androidEditions.development.date }}</a> 
+              <a :href="releases.android.development.github">#{{ releases.androidEditions.development.sha1 }}</a></p>
+            <p class="text-center"><a class="btn btn-primary btn-lg btn-success text-center" href="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/app-debug.apk" role="button">Install build</a></p>
+          </div>
+        </div>
+      </div>
 
     </div>
 
@@ -62,14 +74,13 @@
 <script>
 new Vue({
   el: '.container',
-  data: {
-    releases:{"android":{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}},ios:{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}},de:{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}}},
-  },
+  data: {releases:{"android":{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}},ios:{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}},de:{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}},"androidEditions":{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}}}},
   created: function() {
     var that = this;
     $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/android-news-app-1-google-debug.json", function(android) { that.releases.android = android });
     $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GLADebug.json", function(ios) { that.releases.ios = ios });
     $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GCEInternal.json", function(de) { that.releases.de = de });
+    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/app-debug.json", function(androidEditions) { that.releases.androidEditions = androidEditions });
   }
 })
 </script>
