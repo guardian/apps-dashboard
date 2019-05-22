@@ -74,9 +74,8 @@
 new Vue({
   el: '.container',
   data: {
-    releases: ['android', 'ios', 'de', 'androidEditions'].reduce((acc, curr) => {
-      console.log(curr)
-      return Object.assign({}, acc, {
+    releases: ['android', 'ios', 'de', 'androidEditions'].reduce((acc, curr) => 
+      Object.assign({}, acc, {
         [curr]: {
           development: {
             version: "",
@@ -86,8 +85,7 @@ new Vue({
             github: ""
           }
         }
-      })
-    }, {})
+      }), {})
   },
   created: function() {
     fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/android-news-app-1-google-debug.json")
