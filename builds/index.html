@@ -69,7 +69,6 @@
 
     </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
 <script src="https://unpkg.com/vue@latest/dist/vue.js"></script> 
 <script>
 new Vue({
@@ -91,11 +90,26 @@ new Vue({
     }, {})
   },
   created: function() {
-    var that = this;
-    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/android-news-app-1-google-debug.json", function(android) { that.releases.android = android });
-    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GLADebug.json", function(ios) { that.releases.ios = ios });
-    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GCEInternal.json", function(de) { that.releases.de = de });
-    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/app-debug.json", function(androidEditions) { that.releases.androidEditions = androidEditions });
+    fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/android-news-app-1-google-debug.json")
+      .then(res => res.json())
+      .then(android => { 
+        this.releases.android = android;
+      });
+    fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GLADebug.json")
+      .then(res => res.json())
+      .then(ios => { 
+        this.releases.ios = ios;
+      });
+    fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GCEInternal.json")
+      .then(res => res.json())
+      .then(de => { 
+        this.releases.de = de;
+      });
+    fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/app-debug.json")
+      .then(res => res.json())
+      .then(androidEditions => { 
+        this.releases.androidEditions = androidEditions;
+      });
   }
 })
 
