@@ -21,7 +21,7 @@ notes.
 
 ### Browser support
 
-This site needs to support iOS Safari 9 and above.
+This site needs to support the same devices that our apps support. We need to take care to provide support for iOS Safari 9 and above.
 
 ### Install
 
