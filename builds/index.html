@@ -69,44 +69,55 @@
 
     </div>
 
+<script src="https://unpkg.com/whatwg-fetch@3.0.0/dist/fetch.umd.js"></script>
 <script src="https://unpkg.com/vue@latest/dist/vue.js"></script> 
 <script>
 new Vue({
   el: '.container',
   data: {
-    releases: ['android', 'ios', 'de', 'androidEditions'].reduce((acc, curr) => 
-      Object.assign({}, acc, {
-        [curr]: {
-          development: {
-            version: "",
-            date: "",
-            sha1: "",
-            teamcity: "",
-            github: ""
-          }
+    releases: ['android', 'ios', 'de', 'androidEditions'].reduce(function(acc, curr) { 
+      acc[curr] = {
+        development: {
+          version: "",
+          date: "",
+          sha1: "",
+          teamcity: "",
+          github: ""
         }
-      }), {})
+      }
+      
+      return acc;
+    }, {})
   },
   created: function() {
+    var _ = this;
     fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/android-news-app-1-google-debug.json")
-      .then(res => res.json())
-      .then(android => { 
-        this.releases.android = android;
+      .then(function(res) {
+        return res.json()
+      })
+      .then(function(android) { 
+        _.releases.android = android;
       });
     fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GLADebug.json")
-      .then(res => res.json())
-      .then(ios => { 
-        this.releases.ios = ios;
+      .then(function (res) {
+        return res.json()
+      })
+      .then(function (ios) { 
+        _.releases.ios = ios;
       });
     fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GCEInternal.json")
-      .then(res => res.json())
-      .then(de => { 
-        this.releases.de = de;
+      .then(function (res) {
+        return res.json()
+      })
+      .then(function (de) { 
+        _.releases.de = de;
       });
     fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/app-debug.json")
-      .then(res => res.json())
-      .then(androidEditions => { 
-        this.releases.androidEditions = androidEditions;
+      .then(function (res) {
+        return res.json()
+      })
+      .then(function (androidEditions) { 
+        _.releases.androidEditions = androidEditions;
       });
   }
 })
