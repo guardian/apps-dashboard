@@ -19,6 +19,10 @@ notes.
 
 ## Development
 
+### Browser support
+
+This site needs to support iOS Safari 9 and above.
+
 ### Install
 
 ```
