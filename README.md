@@ -16,3 +16,27 @@ release date.
 
 Dashboard with the changelog for latest release note. Useful to write release
 notes.
+
+## Development
+
+### Browser support
+
+This site needs to support the same devices that our apps support. We need to take care to provide support for iOS Safari 9 and above.
+
+### Install
+
+```
+$ npm install
+```
+
+### Builds
+
+```
+$ npm run start-builds
+```
+
+### Releases
+
+```
+$ npm start
+```

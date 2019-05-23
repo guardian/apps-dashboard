@@ -60,8 +60,8 @@
           <div class="jumbotron">
             <h1 class="text-center">Editions</h1>
             <p class="lead text-center">Dev version {{ releases.androidEditions.development.version }}<br>
-              <a :href="releases.android.development.teamcity">{{ releases.androidEditions.development.date }}</a> 
-              <a :href="releases.android.development.github">#{{ releases.androidEditions.development.sha1 }}</a></p>
+              <a :href="releases.androidEditions.development.teamcity">{{ releases.androidEditions.development.date }}</a> 
+              <a :href="releases.androidEditions.development.github">#{{ releases.androidEditions.development.sha1 }}</a></p>
             <p class="text-center"><a class="btn btn-primary btn-lg btn-success text-center" href="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/app-debug.apk" role="button">Install build</a></p>
           </div>
         </div>
@@ -69,20 +69,59 @@
 
     </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.js"></script>
+<script src="https://unpkg.com/whatwg-fetch@3.0.0/dist/fetch.umd.js"></script>
 <script src="https://unpkg.com/vue@latest/dist/vue.js"></script> 
 <script>
 new Vue({
   el: '.container',
-  data: {releases:{"android":{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}},ios:{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}},de:{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}},"androidEditions":{"development":{"version":"","date":"","sha1":"","teamcity":"","github":""}}}},
+  data: {
+    releases: ['android', 'ios', 'de', 'androidEditions'].reduce(function(acc, curr) { 
+      acc[curr] = {
+        development: {
+          version: "",
+          date: "",
+          sha1: "",
+          teamcity: "",
+          github: ""
+        }
+      }
+      
+      return acc;
+    }, {})
+  },
   created: function() {
-    var that = this;
-    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/android-news-app-1-google-debug.json", function(android) { that.releases.android = android });
-    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GLADebug.json", function(ios) { that.releases.ios = ios });
-    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GCEInternal.json", function(de) { that.releases.de = de });
-    $.get("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/app-debug.json", function(androidEditions) { that.releases.androidEditions = androidEditions });
+    var _ = this;
+    fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/android-news-app-1-google-debug.json")
+      .then(function(res) {
+        return res.json()
+      })
+      .then(function(android) { 
+        _.releases.android = android;
+      });
+    fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GLADebug.json")
+      .then(function (res) {
+        return res.json()
+      })
+      .then(function (ios) { 
+        _.releases.ios = ios;
+      });
+    fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GCEInternal.json")
+      .then(function (res) {
+        return res.json()
+      })
+      .then(function (de) { 
+        _.releases.de = de;
+      });
+    fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/app-debug.json")
+      .then(function (res) {
+        return res.json()
+      })
+      .then(function (androidEditions) { 
+        _.releases.androidEditions = androidEditions;
+      });
   }
 })
+
 </script>
 
   </body>

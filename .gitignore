@@ -3,3 +3,6 @@ config.json
 .idea
 *.swp
 lib/secret.json
+node_modules
+*.log
+.vscode

@@ -11,6 +11,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node ./node_modules/live-server/live-server.js releases/"
+    "start": "node ./node_modules/live-server/live-server.js releases/",
+    "start-builds": "node ./node_modules/live-server/live-server.js builds/"
   }
 }
