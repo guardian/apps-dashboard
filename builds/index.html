@@ -1,128 +1,158 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>App Builds</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-  </head>
-  <body>
-    <div class="container">
 
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <div class="pb-2 mt-4 mb-2 border-bottom">
-            <h3 class="text-muted">App Builds</h3>
-          </div>
+<head>
+  <title>App Builds</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+    integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="pb-2 mt-4 mb-2 border-bottom">
+          <h3 class="text-muted">App Builds</h3>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <div class="jumbotron">
-            <h1 class="text-center">Android</h1>
-            <p class="lead text-center">Dev version {{ releases.android.development.version }}<br>
-              <a :href="releases.android.development.teamcity">{{ releases.android.development.date }}</a> 
-              <a :href="releases.android.development.github">#{{ releases.android.development.sha1 }}</a></p>
-            <p class="text-center"><a class="btn btn-primary btn-lg btn-success text-center" href="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/android-news-app-1-google-debug.apk" role="button">Install build</a></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <div class="jumbotron">
-            <h1 class="text-center">iOS</h1>
-            <p class="lead text-center">Dev version {{ releases.ios.development.version }}<br>
-              <a :href="releases.ios.development.teamcity">{{ releases.ios.development.date }}</a> 
-              <a :href="releases.ios.development.github">#{{ releases.ios.development.sha1 }}</a></p>
-            <p class="lead text-center"><a href="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GLADebug-devices.html">Supported devices</a></p>
-            <p class="text-center"><a class="btn btn-primary btn-lg btn-success" href="itms-services://?action=download-manifest&url=https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GLADebug.plist" role="button">Install build</a></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <div class="jumbotron">
-            <h1 class="text-center">Daily Edition</h1>
-            <p class="lead text-center">Dev version {{ releases.de.development.version }}<br>
-              <a :href="releases.de.development.teamcity">{{ releases.de.development.date }}</a>
-              <a :href="releases.de.development.github">#{{ releases.de.development.sha1 }}</a></p>
-            <p class="text-center"><a class="btn btn-lg btn-success" href="itms-services://?action=download-manifest&url=https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GCEInternal.plist" role="button">Install Enterprise Internal</a></p>
-            <p class="text-center"><a class="btn btn-lg btn-success" href="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GCEInternal.ipa" role="button">Enterprise Internal IPA</a></p>
-          </div>
-        </div>
-      </div>
-      
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <div class="jumbotron">
-            <h1 class="text-center">Editions</h1>
-            <p class="lead text-center">Dev version {{ releases.androidEditions.development.version }}<br>
-              <a :href="releases.androidEditions.development.teamcity">{{ releases.androidEditions.development.date }}</a> 
-              <a :href="releases.androidEditions.development.github">#{{ releases.androidEditions.development.sha1 }}</a></p>
-            <p class="text-center"><a class="btn btn-primary btn-lg btn-success text-center" href="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/app-debug.apk" role="button">Install build</a></p>
-          </div>
-        </div>
-      </div>
-
     </div>
 
-<script src="https://unpkg.com/whatwg-fetch@3.0.0/dist/fetch.umd.js"></script>
-<script src="https://unpkg.com/vue@latest/dist/vue.js"></script> 
-<script>
-new Vue({
-  el: '.container',
-  data: {
-    releases: ['android', 'ios', 'de', 'androidEditions'].reduce(function(acc, curr) { 
-      acc[curr] = {
-        development: {
-          version: "",
-          date: "",
-          sha1: "",
-          teamcity: "",
-          github: ""
-        }
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="jumbotron">
+          <h1 class="text-center">Android</h1>
+          <p class="lead text-center">Dev version {{ releases.android.development.version }}<br>
+            <a :href="releases.android.development.teamcity">{{ releases.android.development.date }}</a>
+            <a :href="releases.android.development.github">#{{ releases.android.development.sha1 }}</a></p>
+          <p class="text-center"><a class="btn btn-primary btn-lg btn-success text-center"
+              href="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/android-news-app-1-google-debug.apk"
+              role="button">Install build</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="jumbotron">
+          <h1 class="text-center">iOS</h1>
+          <p class="lead text-center">Dev version {{ releases.ios.development.version }}<br>
+            <a :href="releases.ios.development.teamcity">{{ releases.ios.development.date }}</a>
+            <a :href="releases.ios.development.github">#{{ releases.ios.development.sha1 }}</a></p>
+          <p class="lead text-center"><a
+              href="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GLADebug-devices.html">Supported devices</a>
+          </p>
+          <p class="text-center"><a class="btn btn-primary btn-lg btn-success"
+              href="itms-services://?action=download-manifest&url=https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GLADebug.plist"
+              role="button">Install build</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="jumbotron">
+          <h1 class="text-center">Daily Edition</h1>
+          <p class="lead text-center">Dev version {{ releases.de.development.version }}<br>
+            <a :href="releases.de.development.teamcity">{{ releases.de.development.date }}</a>
+            <a :href="releases.de.development.github">#{{ releases.de.development.sha1 }}</a></p>
+          <p class="text-center"><a class="btn btn-lg btn-success"
+              href="itms-services://?action=download-manifest&url=https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GCEInternal.plist"
+              role="button">Install Enterprise Internal</a></p>
+          <p class="text-center"><a class="btn btn-lg btn-success"
+              href="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GCEInternal.ipa" role="button">Enterprise
+              Internal IPA</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="jumbotron">
+          <h1 class="text-center">Editions</h1>
+          <p class="lead text-center">Android Dev version {{ releases.androidEditions.development.version }}<br>
+            <a :href="releases.androidEditions.development.teamcity">{{ releases.androidEditions.development.date }}</a>
+            <a :href="releases.androidEditions.development.github">#{{ releases.androidEditions.development.sha1 }}</a>
+          </p>
+          <p class="text-center"><a class="btn btn-primary btn-lg btn-success text-center"
+              href="https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/app-debug.apk" role="button">Install
+              🤖 build </a></p>
+          <p class="lead text-center">iOS Dev version {{ releases.iosEditions.development.version }}<br>
+            <a :href="releases.iosEditions.development.teamcity">{{ releases.iosEditions.development.date }}</a>
+            <a :href="releases.iosEditions.development.github">#{{ releases.iosEditions.development.sha1 }}</a></p>
+          <p class="text-center"><a class="btn btn-primary btn-lg btn-success"
+              href="itms-services://?action=download-manifest&url=https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/debug.plist"
+              role="button">Install 🍎 build</a></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://unpkg.com/whatwg-fetch@3.0.0/dist/fetch.umd.js"></script>
+  <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '.container',
+      data: {
+        releases: ['android', 'ios', 'de', 'androidEditions', 'iosEditions'].reduce(function (acc, curr) {
+          acc[curr] = {
+            development: {
+              version: "",
+              date: "",
+              sha1: "",
+              teamcity: "",
+              github: ""
+            }
+          }
+
+          return acc;
+        }, {})
+      },
+      created: function () {
+        var _ = this;
+        fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/android-news-app-1-google-debug.json")
+          .then(function (res) {
+            return res.json()
+          })
+          .then(function (android) {
+            _.releases.android = android;
+          });
+        fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GLADebug.json")
+          .then(function (res) {
+            return res.json()
+          })
+          .then(function (ios) {
+            _.releases.ios = ios;
+          });
+        fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GCEInternal.json")
+          .then(function (res) {
+            return res.json()
+          })
+          .then(function (de) {
+            _.releases.de = de;
+          });
+        fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/app-debug.json")
+          .then(function (res) {
+            return res.json()
+          })
+          .then(function (androidEditions) {
+            _.releases.androidEditions = androidEditions;
+          });
+        fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/editions-ios-debug.json")
+          .then(function (res) {
+            return res.json()
+          })
+          .then(function (iosEditions) {
+            _.releases.iosEditions = iosEditions;
+          });
       }
-      
-      return acc;
-    }, {})
-  },
-  created: function() {
-    var _ = this;
-    fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/android-news-app-1-google-debug.json")
-      .then(function(res) {
-        return res.json()
-      })
-      .then(function(android) { 
-        _.releases.android = android;
-      });
-    fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GLADebug.json")
-      .then(function (res) {
-        return res.json()
-      })
-      .then(function (ios) { 
-        _.releases.ios = ios;
-      });
-    fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/GCEInternal.json")
-      .then(function (res) {
-        return res.json()
-      })
-      .then(function (de) { 
-        _.releases.de = de;
-      });
-    fetch("https://s3-eu-west-1.amazonaws.com/builds.gutools.co.uk/app-debug.json")
-      .then(function (res) {
-        return res.json()
-      })
-      .then(function (androidEditions) { 
-        _.releases.androidEditions = androidEditions;
-      });
-  }
-})
+    })
 
-</script>
+  </script>
 
-  </body>
+</body>
+
 </html>
