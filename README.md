@@ -12,10 +12,11 @@ the latest development builds from TeamCity.
 Dashboard with the latest releases. Contains information like version number and
 release date.
 
-## Changelog
+## ~~Changelog~~
 
-Dashboard with the changelog for latest release note. Useful to write release
-notes.
+No longer in use. Release notes are now posted to the [P&E/Apps/Releases chat channel](https://chat.google.com/room/AAAAGD0cCnc/YCe8IddTYZE).
+
+On iOS this process is handled by github actions.
 
 ## Development
 
