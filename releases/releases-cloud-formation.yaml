@@ -37,13 +37,26 @@ Resources:
         - Sid: IPAllow
           Effect: Allow
           Principal: "*"
-          Action: s3:*
+          Action:
+            - s3:GetObject
           Resource: arn:aws:s3:::releases.gutools.co.uk/*
           Condition:
             IpAddress:
               aws:SourceIp:
               - 77.91.248.0/21
               - 162.213.134.128/26
+        - Sid: IPAllow
+          Effect: Allow
+          Principal: "*"
+          Action:
+            - s3:ListBucket
+            - s3:GetBucketLocation
+          Resource: arn:aws:s3:::releases.gutools.co.uk
+          Condition:
+            IpAddress:
+              aws:SourceIp:
+                - 77.91.248.0/21
+                - 162.213.134.128/26
         - Sid: "3"
           Effect: Allow
           Principal:
