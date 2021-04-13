@@ -51,7 +51,7 @@ Resources:
           Action:
             - s3:ListBucket
             - s3:GetBucketLocation
-          Resource: arn:aws:s3:::releases.gutools.co.uk
+          Resource: arn:aws:s3:::builds.gutools.co.uk
           Condition:
             IpAddress:
               aws:SourceIp:
