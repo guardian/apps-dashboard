@@ -29,16 +29,3 @@ deployments:
     type: cloud-formation
     parameters:
       templatePath: releases-cloud-formation.yaml
-  changelog-s3-files:
-    type: aws-s3
-    parameters:
-      cacheControl: max-age=10
-      publicReadAcl: false
-      prefixPackage: false
-      bucket: changelog.gutools.co.uk
-      prefixStage: false
-      prefixStack: false
-  changelog:
-    type: cloud-formation
-    parameters:
-      templatePath: changelog-cloud-formation.yaml
