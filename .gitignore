@@ -6,3 +6,4 @@ lib/secret.json
 node_modules
 *.log
 .vscode
+!.github
