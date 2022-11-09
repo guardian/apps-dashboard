@@ -13,5 +13,10 @@
   "scripts": {
     "start": "node ./node_modules/live-server/live-server.js releases/",
     "start-builds": "node ./node_modules/live-server/live-server.js builds/"
+  },
+  "overrides": {
+    "http-auth": "3.2.4",
+    "unset-value": "2.0.1",
+    "glob-parent": "5.1.2"
   }
 }
